@@ -62,3 +62,11 @@ $route['logout']['GET'] = 'Logout/index';
 $route['login/do_login']['POST'] = 'Login/do_login';
 // Dashboard Section
 $route['portal/index']['GET'] = 'Dashboard/index';
+$route['portal/purchase-orders']['GET'] = 'Dashboard/purchase';
+$route['portal/supplied-items']['GET'] = 'Dashboard/supplied';
+$route['portal/not-supplied-items']['GET'] = 'Dashboard/notsupplied';
+$route['portal/installed-items']['GET'] = 'Dashboard/installed';
+$route['portal/not-installed-items']['GET'] = 'Dashboard/notinstalled';
+$route['portal/installed-items-after-cutoff-date']['GET'] = 'Dashboard/afterCutoff';
+$route['portal/installed-items-before-cutoff-date']['GET'] = 'Dashboard/beforeCutoff';
+$route['portal/supply-status']['GET'] = 'Dashboard/status';

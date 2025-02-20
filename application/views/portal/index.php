@@ -6,15 +6,6 @@ if ($this->session->flashdata('status')) : ?>
     </div>
 <?php endif; ?>
 <div class="portal_section">
-    <!-- <div class="row mx-0">
-        <div class="col-lg-2 bg-dark text-light vh-100 py-5">
-            Welcome <?php echo $this->session->auth_user['username'] ?>
-            <a class="nav-link" href="<?php echo base_url() ?>logout">Logout</a>
-        </div>
-        <div class="col-lg-10">
-
-        </div>
-    </div> -->
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow d-print-none">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"> Welcome <?php echo $this->session->auth_user['username'] ?></a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +21,7 @@ if ($this->session->flashdata('status')) : ?>
     <div class="container-fluid">
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse d-print-none shadow-lg">
-                <div class="position-sticky pt-5">
+                <div class="position-sticky pt-4">
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/dashboard">
@@ -38,42 +29,42 @@ if ($this->session->flashdata('status')) : ?>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="booking">
+                            <a class="nav-link" href="<?php echo base_url()?>portal/purchase-orders">
                                 Purchase Orders
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="new_inspection">
+                            <a class="nav-link" href="<?php echo base_url()?>portal/supplied-items">
                                 Supplied Items
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="vehicle">
+                            <a class="nav-link" href="<?php echo base_url()?>portal/not-supplied-items">
                                 Not Supplied Items
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="users">
+                            <a class="nav-link" href="<?php echo base_url()?>portal/installed-items">
                                 Installed Items
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="users">
+                            <a class="nav-link" href="<?php echo base_url()?>portal/not-installed-items">
                                 Not Installed Items
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="users">
+                            <a class="nav-link" href="<?php echo base_url()?>installed-items-after-cutoff-date">
                                 Installed Items After Cutoff Date
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="users">
+                            <a class="nav-link" href="<?php echo base_url()?>installed-items-before-cutoff-date">
                                 Installed Items Before Cutoff Date
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="users">
+                            <a class="nav-link" href="<?php echo base_url()?>supply-status">
                                 Supply Status
                             </a>
                         </li>
@@ -94,30 +85,28 @@ if ($this->session->flashdata('status')) : ?>
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-danger bg-gradient">
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Purchase Orders</h6>
-                                    
-
-                                    <a href="#" class="stretched-link"></a>
+                                    <a href="<?php echo base_url()?>portal/purchase-orders" class="stretched-link"></a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-warning bg-gradient">
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Supplied Items</h6>
-                                    <a href="#" class="stretched-link"></a>
+                                    <a href="<?php echo base_url()?>portal/supplied-items" class="stretched-link"></a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-primary bg-gradient">
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Not Supplied Items</h6>
-                                    <a href="#" class="stretched-link"></a>
+                                    <a href="<?php echo base_url()?>portal/not-supplied-items" class="stretched-link"></a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-secondary bg-gradient">
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Installed Items</h6>
-                                    <a href="#" class="stretched-link"></a>
+                                    <a href="<?php echo base_url()?>portal/installed-items" class="stretched-link"></a>
                                 </div>
                             </div>
                         </div>
@@ -126,28 +115,28 @@ if ($this->session->flashdata('status')) : ?>
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-danger bg-secondary">
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Not Installed Items</h6>
-                                    <a href="#" class="stretched-link"></a>
+                                    <a href="<?php echo base_url()?>portal/not-installed-items" class="stretched-link"></a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-warning bg-info">
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Installed Items <br>After Cutoff Date</h6>
-                                    <a href="#" class="stretched-link"></a>
+                                    <a href="<?php echo base_url()?>portal/installed-items-after-cutoff-date" class="stretched-link"></a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-primary bg-dark">
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Installed Items <br>Before Cutoff Date</h6>
-                                    <a href="#" class="stretched-link"></a>
+                                    <a href="<?php echo base_url()?>portal/installed-items-before-cutoff-date" class="stretched-link"></a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-secondary bg-success">
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Supply Status</h6>
-                                    <a href="#" class="stretched-link"></a>
+                                    <a href="<?php echo base_url()?>portal/supply-status" class="stretched-link"></a>
                                 </div>
                             </div>
                         </div>
