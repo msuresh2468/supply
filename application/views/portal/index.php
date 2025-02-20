@@ -95,6 +95,7 @@ if ($this->session->flashdata('status')) : ?>
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Purchase Orders</h6>
                                     
+
                                     <a href="#" class="stretched-link"></a>
                                 </div>
                             </div>
