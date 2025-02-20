@@ -5,7 +5,6 @@ if ($this->session->flashdata('status')) : ?>
         <?= $this->session->flashdata('status'); ?>
     </div>
 <?php endif; ?>
-test
 <div class="portal_section">
     <!-- <div class="row mx-0">
         <div class="col-lg-2 bg-dark text-light vh-100 py-5">
@@ -31,7 +30,7 @@ test
     <div class="container-fluid">
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse d-print-none shadow-lg">
-                <div class="position-sticky pt-3">
+                <div class="position-sticky pt-5">
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/dashboard">
@@ -40,22 +39,42 @@ test
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="booking">
-                                New Booking
+                                Purchase Orders
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="new_inspection">
-                                Inspection Request
+                                Supplied Items
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="vehicle">
-                                Post Vehicle
+                                Not Supplied Items
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="users">
-                                New Users
+                                Installed Items
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="users">
+                                Not Installed Items
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="users">
+                                Installed Items After Cutoff Date
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="users">
+                                Installed Items Before Cutoff Date
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="users">
+                                Supply Status
                             </a>
                         </li>
                     </ul>
@@ -66,37 +85,56 @@ test
                     <h3>Dashboard</h3>
                 </div>
                 <div class="p-3 mb-5 bg-white">
-                    <div class="container">
+                    <div class="">
                         <div class="row mb-5 text-center">
-                            <div class="col-6 col-md-6 col-sm-6 col-lg-3 mb-3">
-                                <div class="card py-4 counter border-0 shadow rounded text-bg-danger bg-gradient">
-                                    <!-- <div class="display-between align-items-center px-3 small">
-                                        <span><i class='bx bxs-hourglass bx-sm'></i></span>
-                                        <span class="small">Todays</span>
-                                    </div> -->
-                                    <span class="counter-value h3 mb-3">100</span>
-                                    <h6 class="mb-3">Pending Inspection</h6>
+                            <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
+                                <div class="card py-5 counter border-0 shadow rounded text-bg-danger bg-gradient">
+                                    <i class="bi bi-shop h2"></i>
+                                    <h6 class="my-0">Purchase Orders</h6>
                                     <a href="#" class="stretched-link"></a>
                                 </div>
                             </div>
-                            <div class="col-6 col-md-6 col-sm-6 col-lg-3 mb-3">
-                                <div class="card py-4 counter border-0 shadow rounded text-bg-warning bg-gradient">
-                                    <span class="counter-value h4 mb-3">500</span>
-                                    <h6 class="mb-3">New Inspection</h6>
+                            <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
+                                <div class="card py-5 counter border-0 shadow rounded text-bg-warning bg-gradient">
+                                    <h6 class="my-0">Supplied Items</h6>
                                     <a href="#" class="stretched-link"></a>
                                 </div>
                             </div>
-                            <div class="col-6 col-md-6 col-sm-6 col-lg-3 mb-3">
-                                <div class="card py-4 counter border-0 shadow rounded text-bg-primary bg-gradient">
-                                    <span class="counter-value h4 mb-3">600</span>
-                                    <h6 class="mb-3">Total Clients</h6>
+                            <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
+                                <div class="card py-5 counter border-0 shadow rounded text-bg-primary bg-gradient">
+                                    <h6 class="my-0">Not Supplied Items</h6>
                                     <a href="#" class="stretched-link"></a>
                                 </div>
                             </div>
-                            <div class="col-6 col-md-6 col-sm-6 col-lg-3 mb-3">
-                                <div class="card py-4 counter border-0 shadow rounded text-bg-secondary bg-gradient">
-                                    <span class="counter-value h4 mb-3">1500</span>
-                                    <h6 class="mb-3">Total Vendors</h6>
+                            <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
+                                <div class="card py-5 counter border-0 shadow rounded text-bg-secondary bg-gradient">
+                                    <h6 class="my-0">Installed Items</h6>
+                                    <a href="#" class="stretched-link"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-5 text-center">
+                            <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
+                                <div class="card py-5 counter border-0 shadow rounded text-bg-danger bg-gradient">
+                                    <h6 class="my-0">Not Installed Items</h6>
+                                    <a href="#" class="stretched-link"></a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
+                                <div class="card py-5 counter border-0 shadow rounded text-bg-warning bg-gradient">
+                                    <h6 class="my-0">Installed Items After Cutoff Date</h6>
+                                    <a href="#" class="stretched-link"></a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
+                                <div class="card py-5 counter border-0 shadow rounded text-bg-primary bg-gradient">
+                                    <h6 class="my-0">Installed Items Before Cutoff Date</h6>
+                                    <a href="#" class="stretched-link"></a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
+                                <div class="card py-5 counter border-0 shadow rounded text-bg-secondary bg-gradient">
+                                    <h6 class="my-0">Supply Status</h6>
                                     <a href="#" class="stretched-link"></a>
                                 </div>
                             </div>

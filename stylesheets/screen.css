@@ -4,6 +4,7 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 @import url("https://fonts.googleapis.com/css2?family=Rokkitt:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 /**************** Font Weights and Styles******************/
 /* line 2, ../sass/_fonts.scss */
 .poppins-thin {
@@ -142,72 +143,72 @@
 }
 
 /***************************** End Font Styles ***************************/
-/* line 16, ../sass/screen.scss */
+/* line 17, ../sass/screen.scss */
 body {
   color: #000;
   font-size: 16px;
   font-family: "Poppins", sans-serif;
 }
-/* line 21, ../sass/screen.scss */
+/* line 22, ../sass/screen.scss */
 body .template_width {
   margin: 0% 8%;
 }
 @media (min-width: 991px) and (max-width: 1400px) {
-  /* line 21, ../sass/screen.scss */
+  /* line 22, ../sass/screen.scss */
   body .template_width {
     margin: 0% 6%;
   }
 }
 @media (max-width: 991px) {
-  /* line 21, ../sass/screen.scss */
+  /* line 22, ../sass/screen.scss */
   body .template_width {
     margin: 0% 6%;
   }
 }
-/* line 33, ../sass/screen.scss */
+/* line 34, ../sass/screen.scss */
 body .header_section .template_width {
   margin: 0% 8%;
 }
 @media (min-width: 991px) and (max-width: 1400px) {
-  /* line 33, ../sass/screen.scss */
+  /* line 34, ../sass/screen.scss */
   body .header_section .template_width {
     margin: 0% 6%;
   }
 }
 @media (max-width: 991px) {
-  /* line 33, ../sass/screen.scss */
+  /* line 34, ../sass/screen.scss */
   body .header_section .template_width {
     margin: 0% 6%;
   }
 }
-/* line 45, ../sass/screen.scss */
+/* line 46, ../sass/screen.scss */
 body .header_section .navbar {
   transition: all 0.3s;
 }
 @media (max-width: 991px) {
-  /* line 45, ../sass/screen.scss */
+  /* line 46, ../sass/screen.scss */
   body .header_section .navbar {
     background: #ead9ba !important;
   }
 }
-/* line 52, ../sass/screen.scss */
+/* line 53, ../sass/screen.scss */
 body .header_section .navbar-brand {
   transition: all 0.3s;
 }
-/* line 56, ../sass/screen.scss */
+/* line 57, ../sass/screen.scss */
 body .header_section .nav-item {
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (max-width: 991px) {
-  /* line 56, ../sass/screen.scss */
+  /* line 57, ../sass/screen.scss */
   body .header_section .nav-item {
     padding-bottom: 5px;
     padding-top: 5px;
     padding-left: 0px;
   }
 }
-/* line 67, ../sass/screen.scss */
+/* line 68, ../sass/screen.scss */
 body .header_section .nav-link {
   color: #000 !important;
   padding-top: 0;
@@ -216,12 +217,12 @@ body .header_section .nav-link {
   padding-right: 2px !important;
 }
 @media (min-width: 992px) and (max-width: 1200px) {
-  /* line 67, ../sass/screen.scss */
+  /* line 68, ../sass/screen.scss */
   body .header_section .nav-link {
     font-size: 15px !important;
   }
 }
-/* line 79, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
 body .header_section .active {
   border-top: 1px solid #4c2d15;
   border-bottom: 1px solid #4c2d15;
@@ -230,35 +231,35 @@ body .header_section .active {
   text-transform: uppercase;
   color: #0071a8 !important;
 }
-/* line 88, ../sass/screen.scss */
+/* line 89, ../sass/screen.scss */
 body .header_section .dropdown-menu .active {
   background: #0071a8;
   color: #fff !important;
 }
-/* line 93, ../sass/screen.scss */
+/* line 94, ../sass/screen.scss */
 body .header_section .dropdown:hover > .dropdown-menu,
 body .header_section .dropend:hover > .dropdown-menu {
   padding-bottom: 0px;
 }
-/* line 97, ../sass/screen.scss */
+/* line 98, ../sass/screen.scss */
 body .header_section .dropdown-submenu .dropdown-menu {
   padding-bottom: 0px;
   padding-top: 0px;
 }
-/* line 102, ../sass/screen.scss */
+/* line 103, ../sass/screen.scss */
 body .login_section {
   background: #4c4c4c;
 }
-/* line 104, ../sass/screen.scss */
+/* line 105, ../sass/screen.scss */
 body .login_section .form-group {
   margin-bottom: 10px;
   position: relative;
 }
-/* line 109, ../sass/screen.scss */
+/* line 110, ../sass/screen.scss */
 body .login_section .form-input {
   padding-top: 21px;
 }
-/* line 113, ../sass/screen.scss */
+/* line 114, ../sass/screen.scss */
 body .login_section .form-label {
   position: absolute;
   transition: 0.25s ease;
@@ -270,7 +271,7 @@ body .login_section .form-label {
   left: 0;
   top: 23px;
 }
-/* line 125, ../sass/screen.scss */
+/* line 126, ../sass/screen.scss */
 body .login_section input {
   transition: 0.3s ease;
   -moz-transition: 0.3s ease;
@@ -280,14 +281,14 @@ body .login_section input {
   padding-top: 10px;
   -webkit-appearance: none;
 }
-/* line 134, ../sass/screen.scss */
+/* line 135, ../sass/screen.scss */
 body .login_section input:focus + .form-label,
 body .login_section input:valid + .form-label {
   top: 1px;
   font-size: 11px;
   color: #edb77d;
 }
-/* line 141, ../sass/screen.scss */
+/* line 142, ../sass/screen.scss */
 body .login_section input,
 body .login_section select {
   box-sizing: border-box;
@@ -300,49 +301,49 @@ body .login_section select {
   border-bottom: 1px solid #999;
   padding: 4px 6px;
 }
-/* line 153, ../sass/screen.scss */
+/* line 154, ../sass/screen.scss */
 body .login_section input:focus,
 body .login_section select:focus {
   border-bottom: 1px solid #edb77d;
 }
-/* line 158, ../sass/screen.scss */
+/* line 159, ../sass/screen.scss */
 body .login_section input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px transparent inset;
 }
-/* line 162, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 body .login_section input::-webkit-input-placeholder {
   color: #bebebe;
 }
-/* line 165, ../sass/screen.scss */
+/* line 166, ../sass/screen.scss */
 body .login_section input::-moz-placeholder {
   color: #bebebe;
 }
-/* line 168, ../sass/screen.scss */
+/* line 169, ../sass/screen.scss */
 body .login_section input:-ms-input-placeholder {
   color: #bebebe;
 }
-/* line 171, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 body .login_section input:-moz-placeholder {
   color: #bebebe;
 }
-/* line 175, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
 body .login_section .col-md-4 {
   background: rgba(0, 0, 0, 0.5);
   color: #fff;
   padding: 20px;
 }
-/* line 179, ../sass/screen.scss */
+/* line 180, ../sass/screen.scss */
 body .login_section .col-md-4 .btn-warning {
   background: #ffca2c;
   padding: 10px;
 }
-/* line 186, ../sass/screen.scss */
+/* line 187, ../sass/screen.scss */
 body .portal_section {
   /*
      * Navbar
      */
 }
-/* line 187, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 body .portal_section .sidebar {
   position: fixed;
   top: 0;
@@ -355,12 +356,12 @@ body .portal_section .sidebar {
   color: white;
 }
 @media (max-width: 767.98px) {
-  /* line 200, ../sass/screen.scss */
+  /* line 201, ../sass/screen.scss */
   body .portal_section .sidebar {
     top: 5rem;
   }
 }
-/* line 205, ../sass/screen.scss */
+/* line 206, ../sass/screen.scss */
 body .portal_section .sidebar-sticky {
   position: relative;
   top: 0;
@@ -370,7 +371,7 @@ body .portal_section .sidebar-sticky {
   overflow-y: auto;
   /* Scrollable contents if viewport is shorter than content. */
 }
-/* line 214, ../sass/screen.scss */
+/* line 215, ../sass/screen.scss */
 body .portal_section .sidebar .nav-link {
   /* display: flex;
   justify-content: space-between;
@@ -378,22 +379,22 @@ body .portal_section .sidebar .nav-link {
   margin-right: 4px;
   color: #333;
 }
-/* line 222, ../sass/screen.scss */
+/* line 223, ../sass/screen.scss */
 body .portal_section .sidebar .nav-link.active {
   color: #333;
 }
-/* line 226, ../sass/screen.scss */
+/* line 227, ../sass/screen.scss */
 body .portal_section .sidebar .nav-link:hover,
 body .portal_section .sidebar .nav-link.active {
   /* color: inherit; */
   color: var(--yellow);
 }
-/* line 232, ../sass/screen.scss */
+/* line 233, ../sass/screen.scss */
 body .portal_section .sidebar-heading {
   font-size: 0.75rem;
   text-transform: uppercase;
 }
-/* line 241, ../sass/screen.scss */
+/* line 242, ../sass/screen.scss */
 body .portal_section .navbar-brand {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -401,12 +402,12 @@ body .portal_section .navbar-brand {
   background-color: rgba(0, 0, 0, 0.25);
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
 }
-/* line 249, ../sass/screen.scss */
+/* line 250, ../sass/screen.scss */
 body .portal_section .navbar .navbar-toggler {
   top: 0.25rem;
   right: 1rem;
 }
-/* line 254, ../sass/screen.scss */
+/* line 255, ../sass/screen.scss */
 body .portal_section .navbar .form-control {
   padding: 0.75rem 1rem;
   border-width: 0;
