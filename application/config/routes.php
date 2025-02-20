@@ -70,3 +70,5 @@ $route['portal/not-installed-items']['GET'] = 'Dashboard/notinstalled';
 $route['portal/installed-items-after-cutoff-date']['GET'] = 'Dashboard/afterCutoff';
 $route['portal/installed-items-before-cutoff-date']['GET'] = 'Dashboard/beforeCutoff';
 $route['portal/supply-status']['GET'] = 'Dashboard/status';
+$route['portal/add-purchase-order']['GET'] = 'Dashboard/addPO';
+

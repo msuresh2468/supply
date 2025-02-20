@@ -102,4 +102,14 @@ class Dashboard extends CI_Controller {
         ];
         $this->load->view('portal/supply-status', $data);
 	}
+    public function addPO()
+	{
+		$data = [
+            'page_title' => 'Dashboard',
+            'page_description' => 'Home Page Description',
+            "pagename" => 'index',
+            "calendar" => $this->calendar->generate()
+        ];
+        $this->load->view('portal/add-purchase-order', $data);
+	}
 }
