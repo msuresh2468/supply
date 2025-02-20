@@ -83,6 +83,9 @@ if ($this->session->flashdata('status')) : ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h3>Dashboard</h3>
+                    <!-- <div class="col-md-3 text-end">
+                        <?php echo $calendar; ?>
+                    </div> -->
                 </div>
                 <div class="p-3 mb-5 bg-white">
                     <div class="">
@@ -96,18 +99,21 @@ if ($this->session->flashdata('status')) : ?>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-warning bg-gradient">
+                                    <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Supplied Items</h6>
                                     <a href="#" class="stretched-link"></a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-primary bg-gradient">
+                                    <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Not Supplied Items</h6>
                                     <a href="#" class="stretched-link"></a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-secondary bg-gradient">
+                                    <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Installed Items</h6>
                                     <a href="#" class="stretched-link"></a>
                                 </div>
@@ -116,24 +122,28 @@ if ($this->session->flashdata('status')) : ?>
                         <div class="row mb-5 text-center">
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-danger bg-gradient">
+                                    <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Not Installed Items</h6>
                                     <a href="#" class="stretched-link"></a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-warning bg-gradient">
+                                    <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Installed Items After Cutoff Date</h6>
                                     <a href="#" class="stretched-link"></a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-primary bg-gradient">
+                                    <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Installed Items Before Cutoff Date</h6>
                                     <a href="#" class="stretched-link"></a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-secondary bg-gradient">
+                                    <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Supply Status</h6>
                                     <a href="#" class="stretched-link"></a>
                                 </div>
