@@ -94,6 +94,7 @@ if ($this->session->flashdata('status')) : ?>
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-danger bg-gradient">
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Purchase Orders</h6>
+                                    
                                     <a href="#" class="stretched-link"></a>
                                 </div>
                             </div>
