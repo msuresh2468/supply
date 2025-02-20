@@ -5,6 +5,7 @@ if ($this->session->flashdata('status')) : ?>
         <?= $this->session->flashdata('status'); ?>
     </div>
 <?php endif; ?>
+test
 <div class="portal_section">
     <!-- <div class="row mx-0">
         <div class="col-lg-2 bg-dark text-light vh-100 py-5">
