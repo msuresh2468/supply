@@ -26,7 +26,7 @@ class Dashboard extends CI_Controller {
     public function purchase()
 	{
 		$data = [
-            'page_title' => 'Dashboard',
+            'page_title' => 'Purchase Orders',
             'page_description' => 'Home Page Description',
             "pagename" => 'index',
             "calendar" => $this->calendar->generate()
@@ -79,7 +79,6 @@ class Dashboard extends CI_Controller {
             'page_title' => 'Dashboard',
             'page_description' => 'Home Page Description',
             "pagename" => 'index',
-            "calendar" => $this->calendar->generate()
         ];
         $this->load->view('portal/installed-items-after-cutoff-date', $data);
 	}

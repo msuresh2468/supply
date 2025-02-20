@@ -24,7 +24,7 @@ if ($this->session->flashdata('status')) : ?>
                 <div class="position-sticky pt-4">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/dashboard">
+                            <a class="nav-link" aria-current="page" href="index">
                                 Dashboard
                             </a>
                         </li>
