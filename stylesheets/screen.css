@@ -337,7 +337,7 @@ body .login_section .col-md-4 .btn-warning {
   background: #ffca2c;
   padding: 10px;
 }
-/* line 188, ../sass/screen.scss */
+/* line 187, ../sass/screen.scss */
 body .portal_section .sidebar {
   position: fixed;
   top: 0;
@@ -350,12 +350,12 @@ body .portal_section .sidebar {
   color: white;
 }
 @media (max-width: 767.98px) {
-  /* line 201, ../sass/screen.scss */
+  /* line 200, ../sass/screen.scss */
   body .portal_section .sidebar {
     top: 5rem;
   }
 }
-/* line 206, ../sass/screen.scss */
+/* line 205, ../sass/screen.scss */
 body .portal_section .sidebar-sticky {
   position: relative;
   top: 0;
@@ -365,31 +365,31 @@ body .portal_section .sidebar-sticky {
   overflow-y: auto;
   /* Scrollable contents if viewport is shorter than content. */
 }
-/* line 215, ../sass/screen.scss */
+/* line 214, ../sass/screen.scss */
 body .portal_section .sidebar .nav-link {
-  /* display: flex;
-  justify-content: space-between;
-  align-items: center; */
+  			/* display: flex;
+              justify-content: space-between;
+              align-items: center; */
   margin-right: 4px;
   color: #333;
 }
-/* line 223, ../sass/screen.scss */
+/* line 222, ../sass/screen.scss */
 body .portal_section .sidebar .nav-link.active {
   color: #333;
 }
-/* line 227, ../sass/screen.scss */
+/* line 226, ../sass/screen.scss */
 body .portal_section .sidebar .nav-link:hover,
 body .portal_section .sidebar .nav-link.active {
   /* color: inherit; */
   color: var(--yellow);
   color: #000;
 }
-/* line 234, ../sass/screen.scss */
+/* line 233, ../sass/screen.scss */
 body .portal_section .sidebar-heading {
   font-size: 0.75rem;
   text-transform: uppercase;
 }
-/* line 239, ../sass/screen.scss */
+/* line 238, ../sass/screen.scss */
 body .portal_section .navbar-brand {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -397,18 +397,34 @@ body .portal_section .navbar-brand {
   background-color: rgba(0, 0, 0, 0.25);
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
 }
-/* line 247, ../sass/screen.scss */
+/* line 246, ../sass/screen.scss */
 body .portal_section .navbar .navbar-toggler {
   top: 0.25rem;
   right: 1rem;
 }
-/* line 252, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 body .portal_section .navbar .form-control {
   padding: 0.75rem 1rem;
   border-width: 0;
   border-radius: 0;
 }
-/* line 274, ../sass/screen.scss */
+/* line 273, ../sass/screen.scss */
 body .portal_section .card {
   min-height: 180px;
+}
+/* line 278, ../sass/screen.scss */
+body .purchase_order_form .flex-1 {
+  flex: 1;
+}
+/* line 281, ../sass/screen.scss */
+body .purchase_order_form .input_style {
+  border: 0;
+  border-bottom: 1px solid;
+  border-radius: 0;
+}
+/* line 286, ../sass/screen.scss */
+body .purchase_order_form label.flex-1 {
+  margin-right: 8px;
+  margin-bottom: 0;
+  flex: inherit;
 }
