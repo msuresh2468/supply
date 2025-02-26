@@ -22,6 +22,16 @@ class Purchase_Orders extends CI_Controller {
         ];
         $this->load->view('portal/add-purchase-order', $data);
 	}
+    public function viewPO($id)
+	{
+        $pos = new PurchaseModel();
+		$data = [
+            'page_title' => 'View Purchase Order',
+            "pagename" => 'add-purchase',
+            'view_purchase_order' => $pos-> viewPO($id)
+        ];
+        $this->load->view('portal/view-purchase-order', $data);
+	}
     public function addPO()
 	{
         $pos = new PurchaseModel();

@@ -8,6 +8,35 @@ class PurchaseModel extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    public function ReceivedAmount(){
+        $this->db->select_sum('Payment_Received');
+        $this->db->from('purchase_order');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    // public function Outstanding(){
+    //     $total = $this->db->select_sum('Item_Amount');
+    //     $received = $this->db->select_sum('Payment_Received');
+    //     $this->db->from('purchase_order');
+    //     $this->db->where($total- $received);
+    //     $query = $this->db->get();
+    //     return $query->result();
+    // }
+
+    public function allPOs(){
+        $this->db->select('*');
+        $this->db->from('purchase_order');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function viewPO($id)
+    {
+        $this->db->select('*');
+        $this->db->from('purchase_order');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        return $query->row();
+    }
     public function insertPO($data)
     {
         $this->load->database();

@@ -19,15 +19,19 @@ class Dashboard extends CI_Controller {
 		$data = [
             'page_title' => 'Dashboard',
             "pagename" => 'index',
-            'total' => $pos->totalAmount()
+            'total' => $pos->totalAmount(),
+            'received' => $pos->ReceivedAmount(),
+            // 'outstanding' => $pos->Outstanding()
         ];
         $this->load->view('portal/index', $data);
 	}
     public function purchase()
 	{
+        $pos = new PurchaseModel();
 		$data = [
             'page_title' => 'Purchase Orders',
-            "pagename" => 'purchase'
+            "pagename" => 'purchase',
+            'purchase_orders' => $pos-> allPOs()
         ];
         $this->load->view('portal/purchase-orders', $data);
 	}

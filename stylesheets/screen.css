@@ -428,3 +428,16 @@ body .purchase_order_form label.flex-1 {
   margin-bottom: 0;
   flex: inherit;
 }
+/* line 293, ../sass/screen.scss */
+body .view_PO .col-6 {
+  border: 1px solid;
+  border-bottom: 0px;
+}
+/* line 296, ../sass/screen.scss */
+body .view_PO .col-6:nth-child(even) {
+  border-left: 0px solid;
+}
+/* line 299, ../sass/screen.scss */
+body .view_PO .col-6:nth-last-child(1), body .view_PO .col-6:nth-last-child(2) {
+  border-bottom: 1px solid;
+}

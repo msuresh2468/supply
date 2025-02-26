@@ -71,5 +71,8 @@ $route['portal/installed-items-after-cutoff-date']['GET'] = 'Dashboard/afterCuto
 $route['portal/installed-items-before-cutoff-date']['GET'] = 'Dashboard/beforeCutoff';
 $route['portal/supply-status']['GET'] = 'Dashboard/status';
 $route['portal/add-purchase-order']['GET'] = 'Purchase_Orders/createPO';
+$route['portal/view-purchase-order/(:any)']['GET'] = 'Purchase_Orders/viewPO/$1';
+// $route['Admin/edit-post/(:any)']['GET'] = 'Blog/editPost/$1';
+// $route['Admin/updatePost/(:any)']['POST'] = 'Blog/updatePost/$1';
 $route['portal/addPO']['POST'] = 'Purchase_Orders/addPO';
 

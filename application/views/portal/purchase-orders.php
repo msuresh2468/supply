@@ -21,6 +21,57 @@ $this->load->view('portal/layout/header'); ?>
                     <h4 class="my-0">Purchase Orders</h4>
                     <a href="<?php echo base_url() ?>/portal/add-purchase-order" class="text-decoration-none bg-primary text-white px-3 py-1">Add New PO</a>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <?php
+                        if ($this->session->flashdata('status')) : ?>
+                            <div class="alert alert-success">
+                                <?= $this->session->flashdata('status'); ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php
+                        echo $this->input->get('msg');
+                        ?>
+                        <?php if (count($purchase_orders) > 0) { ?>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>PO Number</th>
+                                        <th>PO Date</th>
+                                        <th>File Number</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($purchase_orders as $row) : ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $row->id; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->PO_Number; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->PO_Date; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->File_Number; ?>
+                                            </td>
+                                            <td>
+                                                <a href="<?php echo base_url('portal/view-purchase-order/' . $row->id); ?>" class="btn btn-info">View</a>
+                                                <a href="<?php echo base_url('portal/edit-purchase-order/' . $row->id); ?>" class="btn btn-warning">Edit</a>
+                                                <button type="submit" id="<?php echo $row->id ?>" class="btn btn-danger remove-po"> Delete</button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        <?php } else {
+                            echo "<h4 class='text-center text-danger'>Currently No Jobs Found</h4>";
+                        } ?>
+                    </div>
+                </div>
             </main>
         </div>
     </div>
