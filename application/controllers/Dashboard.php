@@ -19,8 +19,7 @@ class Dashboard extends CI_Controller {
 		$data = [
             'page_title' => 'Dashboard',
             "pagename" => 'index',
-            'total' => $pos->totalAmount(),
-            'received' => $pos->ReceivedAmount(),
+            'total' => $pos->totalAmount()
             // 'outstanding' => $pos->Outstanding()
         ];
         $this->load->view('portal/index', $data);

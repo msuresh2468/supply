@@ -4,24 +4,11 @@ class PurchaseModel extends CI_Model
 {
     public function totalAmount(){
         $this->db->select_sum('Item_Amount');
-        $this->db->from('purchase_order');
-        $query = $this->db->get();
-        return $query->result();
-    }
-    public function ReceivedAmount(){
         $this->db->select_sum('Payment_Received');
         $this->db->from('purchase_order');
         $query = $this->db->get();
         return $query->result();
     }
-    // public function Outstanding(){
-    //     $total = $this->db->select_sum('Item_Amount');
-    //     $received = $this->db->select_sum('Payment_Received');
-    //     $this->db->from('purchase_order');
-    //     $this->db->where($total- $received);
-    //     $query = $this->db->get();
-    //     return $query->result();
-    // }
 
     public function allPOs(){
         $this->db->select('*');

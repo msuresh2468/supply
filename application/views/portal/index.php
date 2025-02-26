@@ -40,7 +40,7 @@ $this->load->view('portal/layout/header'); ?>
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-danger bg-success">
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Received Amount</h6>
-                                    <p class="h2"><?php foreach ($received as $row) : ?>
+                                    <p class="h2"><?php foreach ($total as $row) : ?>
                                             <?php echo $row->Payment_Received; ?>
                                         <?php endforeach; ?></p>
                                     <a href="<?php echo base_url() ?>portal/purchase-orders" class="stretched-link"></a>
@@ -50,10 +50,9 @@ $this->load->view('portal/layout/header'); ?>
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-danger bg-warning">
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Total Outstanding</h6>
-                                    <p class="h2">1600000</p>
-                                    <!-- <p class="h2"><?php foreach ($outstanding as $row) : ?>
-                                            <?php echo $row->Balance_Amount; ?>
-                                        <?php endforeach; ?></p> -->
+                                    <p class="h2"><?php foreach ($total as $row) : ?>
+                                            <?php echo $row->Item_Amount - $row->Payment_Received; ?>
+                                        <?php endforeach; ?></p>
                                     <a href="<?php echo base_url() ?>portal/purchase-orders" class="stretched-link"></a>
                                 </div>
                             </div>
