@@ -1,5 +1,5 @@
-<select class="form-select input_style" id="hospital_names" name="hospital_names" aria-label="Default select example">
-    <option selected>Select Type</option>
+<select class="form-select input_style" id="hospital_name[]" name="hospital_name[]" aria-label="Default select example">
+    <option selected>Select Hospital Name</option>
     <?php
     foreach ($hospital_names as $hospital_name) {
     ?>

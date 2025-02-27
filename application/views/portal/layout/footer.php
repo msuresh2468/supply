@@ -4,6 +4,9 @@
 
 <script>
 $(document).ready(function(){
+    var type = $('.hospital_type').data('id');
+    var type = $(this).data("id");
+    alert(type);
     $('#type').change(function(){
         var type_id = $(this).val();
         //alert(type_id);
@@ -31,21 +34,7 @@ $(document).ready(function(){
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="item_qty" class="form-label flex-1">Item Quantity</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="item_qty" name="item_qty">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3 d-flex align-items-end">
-                                    <label for="model" class="form-label flex-1">Select District</label>
-                                    <select class="form-select input_style flex-1" id="district" name="district[]">
-                                        <option>Select District</option>
-                                        <?php
-                                        foreach ($types as $type) {
-                                        ?>
-                                            <option value="<?php echo $type->id; ?>"><?php echo $type->type; ?></option>
-                                        <?php }
-                                        ?>
-                                    </select>
+                                    <input type="text" class="form-control flex-1 input_style" id="item_qty" name="item_qty[]">
                                 </div>
                             </div>
                             
@@ -71,24 +60,6 @@ $(document).ready(function(){
                                             <option value=''>Select Hospital Name</option>
                                         </select>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3 d-flex align-items-end">
-                                    <label for="delivery_period" class="form-label flex-1">Delivery Period</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="delivery_period" name="delivery_period">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3 d-flex align-items-end">
-                                    <label for="scheme" class="form-label flex-1">Scheme</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="scheme" name="scheme">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3 d-flex align-items-end">
-                                    <label for="supply_status" class="form-label flex-1">Supply Status</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="supply_status" name="supply_status">
                                 </div>
                             </div>`;
 
