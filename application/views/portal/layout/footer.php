@@ -1,33 +1,9 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-
-<script>
-$(document).ready(function(){
-    var type = $('.hospital_type').data('id');
-    var type = $(this).data("id");
-    alert(type);
-    $('#type').change(function(){
-        var type_id = $(this).val();
-        //alert(type_id);
-        $.ajax({
-            url: '<?php echo base_url('Purchase_Orders/hospitalList')?>/',
-            type: 'POST',
-            data: {type_id:type_id},
-            dataType: 'json',
-            success: function(response){
-                console.log(response)
-                if(response['hospital_names']) {
-                    $('#HospitalBox').html(response['hospital_names']);
-                }
-            }
-        });
-    });
-});
-</script>
 <script>
     $("#rowAdd").click(function() {
-        var length = $('new_1').length;
+        var length = $('.purchase_order_form').length;
         var i = parseInt(length) + parseInt(1);
         newFirmAdd =
             `<hr style="border-color:red;opacity:1"><div class="row purchase_order_form">
@@ -41,7 +17,7 @@ $(document).ready(function(){
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="model" class="form-label flex-1">Select Hospital Type</label>
-                                    <select class="form-select input_style flex-1" id="type" name="type[]">
+                                    <select onchange="hospital_typeChange('type-` + i + `')" class="form-select hospital_type input_style flex-1" id="type-` + i + `" name="type[]">
                                         <option>Select Hospital Type</option>
                                         <?php
                                         foreach ($types as $type) {
@@ -55,7 +31,7 @@ $(document).ready(function(){
                             <div class="col-md-5">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="hospital_name" class="form-label flex-1">Select Hospital Name</label>
-                                    <div id='HospitalBox' class="flex-1">
+                                    <div id='HospitalBox-` + i + `' class="flex-1">
                                         <select class="form-select input_style" id="hospital_name[]" name="hospital_name[]" aria-label="Default select example">
                                             <option value=''>Select Hospital Name</option>
                                         </select>
@@ -69,6 +45,31 @@ $(document).ready(function(){
         $(this).parents("#row").remove();
     })
 </script>
+<script>
+    function hospital_typeChange(type){
+        //alert($('#'+type).val());
+
+        var type_id = $('#'+type).val();
+        //alert(type);
+        var responseAppend = type == 'type' ? '#HospitalBox' : '#HospitalBox-'+type.split('-')[1];
+        alert(responseAppend);
+        $.ajax({
+            url: '<?php echo base_url('Purchase_Orders/hospitalList') ?>/',
+            type: 'POST',
+            data: {
+                type_id: type_id
+            },
+            dataType: 'json',
+            success: function(response) {
+                console.log(response)
+                if (response['hospital_names']) {
+                    $(responseAppend).html(response['hospital_names']);
+                }
+            }
+        });
+    }
+</script>
+
 <script>
     $(document).ready(function() {
         $(function() {

@@ -112,7 +112,7 @@ $this->load->view('portal/layout/header');
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="model" class="form-label flex-1">Select Hospital Type</label>
-                                    <select class="form-select input_style flex-1" id="type" name="type[]" data-id='type'>
+                                    <select onchange="hospital_typeChange('type')" class="form-select hospital_type input_style flex-1" id="type" name="type[]" data-id='type'>
                                         <option>Select Hospital Type</option>
                                         <?php
                                         foreach ($types as $type) {
@@ -128,9 +128,6 @@ $this->load->view('portal/layout/header');
                                     <label for="hospital_name" class="form-label flex-1">Select Hospital Name</label>
                                     <div id='HospitalBox' class="flex-1">
                                         <?php include('names-select.php'); ?>
-                                        <!-- <select class="form-select input_style" id="hospital_name" name="hospital_name[]">
-                                            <option value=''>Select Hospital Name</option>
-                                        </select> -->
                                     </div>
                                 </div>
                             </div>
