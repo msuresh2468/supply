@@ -32,65 +32,71 @@ $this->load->view('portal/layout/header');
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="PONo" class="form-label flex-1">PO No</label>
                                     
-                                    <input type="text" class="form-control flex-1 input_style" id="po_number" name="po_number">
+                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO->PO_Number; ?>" id="po_number" name="po_number">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="FileNo" class="form-label flex-1">File No</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="file_number" name="file_number">
+                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO->File_Number; ?>" id="file_number" name="file_number">
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="PODate" class="form-label flex-1">PO Date</label>
-                                    <input type="date" class="form-control flex-1 input_style" id="po_date datepicker" name="po_date">
+                                    <input type="date" class="form-control flex-1 input_style" value="<?php echo $PO->PO_Date; ?>" id="po_date datepicker" name="po_date">
                                 </div>
                             </div>                            
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="year" class="form-label flex-1">PO Year</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="year" name="year">
+                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO->Year; ?>" id="year" name="year">
                                 </div>
                             </div>                            
                             <div>
                                 <p class="fw-bold mb-0">Firm & Item Details</p>
                             </div>
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="gross_amount" class="form-label flex-1">Gross Amount</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="gross_amount" name="gross_amount">
+                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO->Item_Amount ; ?>" id="gross_amount" name="gross_amount">
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-6">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="firm_name" class="form-label flex-1">Firm Name</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="firm_name" name="firm_name">
+                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO->Firm_Name ; ?>" id="firm_name" name="firm_name">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="item_name" class="form-label flex-1">Item Name</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="item_name" name="item_name">
+                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO->Item_Name ; ?>" id="item_name" name="item_name">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="model" class="form-label flex-1">Make & Model</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="model" name="model">
+                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO->Model ; ?>" id="model" name="model">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="item_qty" class="form-label flex-1">Item Quantity</label>
-                                    <input type="number" class="form-control flex-1 input_style" id="item_qty" name="item_qty[]">
+                                    <input type="number" class="form-control flex-1 input_style" value="<?php echo $PO->Item_Qty ; ?>" id="item_qty" name="item_qty[]">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="unit_rate" class="form-label flex-1">Unit Rate</label>
-                                    <input type="number" class="form-control flex-1 input_style" id="unit_rate" name="unit_rate">
+                                    <input type="number" class="form-control flex-1 input_style" value="<?php echo $PO->Unit_Rate ; ?>" id="unit_rate" name="unit_rate">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="unit_rate" class="form-label flex-1">Total Amount</label>
+                                    <input type="number" class="form-control flex-1 input_style" value="<?php echo $PO->Unit_Rate *  $PO->Item_Qty; ?>" id="unit_rate" name="unit_rate">
                                 </div>
                             </div>
                             <div>
@@ -99,34 +105,34 @@ $this->load->view('portal/layout/header');
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="model" class="form-label flex-1">Select District</label>
-                                    <select class="form-select input_style flex-1" id="district" name="district[]">
+                                    <select class="form-select input_style flex-1" id="district" name="district">
                                         <option>Select District</option>
-                                        <option value="Srikakulam">Srikakulam</option>
-                                        <option value="Parvathipuram Manyam">Parvathipuram Manyam</option>
-                                        <option value="Vizianagaram">Vizianagaram</option>
-                                        <option value="Visakhapatnam">Visakhapatnam</option>   
-                                        <option value="Alluri Sitharama Raju">Alluri Sitharama Raju</option>
-                                        <option value="Anakapalli">Anakapalli</option>
-                                        <option value="Kakinada">Kakinada</option>
-                                        <option value="East Godavari">East Godavari</option>
-                                        <option value="Dr. B. R. Ambedkar Konaseema">Dr. B. R. Ambedkar Konaseema</option>  
-                                        <option value="Eluru">Eluru</option>
-                                        <option value="West Godavari">West Godavari</option>
-                                        <option value="NTR">NTR</option>
-                                        <option value="Krishna">Krishna</option>
-                                        <option value="Palnadu">Palnadu</option>
-                                        <option value="Guntur">Guntur</option>
-                                        <option value="Bapatla">Bapatla</option>
-                                        <option value="Sri Potti Sriramulu Nellore">Sri Potti Sriramulu Nellore</option>
-                                        <option value="Prakasam">Prakasam</option>
-                                        <option value="Kurnool">Kurnool</option>   
-                                        <option value="Nandyal">Nandyal</option>
-                                        <option value="Anantapuramu">Anantapuramu</option>
-                                        <option value="Sri Sathya Sai">Sri Sathya Sai</option>
-                                        <option value="YSR">YSR</option>
-                                        <option value="Annamayya">Annamayya</option>    
-                                        <option value="Tirupati">Tirupati</option>
-                                        <option value="Chittoor">Chittoor</option>                            
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Srikakulam') { ?> selected <?php } ?> >Srikakulam</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Parvathipuram Manyam') { ?> selected <?php } ?> >Parvathipuram Manyam</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Vizianagaram') { ?> selected <?php } ?> >Vizianagaram</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Visakhapatnam') { ?> selected <?php } ?> >Visakhapatnam</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Alluri Sitharama Raju') { ?> selected <?php } ?> >Alluri Sitharama Raju</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Anakapalli') { ?> selected <?php } ?> >Anakapalli</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Kakinada') { ?> selected <?php } ?> >Kakinada</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'East Godavari') { ?> selected <?php } ?> >East Godavari</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Dr. B. R. Ambedkar Konaseema') { ?> selected <?php } ?> >Dr. B. R. Ambedkar Konaseema</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Eluru') { ?> selected <?php } ?> >Eluru</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'West Godavari') { ?> selected <?php } ?> >West Godavari</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'NTR') { ?> selected <?php } ?> >NTR</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Krishna') { ?> selected <?php } ?> >Krishna</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Palnadu') { ?> selected <?php } ?> >Palnadu</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Guntur') { ?> selected <?php } ?> >Guntur</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Bapatla') { ?> selected <?php } ?> >Bapatla</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Sri Potti Sriramulu Nellore') { ?> selected <?php } ?> >Sri Potti Sriramulu Nellore</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Prakasam') { ?> selected <?php } ?> >Prakasam</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Kurnool') { ?> selected <?php } ?> >Kurnool</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Nandyal') { ?> selected <?php } ?> >Nandyal</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Anantapuramu') { ?> selected <?php } ?> >Anantapuramu</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Sri Sathya Sai') { ?> selected <?php } ?> >Sri Sathya Sai</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'YSR') { ?> selected <?php } ?> >YSR</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Annamayya') { ?> selected <?php } ?> >Annamayya</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Tirupati') { ?> selected <?php } ?> >Tirupati</option>
+                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Chittoor') { ?> selected <?php } ?> >Chittoor</option>                 
                                     </select>
                                 </div>
                             </div>
@@ -148,9 +154,8 @@ $this->load->view('portal/layout/header');
                             <div class="col-md-5">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="hospital_name" class="form-label flex-1">Select Hospital Name</label>
-                                    <div id='HospitalBox' class="flex-1">
-                                        <?php include('names-select.php'); ?>
-                                    </div>
+                                    <input type="text" class="form-select hospital_name input_style flex-1" value="<?php echo $view_hospital_name->name ?>">
+                                        <!-- <?php include('names-select.php'); ?> -->
                                 </div>
                             </div>
                             <div>
@@ -168,7 +173,7 @@ $this->load->view('portal/layout/header');
                                     <input type="text" class="form-control flex-1 input_style" id="scheme" name="scheme">
                                 </div>
                             </div>
-                            <!-- <div class="col-md-3">
+                            <div class="col-md-3">
                                 <div class="mt-2 d-flex align-items-end">
                                     <label for="is_dd" class="form-label flex-1">Is DD/BG?</label>
                                     <label><input type="radio" name="is_dd" id="is_dd_yes" value="Yes" class="is_dd_yes flex-1 input_style"> Yes</label>
@@ -211,7 +216,7 @@ $this->load->view('portal/layout/header');
                                     <label for="agreement_date" class="form-label flex-1">Agreement Date</label>
                                     <input type="date" class="form-control flex-1 input_style" id="agreement_date" name="agreement_date" disabled="disabled">
                                 </div>
-                            </div> -->
+                            </div>
                             <div class="col-md-4 mt-lg-3">
                                 <div class="d-flex align-items-end">
                                     <label for="supply_status" class="form-label flex-1">Supply Status</label>
@@ -219,7 +224,7 @@ $this->load->view('portal/layout/header');
                                     <label class="ms-3"><input type="radio" name="supply_status" id="supply_status_no" value="No" class="flex-1 input_style" checked> No</label>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-4">
+                            <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="delivery_date" class="form-label flex-1">Delivery Date</label>
                                     <input type="date" class="form-control flex-1 input_style" id="delivery_date" name="delivery_date">
@@ -255,22 +260,16 @@ $this->load->view('portal/layout/header');
                                     <label for="balance_amt" class="form-label flex-1">Balance Amount</label>
                                     <input type="text" class="form-control flex-1 input_style" id="balance_amt" name="balance_amt">
                                 </div>
-                            </div> -->
+                            </div>
                             
-                            <!-- <div class="col-md-4">
+                            <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="remarks" class="form-label flex-1">Remarks</label>
                                     <input type="text" class="form-control flex-1 input_style" id="remarks" name="remarks">
                                 </div>
-                            </div> -->
+                            </div>
 
                         </div>
-                        
-                        <div id="addinput"></div>
-                        <button id="rowAdd" type="button" class="btn btn-dark">
-                            <span class="bi bi-plus-square-dotted">
-                            </span> Add Another PO
-                        </button>
                         <input type="submit" name="POSubmit" class="btn btn-success" value="SUBMIT">
                     </form>
                 </div>

@@ -2,7 +2,7 @@
                 <div class="position-sticky pt-4">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="index">
+                            <a class="nav-link" aria-current="page" href="<?php echo base_url() ?>portal/index">
                                 Dashboard
                             </a>
                         </li>

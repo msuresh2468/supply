@@ -33,7 +33,6 @@ $this->load->view('portal/layout/header'); ?>
                                     <p class="h2"><?php foreach ($total as $row) : ?>
                                             <?php echo $row->Item_Amount; ?>
                                         <?php endforeach; ?></p>
-                                    <a href="<?php echo base_url() ?>portal/purchase-orders" class="stretched-link"></a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
@@ -43,7 +42,6 @@ $this->load->view('portal/layout/header'); ?>
                                     <p class="h2"><?php foreach ($total as $row) : ?>
                                             <?php echo $row->Payment_Received; ?>
                                         <?php endforeach; ?></p>
-                                    <a href="<?php echo base_url() ?>portal/purchase-orders" class="stretched-link"></a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
@@ -51,9 +49,8 @@ $this->load->view('portal/layout/header'); ?>
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Total Outstanding</h6>
                                     <p class="h2"><?php foreach ($total as $row) : ?>
-                                            <?php echo $row->Item_Amount - $row->Payment_Received; ?>
+                                            <?php if($row->Item_Amount - $row->Payment_Received == 0){echo '';}else{ echo $row->Item_Amount - $row->Payment_Received;}  ?>
                                         <?php endforeach; ?></p>
-                                    <a href="<?php echo base_url() ?>portal/purchase-orders" class="stretched-link"></a>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">

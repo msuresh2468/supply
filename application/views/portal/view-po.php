@@ -19,7 +19,7 @@ $this->load->view('portal/layout/header'); ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h4 class="my-0">Purchase Orders</h4>
-                    <a href="<?php echo base_url() ?>portal/add-purchase-order" class="text-decoration-none bg-primary text-white px-3 py-1">Add New PO</a>
+                    <a href="<?php echo base_url() ?>portal/purchase-orders" class="text-decoration-none bg-primary text-white px-3 py-1">Back</a>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -32,19 +32,21 @@ $this->load->view('portal/layout/header'); ?>
                         <?php
                         echo $this->input->get('msg');
                         ?>
-                        <?php if (count($purchase_orders) > 0) { ?>
+                        <?php if (count($view_po) > 0) { ?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>PO Number</th>
                                         <th>PO Date</th>
                                         <th>File Number</th>
-                                        <th>Gross Amount</th>
+                                        <th>Item Name</th>
+                                        <th>Supply Date</th>
+                                        <th>Supply Status</th>                                        
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($purchase_orders as $row) : ?>
+                                    <?php foreach ($view_po as $row) : ?>
                                         <tr>
                                             <td>
                                                 <?php echo $row->PO_Number; ?>
@@ -56,11 +58,17 @@ $this->load->view('portal/layout/header'); ?>
                                                 <?php echo $row->File_Number; ?>
                                             </td>
                                             <td>
-                                                <?php echo $row->Item_Amount; ?>
+                                                <?php echo $row->Item_Name; ?>
                                             </td>
                                             <td>
-                                                <a href="<?php echo base_url('portal/view-po/' . $row->PO_Number); ?>" class="btn btn-info">View</a>
-                                                <!-- <a href="<?php echo base_url('portal/edit-purchase-order/' . $row->id); ?>" class="btn btn-warning">Edit</a> -->
+                                                <?php echo $row->Supply_DueDate; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->Supply_Status; ?>
+                                            </td>
+                                            <td>
+                                                <a href="<?php echo base_url('portal/view-purchase-order/' . $row->id); ?>" class="btn btn-info">View</a>
+                                                <a href="<?php echo base_url('portal/edit-purchase-order/' . $row->id); ?>" class="btn btn-warning">Edit</a>
                                                 <!-- <button type="submit" id="<?php echo $row->id ?>" class="btn btn-danger remove-po"> Delete</button> -->
                                             </td>
                                         </tr>

@@ -13,7 +13,40 @@
                                     <input type="text" class="form-control flex-1 input_style" id="item_qty" name="item_qty[]">
                                 </div>
                             </div>
-                            
+                            <div class="col-md-3">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="model" class="form-label flex-1">Select District</label>
+                                    <select class="form-select input_style flex-1" id="district" name="district[]">
+                                        <option>Select District</option>
+                                        <option value="Srikakulam">Srikakulam</option>
+                                        <option value="Parvathipuram Manyam">Parvathipuram Manyam</option>
+                                        <option value="Vizianagaram">Vizianagaram</option>
+                                        <option value="Visakhapatnam">Visakhapatnam</option>   
+                                        <option value="Alluri Sitharama Raju">Alluri Sitharama Raju</option>
+                                        <option value="Anakapalli">Anakapalli</option>
+                                        <option value="Kakinada">Kakinada</option>
+                                        <option value="East Godavari">East Godavari</option>
+                                        <option value="Dr. B. R. Ambedkar Konaseema">Dr. B. R. Ambedkar Konaseema</option>  
+                                        <option value="Eluru">Eluru</option>
+                                        <option value="West Godavari">West Godavari</option>
+                                        <option value="NTR">NTR</option>
+                                        <option value="Krishna">Krishna</option>
+                                        <option value="Palnadu">Palnadu</option>
+                                        <option value="Guntur">Guntur</option>
+                                        <option value="Bapatla">Bapatla</option>
+                                        <option value="Sri Potti Sriramulu Nellore">Sri Potti Sriramulu Nellore</option>
+                                        <option value="Prakasam">Prakasam</option>
+                                        <option value="Kurnool">Kurnool</option>   
+                                        <option value="Nandyal">Nandyal</option>
+                                        <option value="Anantapuramu">Anantapuramu</option>
+                                        <option value="Sri Sathya Sai">Sri Sathya Sai</option>
+                                        <option value="YSR">YSR</option>
+                                        <option value="Annamayya">Annamayya</option>    
+                                        <option value="Tirupati">Tirupati</option>
+                                        <option value="Chittoor">Chittoor</option>                            
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="model" class="form-label flex-1">Select Hospital Type</label>
@@ -52,7 +85,7 @@
         var type_id = $('#'+type).val();
         //alert(type);
         var responseAppend = type == 'type' ? '#HospitalBox' : '#HospitalBox-'+type.split('-')[1];
-        alert(responseAppend);
+        //alert(responseAppend);
         $.ajax({
             url: '<?php echo base_url('Purchase_Orders/hospitalList') ?>/',
             type: 'POST',

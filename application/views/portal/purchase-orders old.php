@@ -36,16 +36,19 @@ $this->load->view('portal/layout/header'); ?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
+                                        <th>ID</th>
                                         <th>PO Number</th>
                                         <th>PO Date</th>
                                         <th>File Number</th>
-                                        <th>Gross Amount</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($purchase_orders as $row) : ?>
                                         <tr>
+                                            <td>
+                                                <?php echo $row->id; ?>
+                                            </td>
                                             <td>
                                                 <?php echo $row->PO_Number; ?>
                                             </td>
@@ -56,12 +59,9 @@ $this->load->view('portal/layout/header'); ?>
                                                 <?php echo $row->File_Number; ?>
                                             </td>
                                             <td>
-                                                <?php echo $row->Item_Amount; ?>
-                                            </td>
-                                            <td>
-                                                <a href="<?php echo base_url('portal/view-po/' . $row->PO_Number); ?>" class="btn btn-info">View</a>
-                                                <!-- <a href="<?php echo base_url('portal/edit-purchase-order/' . $row->id); ?>" class="btn btn-warning">Edit</a> -->
-                                                <!-- <button type="submit" id="<?php echo $row->id ?>" class="btn btn-danger remove-po"> Delete</button> -->
+                                                <a href="<?php echo base_url('portal/view-purchase-order/' . $row->id); ?>" class="btn btn-info">View</a>
+                                                <a href="<?php echo base_url('portal/edit-purchase-order/' . $row->id); ?>" class="btn btn-warning">Edit</a>
+                                                <button type="submit" id="<?php echo $row->id ?>" class="btn btn-danger remove-po"> Delete</button>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
