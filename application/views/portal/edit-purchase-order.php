@@ -22,7 +22,7 @@ $this->load->view('portal/layout/header');
                     <!-- <h4>Add Purchase Order</h4> -->
                 </div>
                 <div>
-                    <form method="post" action="<?php echo base_url('Admin/updatePO/' . $PO->id); ?>" enctype="multipart/form-data" id="form">
+                    <form method="post" action="<?php echo base_url()?>'Admin/updatePO/' . $PO->id;" enctype="multipart/form-data" id="form">
                         <div class="row purchase_order_form">
                             <div>
                                 <p class="fw-bold mb-0">PO Details</p>
