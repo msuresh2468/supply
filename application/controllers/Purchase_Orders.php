@@ -26,7 +26,8 @@ class Purchase_Orders extends CI_Controller
 
         $this->load->view('portal/add-purchase-order', $data);
     }
-    public function editPO($id){
+    public function editPO($id)
+    {
         $type = new HospitalTypeModel();
         $data = array(
             'page_title' => 'Create Project',
@@ -56,8 +57,8 @@ class Purchase_Orders extends CI_Controller
         $delivery_period = $delivery_period . ' days';
         $supply_dueDate = date('d-m-Y', strtotime($PO_Date . $delivery_period));
         $data = [];
-        $itemQty = $this->input->post('item_qty[]');        
-        for($i = 0; $i < count($itemQty); $i++){
+        $itemQty = $this->input->post('item_qty[]');
+        for ($i = 0; $i < count($itemQty); $i++) {
             $data1 = [
                 'PO_Number'   => $this->input->post('po_number'),
                 'File_Number'     => $this->input->post('file_number'),
@@ -102,6 +103,73 @@ class Purchase_Orders extends CI_Controller
         $this->session->set_flashdata('status', 'New PO Added Successfully');
         redirect(base_url('portal/purchase-orders'));
     }
+    public function updatePO($id)
+    {
+        $pos = new PurchaseModel();
+        $PO_Date = $this->input->post('po_date');
+        $delivery_period = $this->input->post('delivery_period');
+        $delivery_period = $delivery_period . ' days';
+        $supply_dueDate = date('d-m-Y', strtotime($PO_Date . $delivery_period));
+        $data = [];
+        $itemQty = $this->input->post('item_qty[]');
+        $data = [
+            'PO_Number'   => $this->input->post('po_number'),
+            'File_Number'     => $this->input->post('file_number'),
+            'PO_Date'     => $this->input->post('po_date'),
+            'Year' => $this->input->post('year'),
+            'Firm_Name' => $this->input->post('firm_name'),
+            'Item_Name' => $this->input->post('item_name'),
+            'Model' => $this->input->post('model'),
+            'Unit_Rate' => $this->input->post('unit_rate'),
+            // 'Item_Qty' => $this->input->post('item_qty[]'),
+            //'Item_Amount' =>  $this->input->post('item_qty') * $this->input->post('unit_rate'),
+            'District' => $this->input->post('district'),
+            // 'Hospital_Type' => $this->input->post('type[]'),
+            // 'Hospital_Name' => $this->input->post('hospital_name[]'),
+            'Delivery_Period' => $delivery_period,
+            'Scheme' => $this->input->post('scheme'),
+            'Supply_Status' => $this->input->post('supply_status'),
+            'Supply_DueDate' => $supply_dueDate,
+            'Is_DD' => $this->input->post('is_dd'),
+            'DD_Number' => $this->input->post('dd_number'),
+            'DD_Date' => $this->input->post('dd_date'),
+            'DD_Amount' => $this->input->post('dd_amt'),
+            'Is_Agreement' => $this->input->post('is_agreement'),
+            'Agreement_No' => $this->input->post('agreement_no'),
+            'Agreement_Date' => $this->input->post('agreement_date'),
+            'Delivery_Date' => $this->input->post('delivery_date'),
+            'Warranty_Date' => $this->input->post('warranty_date'),
+            'Installation_Date' => $this->input->post('installation_date'),
+            'Is_BillsSubmit' => $this->input->post('is_bills_submit'),
+            'Bills_Percentage' => $this->input->post('bills_to_be_submit'),
+            'Payment_Received' => $this->input->post('received_amt'),
+            //'Balance_Amount' => $this->input->post('firm_name'),
+            'Remarks' => $this->input->post('remarks'),
+        ];
+        $pos->updatePO($data, $id);
+        //$this->db->insert_batch('purchase_order', $data);
+
+        // $data = [
+        //     'Is_DD' => $Is_DD,
+        //     'DD_Number' => $this->input->post('dd_number'),
+        //     'DD_Date' => $this->input->post('dd_date'),
+        //     'DD_Amount' => $this->input->post('dd_amt'),
+        //     'Is_Agreement' => $this->input->post('firm_name'),
+        //     'Agreement_No' => $this->input->post('firm_name'),
+        //     'Agreement_Date' => $this->input->post('firm_name'),
+        //     'Supply_Status' => $this->input->post('firm_name'),
+        //     'Delivery_Date' => $this->input->post('firm_name'),
+        //     'Installation_Date' => $this->input->post('firm_name'),
+        //     'Is_BillsSubmit' => $this->input->post('firm_name'),
+        //     'Bills_Percentage' => $this->input->post('firm_name'),
+        //     'Payement_Received' => $this->input->post('firm_name'),
+        //     'Balance_Amount' => $this->input->post('firm_name'),
+        //     'Remarks' => $this->input->post('firm_name'),
+        // ];
+        // $pos->insertPO($data);
+        $this->session->set_flashdata('status', 'New PO Added Successfully');
+        redirect(base_url('portal/purchase-orders'));
+    }
     public function viewPO($id)
     {
         $pos = new PurchaseModel();
@@ -115,7 +183,8 @@ class Purchase_Orders extends CI_Controller
 
         $this->load->view('portal/view-purchase-order', $data);
     }
-    public function viewPODeials($id){
+    public function viewPODeials($id)
+    {
         $pos = new PurchaseModel();
         $hos = new HospitalTypeModel();
         $data = [

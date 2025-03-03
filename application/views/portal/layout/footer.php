@@ -79,12 +79,12 @@
     })
 </script>
 <script>
-    function hospital_typeChange(type){
+    function hospital_typeChange(type) {
         //alert($('#'+type).val());
 
-        var type_id = $('#'+type).val();
+        var type_id = $('#' + type).val();
         //alert(type);
-        var responseAppend = type == 'type' ? '#HospitalBox' : '#HospitalBox-'+type.split('-')[1];
+        var responseAppend = type == 'type' ? '#HospitalBox' : '#HospitalBox-' + type.split('-')[1];
         //alert(responseAppend);
         $.ajax({
             url: '<?php echo base_url('Purchase_Orders/hospitalList') ?>/',
@@ -108,30 +108,40 @@
         $(function() {
             $('#datepicker').datepicker();
         });
-        $('input:radio').click(function() {
+        // $current_date = new DateTime(date('Y-m-d'));
+        // $deadline = new DateTime($fetch['deadline']);
+
+        // $datediffer = $current_date - > diff($deadline);
+        // $days = $datediffer - > format('%R%a');
+
+        // echo $days;
+        // if ($days > 5) {
+        //     echo "<font color=yellow>warning deadline close</font>";
+        //     echo $fetch['deadline'];
+        // }
+        //     $(function () {
+        //     $("select").select2();
+        // });
+        $('.dd_field input:radio').click(function() {
             $("#dd_number").prop("disabled", true);
             $("#dd_date").prop("disabled", true);
             $("#dd_amt").prop("disabled", true);
-            $("#dd_number1").prop("disabled", true);
-            $("#dd_date1").prop("disabled", true);
-            $("#dd_amt1").prop("disabled", true);
-            $("#agreement_no").prop("disabled", true);
-            $("#agreement_date").prop("disabled", true);
-            $("#bills_to_be_submit").prop("disabled", true);
             if ($(this).hasClass('is_dd_yes')) {
                 $("#dd_number").prop("disabled", false);
                 $("#dd_date").prop("disabled", false);
                 $("#dd_amt").prop("disabled", false);
             }
-            if ($(this).hasClass('is_dd_yes1')) {
-                $("#dd_number1").prop("disabled", false);
-                $("#dd_date1").prop("disabled", false);
-                $("#dd_amt1").prop("disabled", false);
-            }
+        });
+        $('.agreement_field input:radio').click(function() {
+            $("#agreement_no").prop("disabled", true);
+            $("#agreement_date").prop("disabled", true);
             if ($(this).hasClass('is_agreement_yes')) {
                 $("#agreement_no").prop("disabled", false);
                 $("#agreement_date").prop("disabled", false);
             }
+        });
+        $('.bills_field input:radio').click(function() {
+            $("#bills_to_be_submit").prop("disabled", true);
             if ($(this).hasClass('is_bills_submit_yes')) {
                 $("#bills_to_be_submit").prop("disabled", false);
             }

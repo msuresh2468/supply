@@ -72,6 +72,7 @@ $route['portal/installed-items-before-cutoff-date']['GET'] = 'Dashboard/beforeCu
 $route['portal/supply-status']['GET'] = 'Dashboard/status';
 $route['portal/add-purchase-order']['GET'] = 'Purchase_Orders/createPO';
 $route['portal/edit-purchase-order/(:any)']['GET'] = 'Purchase_Orders/editPO/$1';
+$route['Admin/updatePO/(:any)']['POST'] = 'Purchase_Orders/updatePO/$1';
 $route['portal/view-po/(:any)']['GET'] = 'Purchase_Orders/viewPODeials/$1';
 $route['portal/view-purchase-order/(:any)']['GET'] = 'Purchase_Orders/viewPO/$1';
 // $route['Admin/edit-post/(:any)']['GET'] = 'Blog/editPost/$1';

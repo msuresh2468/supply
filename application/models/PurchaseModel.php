@@ -62,4 +62,9 @@ class PurchaseModel extends CI_Model
     {
         return $this->db->delete('purchase_order', ['id' => $id]);
     }
+    public function updatePO($data, $id)
+    {
+        $this->load->database();
+        return $this->db->update('purchase_order', $data, ['id' => $id]);
+    }
 }

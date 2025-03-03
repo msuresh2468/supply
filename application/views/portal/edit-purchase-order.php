@@ -22,7 +22,7 @@ $this->load->view('portal/layout/header');
                     <!-- <h4>Add Purchase Order</h4> -->
                 </div>
                 <div>
-                    <form method="post" action="<?php echo base_url(); ?>portal/addPO" enctype="multipart/form-data" id="form">
+                    <form method="post" action="<?php echo base_url('Admin/updatePO/' . $PO->id); ?>" enctype="multipart/form-data" id="form">
                         <div class="row purchase_order_form">
                             <div>
                                 <p class="fw-bold mb-0">PO Details</p>
@@ -107,32 +107,32 @@ $this->load->view('portal/layout/header');
                                     <label for="model" class="form-label flex-1">Select District</label>
                                     <select class="form-select input_style flex-1" id="district" name="district">
                                         <option>Select District</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Srikakulam') { ?> selected <?php } ?> >Srikakulam</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Parvathipuram Manyam') { ?> selected <?php } ?> >Parvathipuram Manyam</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Vizianagaram') { ?> selected <?php } ?> >Vizianagaram</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Visakhapatnam') { ?> selected <?php } ?> >Visakhapatnam</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Alluri Sitharama Raju') { ?> selected <?php } ?> >Alluri Sitharama Raju</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Anakapalli') { ?> selected <?php } ?> >Anakapalli</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Kakinada') { ?> selected <?php } ?> >Kakinada</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'East Godavari') { ?> selected <?php } ?> >East Godavari</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Dr. B. R. Ambedkar Konaseema') { ?> selected <?php } ?> >Dr. B. R. Ambedkar Konaseema</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Eluru') { ?> selected <?php } ?> >Eluru</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'West Godavari') { ?> selected <?php } ?> >West Godavari</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'NTR') { ?> selected <?php } ?> >NTR</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Krishna') { ?> selected <?php } ?> >Krishna</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Palnadu') { ?> selected <?php } ?> >Palnadu</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Guntur') { ?> selected <?php } ?> >Guntur</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Bapatla') { ?> selected <?php } ?> >Bapatla</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Sri Potti Sriramulu Nellore') { ?> selected <?php } ?> >Sri Potti Sriramulu Nellore</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Prakasam') { ?> selected <?php } ?> >Prakasam</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Kurnool') { ?> selected <?php } ?> >Kurnool</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Nandyal') { ?> selected <?php } ?> >Nandyal</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Anantapuramu') { ?> selected <?php } ?> >Anantapuramu</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Sri Sathya Sai') { ?> selected <?php } ?> >Sri Sathya Sai</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'YSR') { ?> selected <?php } ?> >YSR</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Annamayya') { ?> selected <?php } ?> >Annamayya</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Tirupati') { ?> selected <?php } ?> >Tirupati</option>
-                                        <option value="<?php echo $PO->District; ?>" <?php if($PO->District == 'Chittoor') { ?> selected <?php } ?> >Chittoor</option>                 
+                                        <option value="Srikakulam" <?php if($PO->District == 'Srikakulam') { ?> selected <?php } ?> >Srikakulam</option>
+                                        <option value="Parvathipuram-Manyam" <?php if($PO->District == 'Parvathipuram Manyam') { ?> selected <?php } ?> >Parvathipuram Manyam</option>
+                                        <option value="Vizianagaram" <?php if($PO->District == 'Vizianagaram') { ?> selected <?php } ?> >Vizianagaram</option>
+                                        <option value="Visakhapatnam" <?php if($PO->District == 'Visakhapatnam') { ?> selected <?php } ?> >Visakhapatnam</option>
+                                        <option value="Alluri Sitharama Raju" <?php if($PO->District == 'Alluri Sitharama Raju') { ?> selected <?php } ?> >Alluri Sitharama Raju</option>
+                                        <option value="Anakapalli" <?php if($PO->District == 'Anakapalli') { ?> selected <?php } ?> >Anakapalli</option>
+                                        <option value="Kakinada" <?php if($PO->District == 'Kakinada') { ?> selected <?php } ?> >Kakinada</option>
+                                        <option value="East Godavari" <?php if($PO->District == 'East Godavari') { ?> selected <?php } ?> >East Godavari</option>
+                                        <option value="Dr. B. R. Ambedkar Konaseema" <?php if($PO->District == 'Dr. B. R. Ambedkar Konaseema') { ?> selected <?php } ?> >Dr. B. R. Ambedkar Konaseema</option>
+                                        <option value="Eluru" <?php if($PO->District == 'Eluru') { ?> selected <?php } ?> >Eluru</option>
+                                        <option value="West Godavari" <?php if($PO->District == 'West Godavari') { ?> selected <?php } ?> >West Godavari</option>
+                                        <option value="NTR" <?php if($PO->District == 'NTR') { ?> selected <?php } ?> >NTR</option>
+                                        <option value="Krishna" <?php if($PO->District == 'Krishna') { ?> selected <?php } ?> >Krishna</option>
+                                        <option value="Palnadu" <?php if($PO->District == 'Palnadu') { ?> selected <?php } ?> >Palnadu</option>
+                                        <option value="Guntur" <?php if($PO->District == 'Guntur') { ?> selected <?php } ?> >Guntur</option>
+                                        <option value="Bapatla" <?php if($PO->District == 'Bapatla') { ?> selected <?php } ?> >Bapatla</option>
+                                        <option value="Sri Potti Sriramulu Nellore" <?php if($PO->District == 'Sri Potti Sriramulu Nellore') { ?> selected <?php } ?> >Sri Potti Sriramulu Nellore</option>
+                                        <option value="Prakasam" <?php if($PO->District == 'Prakasam') { ?> selected <?php } ?> >Prakasam</option>
+                                        <option value="Kurnool" <?php if($PO->District == 'Kurnool') { ?> selected <?php } ?> >Kurnool</option>
+                                        <option value="Nandyal" <?php if($PO->District == 'Nandyal') { ?> selected <?php } ?> >Nandyal</option>
+                                        <option value="Anantapuramu" <?php if($PO->District == 'Anantapuramu') { ?> selected <?php } ?> >Anantapuramu</option>
+                                        <option value="Sri Sathya Sai" <?php if($PO->District == 'Sri Sathya Sai') { ?> selected <?php } ?> >Sri Sathya Sai</option>
+                                        <option value="YSR" <?php if($PO->District == 'YSR') { ?> selected <?php } ?> >YSR</option>
+                                        <option value="Annamayya" <?php if($PO->District == 'Annamayya') { ?> selected <?php } ?> >Annamayya</option>
+                                        <option value="Tirupati" <?php if($PO->District == 'Tirupati') { ?> selected <?php } ?> >Tirupati</option>
+                                        <option value="Chittoor" <?php if($PO->District == 'Chittoor') { ?> selected <?php } ?> >Chittoor</option>                 
                                     </select>
                                 </div>
                             </div>
@@ -164,70 +164,70 @@ $this->load->view('portal/layout/header');
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="delivery_period" class="form-label flex-1">Delivery Period</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="delivery_period" name="delivery_period">
+                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO->Delivery_Period; ?>" id="delivery_period" name="delivery_period">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="scheme" class="form-label flex-1">Scheme</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="scheme" name="scheme">
+                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO->Scheme; ?>" id="scheme" name="scheme">
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="mt-2 d-flex align-items-end">
+                                <div class="mt-2 d-flex align-items-end dd_field">
                                     <label for="is_dd" class="form-label flex-1">Is DD/BG?</label>
-                                    <label><input type="radio" name="is_dd" id="is_dd_yes" value="Yes" class="is_dd_yes flex-1 input_style"> Yes</label>
-                                    <label class="ms-3"><input type="radio" name="is_dd" id="is_dd_no" value="No" class="flex-1 input_style"> No</label>
+                                    <label><input type="radio" name="is_dd" id="is_dd_yes" class="is_dd_yes flex-1 input_style" value="Yes" <?php if($PO->Is_DD == 'Yes') { ?> checked <?php } ?>> Yes</label>
+                                    <label class="ms-3"><input type="radio" name="is_dd" id="is_dd_no" class="flex-1 input_style" value="No" <?php if($PO->Is_DD == 'No') { ?> checked <?php } ?> > No</label>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="dd_number" class="form-label flex-1">DD/BG Number</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="dd_number" name="dd_number" disabled="disabled">
+                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO->DD_Number ; ?>" id="dd_number" name="dd_number" <?php if($PO->Is_DD != 'Yes') { ?> disabled <?php } ?>>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="dd_date" class="form-label flex-1">DD/BG Date</label>
-                                    <input type="date" class="form-control flex-1 input_style" id="dd_date" name="dd_date" disabled="disabled">
+                                    <input type="date" class="form-control flex-1 input_style" value="<?php echo $PO->DD_Date ; ?>" id="dd_date" name="dd_date" <?php if($PO->Is_DD != 'Yes') { ?> disabled <?php } ?>>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="dd_amt" class="form-label flex-1">DD/BG Amount</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="dd_amt" name="dd_amt" disabled="disabled">
+                                    <input type="text" class="form-control flex-1 input_style" id="dd_amt" value="<?php echo $PO->DD_Amount ; ?>" name="dd_amt" <?php if($PO->Is_DD != 'Yes') { ?> disabled <?php } ?>>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="mt-3 d-flex align-items-end">
+                                <div class="mt-3 d-flex align-items-end agreement_field">
                                     <label for="is_agreement" class="form-label flex-1">Is Agreement?</label>
-                                    <label><input type="radio" name="is_agreement" id="is_agreement_yes" value="Yes" class="is_agreement_yes flex-1 input_style"> Yes</label>
-                                    <label class="ms-3"><input type="radio" name="is_agreement" id="is_agreement_no" value="No" class="flex-1 input_style"> No</label>
+                                    <label><input type="radio" name="is_agreement" id="is_agreement_yes" value="Yes" class="is_agreement_yes flex-1 input_style" <?php if($PO->Is_Agreement == 'Yes') { ?> checked <?php } ?> > Yes</label>
+                                    <label class="ms-3"><input type="radio" name="is_agreement" id="is_agreement_no" value="No" class="flex-1 input_style" <?php if($PO->Is_Agreement == 'No') { ?> checked <?php } ?>> No</label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="agreement_no" class="form-label flex-1">Agreement No</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="agreement_no" name="agreement_no" disabled="disabled">
+                                    <input type="text" class="form-control flex-1 input_style" id="agreement_no" value="<?php echo $PO->Agreement_No; ?>" name="agreement_no" <?php if($PO->Is_Agreement != 'Yes') { ?> disabled <?php } ?>>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="agreement_date" class="form-label flex-1">Agreement Date</label>
-                                    <input type="date" class="form-control flex-1 input_style" id="agreement_date" name="agreement_date" disabled="disabled">
+                                    <input type="date" class="form-control flex-1 input_style" id="agreement_date" value="<?php echo $PO->Agreement_Date; ?>" name="agreement_date" <?php if($PO->Is_Agreement != 'Yes') { ?> disabled <?php } ?>>
                                 </div>
                             </div>
                             <div class="col-md-4 mt-lg-3">
                                 <div class="d-flex align-items-end">
                                     <label for="supply_status" class="form-label flex-1">Supply Status</label>
-                                    <label><input type="radio" name="supply_status" id="supply_status_yes" value="Yes" class="supply_status_yes flex-1 input_style"> Yes</label>
-                                    <label class="ms-3"><input type="radio" name="supply_status" id="supply_status_no" value="No" class="flex-1 input_style" checked> No</label>
+                                    <label><input type="radio" name="supply_status" id="supply_status_yes" value="Yes" <?php if($PO->Supply_Status == 'Yes') { ?> checked <?php } ?> class="supply_status_yes flex-1 input_style"> Yes</label>
+                                    <label class="ms-3"><input type="radio" name="supply_status" id="supply_status_no" value="No" <?php if($PO->Supply_Status == 'No') { ?> checked <?php } ?> class="flex-1 input_style"> No</label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="delivery_date" class="form-label flex-1">Delivery Date</label>
-                                    <input type="date" class="form-control flex-1 input_style" id="delivery_date" name="delivery_date">
+                                    <input type="date" class="form-control flex-1 input_style" value="<?php echo $PO->Delivery_Date; ?>" id="delivery_date" name="delivery_date">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -237,10 +237,16 @@ $this->load->view('portal/layout/header');
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="mt-3 d-flex align-items-end">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="warranty_date" class="form-label flex-1">Warranty Date</label>
+                                    <input type="date" class="form-control flex-1 input_style" id="warranty_date" name="warranty_date">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mt-3 d-flex align-items-end bills_field">
                                     <label for="is_bills_submit" class="form-label flex-1">Is Bills Submitted?</label>
-                                    <label><input type="radio" name="is_bills_submit" id="is_bills_submit_yes" value="Yes" class="is_bills_submit_yes flex-1 input_style"> Yes</label>
-                                    <label class="ms-3"><input type="radio" name="is_bills_submit" id="is_bills_submit_no" value="No" class="flex-1 input_style"> No</label>
+                                    <label><input type="radio" name="is_bills_submit" id="is_bills_submit_yes" value="Yes" <?php if($PO->Is_BillsSubmit == 'Yes') { ?> checked <?php } ?> class="is_bills_submit_yes flex-1 input_style"> Yes</label>
+                                    <label class="ms-3"><input type="radio" name="is_bills_submit" id="is_bills_submit_no" value="No" <?php if($PO->Is_BillsSubmit == 'No') { ?> checked <?php } ?> class="flex-1 input_style"> No</label>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -255,12 +261,7 @@ $this->load->view('portal/layout/header');
                                     <input type="text" class="form-control flex-1 input_style" id="received_amt" name="received_amt">
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="mb-3 d-flex align-items-end">
-                                    <label for="balance_amt" class="form-label flex-1">Balance Amount</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="balance_amt" name="balance_amt">
-                                </div>
-                            </div>
+                            
                             
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
