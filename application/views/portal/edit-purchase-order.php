@@ -139,8 +139,9 @@ $this->load->view('portal/layout/header');
                             
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
-                                    <label for="model" class="form-label flex-1">Select Hospital Type</label>
-                                    <select onchange="hospital_typeChange('type')" class="form-select hospital_type input_style flex-1" id="type" name="type[]" data-id='type'>
+                                    <label for="model" class="form-label flex-1">Hospital Type</label>
+                                    <input type="text" class="form-select hospital_name input_style flex-1" value="<?php echo $view_hospital_type->type ?>">
+                                    <!-- <select onchange="hospital_typeChange('type')" class="form-select hospital_type input_style flex-1" id="type" name="type[]" data-id='type'>
                                         <option>Select Hospital Type</option>
                                         <?php
                                         foreach ($types as $type) {
@@ -148,12 +149,12 @@ $this->load->view('portal/layout/header');
                                             <option value="<?php echo $type->id; ?>"><?php echo $type->type; ?></option>
                                         <?php }
                                         ?>
-                                    </select>
+                                    </select> -->
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="mb-3 d-flex align-items-end">
-                                    <label for="hospital_name" class="form-label flex-1">Select Hospital Name</label>
+                                    <label for="hospital_name" class="form-label flex-1">Hospital Name</label>
                                     <input type="text" class="form-select hospital_name input_style flex-1" value="<?php echo $view_hospital_name->name ?>">
                                         <!-- <?php include('names-select.php'); ?> -->
                                 </div>

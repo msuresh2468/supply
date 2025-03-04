@@ -79,6 +79,12 @@ $this->load->view('portal/layout/header'); ?>
                                 <p class="mb-0"><?php echo $view_purchase_order->Item_Amount; ?></p>
                             </div>
                             <div class="col-6 py-2">
+                                <p class="mb-0">Hospital Type: </p>
+                            </div>
+                            <div class="col-6 py-2">
+                                <p class="mb-0"><?php echo $view_hospital_type->type; ?></p>
+                            </div>
+                            <div class="col-6 py-2">
                                 <p class="mb-0">Hospital Name: </p>
                             </div>
                             <div class="col-6 py-2">

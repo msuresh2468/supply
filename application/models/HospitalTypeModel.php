@@ -23,4 +23,13 @@ class HospitalTypeModel extends CI_Model
         $query = $this->db->get();
         return $query->row();
     }
+    public function viewHospitalType($id)
+    {
+        $this->db->select('*');
+        $this->db->from('purchase_order a');
+        $this->db->join('hospital_type b', 'b.id=a.Hospital_Type');
+        $this->db->where('a.id', $id);
+        $query = $this->db->get();
+        return $query->row();
+    }
 }

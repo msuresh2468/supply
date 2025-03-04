@@ -35,7 +35,8 @@ class Purchase_Orders extends CI_Controller
             "pagename" => 'projects',
             'PO' => $this->PurchaseModel->editPO($id),
             'types' => $type->getTypes(),
-            'view_hospital_name' => $type->viewHospitalName($id)
+            'view_hospital_name' => $type->viewHospitalName($id),
+            'view_hospital_type' => $type->viewHospitalType($id)
         );
         $this->load->view('portal/edit-purchase-order', $data);
     }
@@ -180,7 +181,8 @@ class Purchase_Orders extends CI_Controller
             'page_title' => 'Add Purchase Order',
             "pagename" => 'add-purchase',
             'view_purchase_order' => $pos->viewPO($id),
-            'view_hospital_name' => $hos->viewHospitalName($id)
+            'view_hospital_name' => $hos->viewHospitalName($id),
+            'view_hospital_type' => $hos->viewHospitalType($id),
         ];
 
         $this->load->view('portal/view-purchase-order', $data);
