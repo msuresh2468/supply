@@ -36,17 +36,21 @@ class Dashboard extends CI_Controller {
 	}
     public function supplied()
 	{
+        $pos = new PurchaseModel();
 		$data = [
             'page_title' => 'Supplied Items',
-            "pagename" => 'supplied'
+            "pagename" => 'supplied',
+            'supplied' => $pos->supplied()
         ];
         $this->load->view('portal/supplied-items', $data);
 	}
     public function notsupplied()
 	{
+        $pos = new PurchaseModel();
 		$data = [
             'page_title' => 'Not Supplied Items',
-            "pagename" => 'notsupplied'
+            "pagename" => 'notsupplied',
+            'notsupplied' => $pos->notsupplied()
         ];
         $this->load->view('portal/not-supplied-items', $data);
 	}
@@ -84,9 +88,11 @@ class Dashboard extends CI_Controller {
 	}
     public function status()
 	{
+        $pos = new PurchaseModel();
 		$data = [
             'page_title' => 'Supply Status',
-            "pagename" => 'status'
+            "pagename" => 'status',
+            'status' => $pos-> status()
         ];
         $this->load->view('portal/supply-status', $data);
 	}

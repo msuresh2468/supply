@@ -22,7 +22,7 @@ $this->load->view('portal/layout/header');
                     <!-- <h4>Add Purchase Order</h4> -->
                 </div>
                 <div>
-                    <form method="post" action="<?php echo base_url()?>'Admin/updatePO/' . $PO->id;" enctype="multipart/form-data" id="form">
+                    <form method="post" action="<?php echo base_url('portal/updatePO/' . $PO->id); ?>" enctype="multipart/form-data" id="form">
                         <div class="row purchase_order_form">
                             <div>
                                 <p class="fw-bold mb-0">PO Details</p>
@@ -220,8 +220,8 @@ $this->load->view('portal/layout/header');
                             <div class="col-md-4 mt-lg-3">
                                 <div class="d-flex align-items-end">
                                     <label for="supply_status" class="form-label flex-1">Supply Status</label>
-                                    <label><input type="radio" name="supply_status" id="supply_status_yes" value="Yes" <?php if($PO->Supply_Status == 'Yes') { ?> checked <?php } ?> class="supply_status_yes flex-1 input_style"> Yes</label>
-                                    <label class="ms-3"><input type="radio" name="supply_status" id="supply_status_no" value="No" <?php if($PO->Supply_Status == 'No') { ?> checked <?php } ?> class="flex-1 input_style"> No</label>
+                                    <label><input type="radio" name="supply_status" id="supply_status_yes" value="Supplied" <?php if($PO->Supply_Status == 'Supplied') { ?> checked <?php } ?> class="supply_status_yes flex-1 input_style"> Yes</label>
+                                    <label class="ms-3"><input type="radio" name="supply_status" id="supply_status_no" value="Not Supplied" <?php if($PO->Supply_Status == 'Not Supplied') { ?> checked <?php } ?> class="flex-1 input_style"> No</label>
                                 </div>
                             </div>
                             <div class="col-md-4">

@@ -56,6 +56,7 @@ class Purchase_Orders extends CI_Controller
         $delivery_period = $this->input->post('delivery_period');
         $delivery_period = $delivery_period . ' days';
         $supply_dueDate = date('d-m-Y', strtotime($PO_Date . $delivery_period));
+        $delivery_period1 = $this->input->post('delivery_period');
         $data = [];
         $itemQty = $this->input->post('item_qty[]');
         for ($i = 0; $i < count($itemQty); $i++) {
@@ -73,7 +74,7 @@ class Purchase_Orders extends CI_Controller
                 'District' => $this->input->post('district')[$i],
                 'Hospital_Type' => $this->input->post('type')[$i],
                 'Hospital_Name' => $this->input->post('hospital_name')[$i],
-                'Delivery_Period' => $delivery_period,
+                'Delivery_Period' => $delivery_period1,
                 'Scheme' => $this->input->post('scheme'),
                 'Supply_Status' => $this->input->post('supply_status'),
                 'Supply_DueDate' => $supply_dueDate
@@ -110,6 +111,7 @@ class Purchase_Orders extends CI_Controller
         $delivery_period = $this->input->post('delivery_period');
         $delivery_period = $delivery_period . ' days';
         $supply_dueDate = date('d-m-Y', strtotime($PO_Date . $delivery_period));
+        $delivery_period1 = $this->input->post('delivery_period');
         $data = [];
         $itemQty = $this->input->post('item_qty[]');
         $data = [
@@ -126,7 +128,7 @@ class Purchase_Orders extends CI_Controller
             'District' => $this->input->post('district'),
             // 'Hospital_Type' => $this->input->post('type[]'),
             // 'Hospital_Name' => $this->input->post('hospital_name[]'),
-            'Delivery_Period' => $delivery_period,
+            'Delivery_Period' => $delivery_period1,
             'Scheme' => $this->input->post('scheme'),
             'Supply_Status' => $this->input->post('supply_status'),
             'Supply_DueDate' => $supply_dueDate,

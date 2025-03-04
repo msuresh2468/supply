@@ -19,7 +19,7 @@ $this->load->view('portal/layout/header'); ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pb-5">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h4 class="my-0">View Purchase Order</h4>
-                    <a href="<?php echo base_url() ?>portal/view-po/<?php echo $view_purchase_order->PO_Number; ?>" class="text-decoration-none bg-primary text-white px-3 py-1">Back</a>
+                    <!-- <a href="<?php echo base_url() ?>portal/view-po/<?php echo $view_purchase_order->PO_Number; ?>" class="text-decoration-none bg-primary text-white px-3 py-1">Back</a> -->
                 </div>
                 <div class="row mx-0">
                     <div class="col-md-6 pe-lg-5">

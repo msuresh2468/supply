@@ -28,6 +28,27 @@ class PurchaseModel extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    public function supplied(){
+        $this->db->select('*');
+        $this->db->from('purchase_order');
+        $this->db->where('Supply_Status', 'Supplied');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function notsupplied(){
+        $this->db->select('*');
+        $this->db->from('purchase_order');
+        $this->db->where('Supply_Status', 'Not Supplied');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function status()
+    {
+        $this->db->select('*');
+        $this->db->from('purchase_order');
+        $query = $this->db->get();
+        return $query->result();
+    }
     public function viewPO($id)
     {
         $this->db->select('*');

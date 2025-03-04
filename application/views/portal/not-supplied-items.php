@@ -20,6 +20,65 @@ $this->load->view('portal/layout/header'); ?>
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h4>Not Supplied Items</h4>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <?php
+                        if ($this->session->flashdata('status')) : ?>
+                            <div class="alert alert-success">
+                                <?= $this->session->flashdata('status'); ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php
+                        echo $this->input->get('msg');
+                        ?>
+                        <?php if (count($notsupplied) > 0) { ?>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>PO Number</th>
+                                        <th>PO Date</th>
+                                        <th>File Number</th>
+                                        <th>Item Name</th>
+                                        <th>Supply Date</th>
+                                        <th>Supply Status</th>                                        
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($notsupplied as $row) : ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $row->PO_Number; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->PO_Date; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->File_Number; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->Item_Name; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->Supply_DueDate; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->Supply_Status; ?>
+                                            </td>
+                                            <td>
+                                                <a href="<?php echo base_url('portal/view-purchase-order/' . $row->id); ?>" class="btn btn-info">View</a>
+                                                <a href="<?php echo base_url('portal/edit-purchase-order/' . $row->id); ?>" class="btn btn-warning">Edit</a>
+                                                <!-- <button type="submit" id="<?php echo $row->id ?>" class="btn btn-danger remove-po"> Delete</button> -->
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        <?php } else {
+                            echo "<h4 class='text-center text-danger'>Currently No POs Found</h4>";
+                        } ?>
+                    </div>
+                </div>
             </main>
         </div>
     </div>
