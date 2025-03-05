@@ -1,18 +1,67 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
 <script>
     $("#rowAdd").click(function() {
         var length = $('.purchase_order_form').length;
         var i = parseInt(length) + parseInt(1);
         newFirmAdd =
             `<hr style="border-color:red;opacity:1"><div class="row purchase_order_form">
+                            <div>
+                                <p class="fw-bold mb-0">Item Details</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="item_name" class="form-label flex-1">Item Name</label>
+                                    <input type="text" class="form-control flex-1 input_style" id="item_name" name="item_name[]">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="model" class="form-label flex-1">Make & Model</label>
+                                    <input type="text" class="form-control flex-1 input_style" id="model" name="model[]">
+                                </div>
+                            </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="item_qty" class="form-label flex-1">Item Quantity</label>
                                     <input type="text" class="form-control flex-1 input_style" id="item_qty" name="item_qty[]">
                                 </div>
                             </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="unit_rate" class="form-label flex-1">Unit Rate</label>
+                                    <input type="text" class="form-control flex-1 input_style" id="unit_rate" name="unit_rate[]">
+                                </div>
+                            </div>
+                            <div>
+                                <p class="fw-bold mb-0">Hospital Details</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="model" class="form-label flex-1">Select Hospital Type</label>
+                                    <select onchange="hospital_typeChange('type-` + i + `')" class="form-select hospital_type input_style flex-1" id="type-` + i + `" name="type[]">
+                                        <option>Select Hospital Type</option>
+                                        <?php
+                                        foreach ($types as $type) {
+                                        ?>
+                                            <option value="<?php echo $type->id; ?>"><?php echo $type->type; ?></option>
+                                        <?php }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="hospital_name" class="form-label flex-1">Select Hospital Name</label>
+                                    <div id='HospitalBox-` + i + `' class="flex-1">
+                                        <select class="form-select input_style" id="hospital_name[]" name="hospital_name[]" aria-label="Default select example">
+                                            <option value=''>Select Hospital Name</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>  
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="model" class="form-label flex-1">Select District</label>
@@ -45,30 +94,6 @@
                                         <option value="Tirupati">Tirupati</option>
                                         <option value="Chittoor">Chittoor</option>                            
                                     </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3 d-flex align-items-end">
-                                    <label for="model" class="form-label flex-1">Select Hospital Type</label>
-                                    <select onchange="hospital_typeChange('type-` + i + `')" class="form-select hospital_type input_style flex-1" id="type-` + i + `" name="type[]">
-                                        <option>Select Hospital Type</option>
-                                        <?php
-                                        foreach ($types as $type) {
-                                        ?>
-                                            <option value="<?php echo $type->id; ?>"><?php echo $type->type; ?></option>
-                                        <?php }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="mb-3 d-flex align-items-end">
-                                    <label for="hospital_name" class="form-label flex-1">Select Hospital Name</label>
-                                    <div id='HospitalBox-` + i + `' class="flex-1">
-                                        <select class="form-select input_style" id="hospital_name[]" name="hospital_name[]" aria-label="Default select example">
-                                            <option value=''>Select Hospital Name</option>
-                                        </select>
-                                    </div>
                                 </div>
                             </div>`;
 
@@ -148,6 +173,7 @@
         });
     })
 </script>
+
 </body>
 
 </html>

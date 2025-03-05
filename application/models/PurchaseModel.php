@@ -14,8 +14,8 @@ class PurchaseModel extends CI_Model
     public function allPOs()
     {
         $this->db->select('*');
-        $this->db->select_sum('Item_Amount');
-        $this->db->from('purchase_order');
+        //$this->db->select_sum('Item_Amount');
+        $this->db->from('po_details');
         $this->db->group_by('PO_Number');
         $query = $this->db->get();       
         return $query->result();
@@ -23,8 +23,8 @@ class PurchaseModel extends CI_Model
     public function PODetails($id)
     {
         $this->db->select('*');
-        $this->db->from('purchase_order');
-        $this->db->where('PO_Number', $id);
+        $this->db->from('item_order_details');
+        $this->db->where('po_id', $id);
         $query = $this->db->get();
         return $query->result();
     }
@@ -52,7 +52,7 @@ class PurchaseModel extends CI_Model
     public function viewPO($id)
     {
         $this->db->select('*');
-        $this->db->from('purchase_order');
+        $this->db->from('po_details');
         $this->db->where('id', $id);
         $query = $this->db->get();
         return $query->row();
@@ -63,10 +63,11 @@ class PurchaseModel extends CI_Model
         $query = $this->db->get_where('purchase_order', ['id' => $id]);
         return $query->row();
     }
-    public function insertPO($data)
+    public function insertpo($data)
     {
         $this->load->database();
-        return $this->db->insert('purchase_order', $data);
+        $this->db->insert('po_details', $data);
+        return $this->db->insert_id();
     }
     public function editjob($id)
     {
