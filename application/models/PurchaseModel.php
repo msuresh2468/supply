@@ -63,30 +63,26 @@ class PurchaseModel extends CI_Model
         $query = $this->db->get_where('purchase_order', ['id' => $id]);
         return $query->row();
     }
+    public function editPOItem($id)
+    {
+        $this->load->database();
+        $query = $this->db->get_where('item_order_details', ['id' => $id]);
+        return $query->row();
+    }
     public function insertpo($data)
     {
         $this->load->database();
         $this->db->insert('po_details', $data);
         return $this->db->insert_id();
     }
-    public function editjob($id)
-    {
-        $this->load->database();
-        $query = $this->db->get_where('purchase_order', ['id' => $id]);
-        return $query->row();
-    }
-    public function updatejob($data, $id)
-    {
-        $this->load->database();
-        return $this->db->update('purchase_order', $data, ['id' => $id]);
-    }
-    public function deletejob($id)
-    {
-        return $this->db->delete('purchase_order', ['id' => $id]);
-    }
     public function updatePO($data, $id)
     {
         $this->load->database();
-        return $this->db->update('purchase_order', $data, ['id' => $id]);
+        return $this->db->update('po_details', $data, ['id' => $id]);
+    }
+    public function updatePOItem($data, $id)
+    {
+        $this->load->database();
+        return $this->db->update('item_order_details', $data, ['id' => $id]);
     }
 }

@@ -18,7 +18,7 @@ $this->load->view('portal/layout/header'); ?>
             <?php $this->load->view('portal/sidebar_menu'); ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h4 class="my-0">PO Details</h4>
+                    <h4 class="my-0">PO Items List</h4>
                     <a href="<?php echo base_url() ?>portal/purchase-orders" class="text-decoration-none bg-primary text-white px-3 py-1">Back</a>
                 </div>
                 <div class="row">
@@ -58,7 +58,7 @@ $this->load->view('portal/layout/header'); ?>
                                                 <?php echo $row->Item_Model; ?>
                                             </td>
                                             <td>
-                                                <?php echo $view_hospital_name->name; ?>
+                                                <?php echo $hospital_name->name; ?>
                                             </td>
                                             <td>
                                                 <?php echo $row->District; ?>

@@ -17,7 +17,7 @@ class HospitalTypeModel extends CI_Model
     public function viewHospitalName($id)
     {
         $this->db->select('*');
-        $this->db->from('purchase_order a');
+        $this->db->from('item_order_details a');
         $this->db->join('hospital_name b', 'b.id=a.Hospital_Name');
         $this->db->where('a.id', $id);
         $query = $this->db->get();
@@ -26,8 +26,16 @@ class HospitalTypeModel extends CI_Model
     public function viewHospitalType($id)
     {
         $this->db->select('*');
-        $this->db->from('purchase_order a');
+        $this->db->from('item_order_details a');
         $this->db->join('hospital_type b', 'b.id=a.Hospital_Type');
+        $this->db->where('a.id', $id);
+        $query = $this->db->get();
+        return $query->row();
+    }
+    public function HospitalName($id){
+        $this->db->select('*');
+        $this->db->from('item_order_details a');
+        $this->db->join('hospital_name b', 'b.id=a.Hospital_Name');
         $this->db->where('a.id', $id);
         $query = $this->db->get();
         return $query->row();

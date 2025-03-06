@@ -151,10 +151,12 @@
             $("#dd_number").prop("disabled", true);
             $("#dd_date").prop("disabled", true);
             $("#dd_amt").prop("disabled", true);
+            $("#dd_validity").prop("disabled", true);
             if ($(this).hasClass('is_dd_yes')) {
                 $("#dd_number").prop("disabled", false);
                 $("#dd_date").prop("disabled", false);
                 $("#dd_amt").prop("disabled", false);
+                $("#dd_validity").prop("disabled", false);
             }
         });
         $('.agreement_field input:radio').click(function() {
@@ -169,6 +171,18 @@
             $("#bills_to_be_submit").prop("disabled", true);
             if ($(this).hasClass('is_bills_submit_yes')) {
                 $("#bills_to_be_submit").prop("disabled", false);
+            }
+        });
+        $('.supply_status input:radio').click(function() {
+            $("#delivery_date").prop("disabled", true);
+            $("#installation_date").prop("disabled", true);
+            $("#warranty_years").prop("disabled", true);
+            $("#warranty_date").prop("disabled", true);
+            if ($(this).hasClass('supply_status_yes')) {
+                $("#delivery_date").prop("disabled", false);
+                $("#installation_date").prop("disabled", false);
+                $("#warranty_years").prop("disabled", false);
+                $("#warranty_date").prop("disabled", false);
             }
         });
     })

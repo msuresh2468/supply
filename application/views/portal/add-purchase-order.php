@@ -123,7 +123,7 @@ $this->load->view('portal/layout/header');
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
-                                    <label for="model" class="form-label flex-1">Select District</label>
+                                    <label for="district" class="form-label flex-1">Select District</label>
                                     <select class="form-select input_style flex-1" id="district" name="district[]">
                                         <option>Select District</option>
                                         <option value="Srikakulam">Srikakulam</option>

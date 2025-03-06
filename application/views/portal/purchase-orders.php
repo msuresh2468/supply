@@ -18,7 +18,7 @@ $this->load->view('portal/layout/header'); ?>
             <?php $this->load->view('portal/sidebar_menu'); ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h4 class="my-0">Purchase Orders</h4>
+                    <h4 class="my-0">All Purchase Orders</h4>
                     <a href="<?php echo base_url() ?>portal/add-purchase-order" class="text-decoration-none bg-primary text-white px-3 py-1">Add New PO</a>
                 </div>
                 <div class="row">
@@ -36,16 +36,21 @@ $this->load->view('portal/layout/header'); ?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
+                                        <th>PO Year</th>
                                         <th>PO Number</th>
                                         <th>PO Date</th>
                                         <th>File Number</th>
                                         <th>Gross Amount</th>
+                                        <th>Supply Due Date</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($purchase_orders as $row) : ?>
                                         <tr>
+                                            <td>
+                                                <?php echo $row->PO_Year; ?>
+                                            </td>
                                             <td>
                                                 <?php echo $row->PO_Number; ?>
                                             </td>
@@ -57,6 +62,9 @@ $this->load->view('portal/layout/header'); ?>
                                             </td>
                                             <td>
                                                 <?php echo $row->Gross_Amount; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->Supply_DueDate; ?>
                                             </td>
                                             <td>
                                                 <a href="<?php echo base_url('portal/view-po/' . $row->PO_Number); ?>" class="btn btn-info">PO Details</a>
