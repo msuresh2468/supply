@@ -36,8 +36,8 @@ class HospitalTypeModel extends CI_Model
         $this->db->select('*');
         $this->db->from('item_order_details a');
         $this->db->join('hospital_name b', 'b.id=a.Hospital_Name');
-        $this->db->where('a.id', $id);
+        $query = $this->db->where('a.po_id', $id);
         $query = $this->db->get();
-        return $query->row();
+        return $query->result();
     }
 }

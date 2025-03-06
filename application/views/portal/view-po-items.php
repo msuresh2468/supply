@@ -32,6 +32,8 @@ $this->load->view('portal/layout/header'); ?>
                         <?php
                         echo $this->input->get('msg');
                         ?>
+
+
                         <?php if (count($view_po_items) > 0) { ?>
                             <table class="table table-bordered">
                                 <thead>
@@ -47,6 +49,8 @@ $this->load->view('portal/layout/header'); ?>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($view_po_items as $row) : ?>
+                                        <!-- <?php echo $name = $row->name; ?> -->
+
                                         <tr>
                                             <td>
                                                 <?php echo $row->po_id; ?>
@@ -57,9 +61,16 @@ $this->load->view('portal/layout/header'); ?>
                                             <td>
                                                 <?php echo $row->Item_Model; ?>
                                             </td>
+
                                             <td>
-                                                <?php echo $hospital_name->name; ?>
+                                                <?php foreach ($hospital_name as $row1) :
+                                                    if ($row->Hospital_Name == $row1->id) {
+                                                ?>
+                                                        <?php echo $row1->name; ?>
+                                                <?php }
+                                                endforeach; ?>
                                             </td>
+
                                             <td>
                                                 <?php echo $row->District; ?>
                                             </td>
@@ -74,11 +85,13 @@ $this->load->view('portal/layout/header'); ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
+
                                 </tbody>
                             </table>
                         <?php } else {
                             echo "<h4 class='text-center text-danger'>Currently No POs Found</h4>";
                         } ?>
+
                     </div>
                 </div>
             </main>
