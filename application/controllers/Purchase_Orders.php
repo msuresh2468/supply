@@ -57,10 +57,12 @@ class Purchase_Orders extends CI_Controller
     public function hospitalList()
     {
         $type_id = $this->input->post('type_id');
+        $count = $this->input->post('count');
         $this->load->model('HospitalTypeModel');
         $hospital_names = $this->HospitalTypeModel->getNames($type_id);
         $data = [];
         $data['hospital_names'] = $hospital_names;
+        $data['counter'] = $count;
         // print_r($data['hospital_names']['name']);die;
         //print_r($hospital_names);die;
         $namesString = $this->load->view('portal/names-select', $data, true);
@@ -71,6 +73,7 @@ class Purchase_Orders extends CI_Controller
     }
     public function addPO()
     {
+        //print_r($_POST);die;
         $po = new PurchaseModel();
         $PO_Date = $this->input->post('po_date');
         $PO_Date = date('d-m-Y', strtotime($PO_Date));
@@ -94,16 +97,17 @@ class Purchase_Orders extends CI_Controller
         $data1 = [];
         $itemQty = $this->input->post('item_qty[]');
         for ($i = 0; $i < count($itemQty); $i++) {
+            //print_r($this->input->post('hospital_name_'.$i));die;
             $data2 = [
                 'po_id' => $po_id,
                 'Item_Name' => $this->input->post('item_name')[$i],
                 'Item_Model' => $this->input->post('model')[$i],
                 'Unit_Rate' => $this->input->post('unit_rate')[$i],
                 'Item_Qty' => $this->input->post('item_qty')[$i],
-                'Item_Amount' =>  $this->input->post('item_qty')[$i] * $this->input->post('unit_rate')[$i],
+                // 'Item_Amount' =>  $this->input->post('item_qty')[$i] * $this->input->post('unit_rate')[$i],
                 'District' => $this->input->post('district')[$i],
                 'Hospital_Type' => $this->input->post('type')[$i],
-                'Hospital_Name' => $this->input->post('hospital_name')[$i],                
+                'Hospital_Name' => implode(', ', $this->input->post('hospital_name_'.$i)),                           
                 'Supply_Status' => $this->input->post('supply_status'),
                 
             ];

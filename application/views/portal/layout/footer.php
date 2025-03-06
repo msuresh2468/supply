@@ -3,7 +3,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
 <script>
+    var counter = 0;
     $("#rowAdd").click(function() {
+        counter++;
         var length = $('.purchase_order_form').length;
         var i = parseInt(length) + parseInt(1);
         newFirmAdd =
@@ -56,7 +58,7 @@
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="hospital_name" class="form-label flex-1">Select Hospital Name</label>
                                     <div id='HospitalBox-` + i + `' class="flex-1">
-                                        <select class="form-select input_style" id="hospital_name[]" name="hospital_name[]" aria-label="Default select example">
+                                        <select class="form-select input_style" id="hospital_name[]" name="hospital_name_` + i + `[]" aria-label="Default select example multiple">
                                             <option value=''>Select Hospital Name</option>
                                         </select>
                                     </div>
@@ -115,13 +117,15 @@
             url: '<?php echo base_url('Purchase_Orders/hospitalList') ?>/',
             type: 'POST',
             data: {
-                type_id: type_id
+                type_id: type_id,
+                count: counter
             },
             dataType: 'json',
             success: function(response) {
                 console.log(response)
                 if (response['hospital_names']) {
                     $(responseAppend).html(response['hospital_names']);
+                    $('.hospital_name').selectpicker();
                 }
             }
         });
@@ -130,6 +134,9 @@
 
 <script>
     $(document).ready(function() {
+        
+
+
         $(function() {
             $('#datepicker').datepicker();
         });
