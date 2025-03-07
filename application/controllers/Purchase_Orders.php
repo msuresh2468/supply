@@ -36,7 +36,8 @@ class Purchase_Orders extends CI_Controller
             'PO' => $this->PurchaseModel->editPO($id),
             'types' => $type->getTypes(),
             'view_hospital_name' => $type->viewHospitalName($id),
-            'view_hospital_type' => $type->viewHospitalType($id)
+            'view_hospital_type' => $type->viewHospitalType($id),
+            
         );
         $this->load->view('portal/edit-purchase-order', $data);
     }
@@ -50,7 +51,8 @@ class Purchase_Orders extends CI_Controller
             'PO_Item' => $this->PurchaseModel->editPOItem($id),
             'types' => $type->getTypes(),
             'view_hospital_name' => $type->viewHospitalName($id),
-            'view_hospital_type' => $type->viewHospitalType($id)
+            'view_hospital_type' => $type->viewHospitalType($id),
+            'hospital_name' => $type->HospitalName($id),
         );
         $this->load->view('portal/edit-po-items', $data);
     }
@@ -107,7 +109,7 @@ class Purchase_Orders extends CI_Controller
                 // 'Item_Amount' =>  $this->input->post('item_qty')[$i] * $this->input->post('unit_rate')[$i],
                 'District' => $this->input->post('district')[$i],
                 'Hospital_Type' => $this->input->post('type')[$i],
-                'Hospital_Name' => implode(', ', $this->input->post('hospital_name_'.$i)),                           
+                'Hospital_Name' => implode('_', $this->input->post('hospital_name_'.$i)),                           
                 'Supply_Status' => $this->input->post('supply_status'),
                 
             ];

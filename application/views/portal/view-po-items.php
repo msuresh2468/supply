@@ -49,8 +49,11 @@ $this->load->view('portal/layout/header'); ?>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($view_po_items as $row) : ?>
-                                        <!-- <?php echo $name = $row->name; ?> -->
 
+                                        <?php $string = $row->Hospital_Name;
+                                        $str_arr = explode("_", $string);
+                                        //print_r($str_arr);
+                                        foreach ($str_arr as $row1) :?>
                                         <tr>
                                             <td>
                                                 <?php echo $row->po_id; ?>
@@ -62,13 +65,11 @@ $this->load->view('portal/layout/header'); ?>
                                                 <?php echo $row->Item_Model; ?>
                                             </td>
 
-                                            <td>
-                                                <?php foreach ($hospital_name as $row1) :
-                                                    if ($row->Hospital_Name == $row1->id) {
-                                                ?>
-                                                        <?php echo $row1->name; ?>
-                                                <?php }
-                                                endforeach; ?>
+                                            <td> 
+                                                <?php echo $row1; ?>
+                                                <?php
+                                                $row1 = str_replace(' ', '-', $row1);
+                                                $row1 = preg_replace('/[^A-Za-z0-9\-]/', '', $row1); ?>
                                             </td>
 
                                             <td>
@@ -78,13 +79,10 @@ $this->load->view('portal/layout/header'); ?>
                                                 <?php echo $row->Supply_Status; ?>
                                             </td>
                                             <td>
-                                                <!-- <a href="<?php echo base_url('portal/view-po/' . $row->id); ?>" class="btn btn-info">PO Details</a>
-                                                <a href="<?php echo base_url('portal/view-po-items/' . $row->id); ?>" class="btn btn-info">Item Details</a> -->
                                                 <a href="<?php echo base_url('portal/edit-po-items/' . $row->id); ?>" class="btn btn-warning">Edit</a>
-                                                <!-- <button type="submit" id="<?php echo $row->id ?>" class="btn btn-danger remove-po"> Delete</button> -->
                                             </td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php endforeach;endforeach; ?>
 
                                 </tbody>
                             </table>

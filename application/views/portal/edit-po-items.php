@@ -118,10 +118,21 @@ $this->load->view('portal/layout/header');
                                     </select> -->
                                 </div>
                             </div>
+                            <?php $string = $PO_Item->Hospital_Name;
+                                        $str_arr = explode("_", $string);
+                                        ?>
                             <div class="col-md-5">
                                 <div class="mb-3 d-flex align-items-end">
-                                    <label for="hospital_name" class="form-label flex-1">Hospital Name</label>
-                                    <input type="text" class="form-select hospital_name input_style flex-1" value="<?php echo $view_hospital_name->name ?>">
+                                    <label for="hospital_name" class="form-label flex-1">Hospitals with this PO</label>
+                                    <!-- <input type="text" class="form-select hospital_name input_style flex-1" value=""> -->
+                                    <select class="form-select" name="" id="">
+                                     <?php foreach ($str_arr as $row1): ?>
+                                       
+                                            <option value=""><?php echo $row1; ?></option>
+                                   
+                                        <?php endforeach; ?>
+                                        </select>
+                                   
                                         <!-- <?php include('names-select.php'); ?> -->
                                 </div>
                             </div>
