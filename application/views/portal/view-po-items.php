@@ -48,41 +48,47 @@ $this->load->view('portal/layout/header'); ?>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach ($hospital_names as $row2) : ?>
+                                        <?php echo $row2->po_hospital_name; ?>
+                                        <?php echo $row2->id; ?>
+                                   
                                     <?php foreach ($view_po_items as $row) : ?>
 
                                         <?php $string = $row->Hospital_Name;
                                         $str_arr = explode("_", $string);
                                         //print_r($str_arr);
-                                        foreach ($str_arr as $row1) :?>
-                                        <tr>
-                                            <td>
-                                                <?php echo $row->po_id; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row->Item_Name; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row->Item_Model; ?>
-                                            </td>
+                                        foreach ($str_arr as $row1) : ?>
+                                            <tr>
+                                                <td>
+                                                    <?php echo $row->po_id; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row->Item_Name; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row->Item_Model; ?>
+                                                </td>
 
-                                            <td> 
-                                                <?php echo $row1; ?>
-                                                <?php
-                                                $row1 = str_replace(' ', '-', $row1);
-                                                $row1 = preg_replace('/[^A-Za-z0-9\-]/', '', $row1); ?>
-                                            </td>
+                                                <td>
+                                                    <?php echo $row2->po_hospital_name; ?>
+                                                    <?php
+                                                    $row1 = str_replace(' ', '-', $row1);
+                                                    $row1 = preg_replace('/[^A-Za-z0-9\-]/', '', $row1); ?>
+                                                </td>
 
-                                            <td>
-                                                <?php echo $row->District; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row->Supply_Status; ?>
-                                            </td>
-                                            <td>
-                                                <a href="<?php echo base_url('portal/edit-po-items/' . $row->id); ?>" class="btn btn-warning">Edit</a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach;endforeach; ?>
+                                                <td>
+                                                    <?php echo $row->District; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row->Supply_Status; ?>
+                                                </td>
+                                                <td>
+                                                    <a href="<?php echo base_url('portal/edit-po-items/' . $row2->id); ?>" class="btn btn-warning">Edit</a>
+                                                </td>
+                                            </tr>
+                                    <?php endforeach;
+                                    endforeach; ?>
+                                     <?php endforeach; ?>
 
                                 </tbody>
                             </table>

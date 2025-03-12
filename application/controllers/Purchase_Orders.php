@@ -109,11 +109,11 @@ class Purchase_Orders extends CI_Controller
                 // 'Item_Amount' =>  $this->input->post('item_qty')[$i] * $this->input->post('unit_rate')[$i],
                 'District' => $this->input->post('district')[$i],
                 'Hospital_Type' => $this->input->post('type')[$i],
-                'Hospital_Name' => implode('_', $this->input->post('hospital_name_' . $i)),
+                //'Hospital_Name' => implode('_', $this->input->post('hospital_name_' . $i)),
                 'Supply_Status' => $this->input->post('supply_status'),
 
             ];
-            $hospital_names = $data2['Hospital_Name'];
+            $hospital_names = implode('_', $this->input->post('hospital_name_' . $i));
             $hospital_names = explode("_", $hospital_names);
             $data3 = [];
             for ($j = 0; $j < count($hospital_names); $j++) {
@@ -253,6 +253,7 @@ class Purchase_Orders extends CI_Controller
             "pagename" => 'add-purchase',
             'view_po_items' => $pos->PODetails($id),
             'hospital_name' => $hos->HospitalName($id),
+            'hospital_names' => $hos->HospitalNames($id),
         ];
         $this->load->view('portal/view-po-items', $data);
     }

@@ -4,9 +4,9 @@ class PurchaseModel extends CI_Model
 {
     public function totalAmount()
     {
-        $this->db->select_sum('Item_Amount');
+        $this->db->select_sum('Gross_Amount');
         $this->db->select_sum('Payment_Received');
-        $this->db->from('purchase_order');
+        $this->db->from('po_details');
         $query = $this->db->get();
         return $query->result();
     }

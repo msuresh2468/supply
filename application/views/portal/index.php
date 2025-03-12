@@ -31,7 +31,7 @@ $this->load->view('portal/layout/header'); ?>
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Total Amount</h6>
                                     <p class="h2"><?php foreach ($total as $row) : ?>
-                                            <?php echo $row->Item_Amount; ?>
+                                            <?php echo $row->Gross_Amount; ?>
                                         <?php endforeach; ?></p>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@ $this->load->view('portal/layout/header'); ?>
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Total Outstanding</h6>
                                     <p class="h2"><?php foreach ($total as $row) : ?>
-                                            <?php if($row->Item_Amount - $row->Payment_Received == 0){echo '';}else{ echo $row->Item_Amount - $row->Payment_Received;}  ?>
+                                            <?php if($row->Gross_Amount - $row->Payment_Received == 0){echo '';}else{ echo $row->Item_Amount - $row->Payment_Received;}  ?>
                                         <?php endforeach; ?></p>
                                 </div>
                             </div>
