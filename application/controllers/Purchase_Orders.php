@@ -37,7 +37,7 @@ class Purchase_Orders extends CI_Controller
             'types' => $type->getTypes(),
             'view_hospital_name' => $type->viewHospitalName($id),
             'view_hospital_type' => $type->viewHospitalType($id),
-            
+
         );
         $this->load->view('portal/edit-purchase-order', $data);
     }
@@ -68,7 +68,7 @@ class Purchase_Orders extends CI_Controller
         // print_r($data['hospital_names']['name']);die;
         //print_r($hospital_names);die;
         $namesString = $this->load->view('portal/names-select', $data, true);
-        
+
         $response['hospital_names'] = $namesString;
         //print_r($response['hospital_names']);die;
         echo json_encode($response);
@@ -109,13 +109,33 @@ class Purchase_Orders extends CI_Controller
                 // 'Item_Amount' =>  $this->input->post('item_qty')[$i] * $this->input->post('unit_rate')[$i],
                 'District' => $this->input->post('district')[$i],
                 'Hospital_Type' => $this->input->post('type')[$i],
-                'Hospital_Name' => implode('_', $this->input->post('hospital_name_'.$i)),                           
+                'Hospital_Name' => implode('_', $this->input->post('hospital_name_' . $i)),
                 'Supply_Status' => $this->input->post('supply_status'),
-                
+
             ];
+            $hospital_names = $data2['Hospital_Name'];
+            $hospital_names = explode("_", $hospital_names);
+            $data3 = [];
+            for ($j = 0; $j < count($hospital_names); $j++) {
+                //print_r($this->input->post('hospital_name_'.$i));die;
+                $data4 = [
+                    'item_po_id' => $po_id,
+
+                    'po_hospital_name' => $hospital_names[$j],
+
+                ];
+                array_push($data3, $data4);
+            }
+            $this->db->insert_batch('po_associate_hospitals', $data3);
             array_push($data1, $data2);
         }
         $this->db->insert_batch('item_order_details', $data1);
+
+        //print_r(($hospital_names));die;
+
+        // for ($i = 0; $i < count($hospital_names); $i++) {
+
+        // }
         $this->session->set_flashdata('status', 'New PO Added Successfully');
         redirect(base_url('portal/purchase-orders'));
     }
@@ -218,13 +238,14 @@ class Purchase_Orders extends CI_Controller
             'page_title' => 'Add Purchase Order',
             "pagename" => 'add-purchase',
             'view_po' => $pos->PODetails($id),
-            
+
             'PO' => $pos->viewPO($id),
         ];
 
         $this->load->view('portal/view-po', $data);
     }
-    public function viewPOItemDetails($id){
+    public function viewPOItemDetails($id)
+    {
         $pos = new PurchaseModel();
         $hos = new HospitalTypeModel();
         $data = [
