@@ -30,14 +30,14 @@ class PurchaseModel extends CI_Model
     }
     public function supplied(){
         $this->db->select('*');
-        $this->db->from('purchase_order');
+        $this->db->from('item_order_details');
         $this->db->where('Supply_Status', 'Supplied');
         $query = $this->db->get();
         return $query->result();
     }
     public function notsupplied(){
         $this->db->select('*');
-        $this->db->from('purchase_order');
+        $this->db->from('item_order_details');
         $this->db->where('Supply_Status', 'Not Supplied');
         $query = $this->db->get();
         return $query->result();
@@ -45,7 +45,7 @@ class PurchaseModel extends CI_Model
     public function status()
     {
         $this->db->select('*');
-        $this->db->from('purchase_order');
+        $this->db->from('po_details');
         $query = $this->db->get();
         return $query->result();
     }
@@ -60,7 +60,7 @@ class PurchaseModel extends CI_Model
     public function editPO($id)
     {
         $this->load->database();
-        $query = $this->db->get_where('purchase_order', ['id' => $id]);
+        $query = $this->db->get_where('po_details', ['id' => $id]);
         return $query->row();
     }
     public function editPOItem($id)
