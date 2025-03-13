@@ -39,7 +39,7 @@ $this->load->view('portal/layout/header'); ?>
                                         <th>PO Date</th>
                                         <th>File Number</th>
                                         <th>Item Name</th>
-                                        <th>Supply Due Date</th>
+                                        <th>Installation Date</th>
                                         <th>Supply Status</th>
                                     </tr>
                                 </thead>
