@@ -56,17 +56,21 @@ class Dashboard extends CI_Controller {
 	}
     public function installed()
 	{
+        $pos = new PurchaseModel();
 		$data = [
             'page_title' => 'Installed Items',
-            "pagename" => 'installed'
+            "pagename" => 'installed',
+            'installed' => $pos->installed()
         ];
         $this->load->view('portal/installed-items', $data);
 	}
     public function notinstalled()
 	{
+        $pos = new PurchaseModel();
 		$data = [
             'page_title' => 'Not Installed Items',
-            "pagename" => 'notinstalled'
+            "pagename" => 'notinstalled',
+            'notinstalled' => $pos->notinstalled() 
         ];
         $this->load->view('portal/not-installed-items', $data);
 	}

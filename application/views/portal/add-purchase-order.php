@@ -107,7 +107,7 @@ $this->load->view('portal/layout/header');
                                         <?php
                                         foreach ($types as $type) {
                                         ?>
-                                            <option value="<?php echo $type->type; ?>"><?php echo $type->type; ?></option>
+                                            <option value="<?php echo $type->id; ?>"><?php echo $type->type; ?></option>
                                         <?php }
                                         ?>
                                     </select>

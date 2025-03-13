@@ -93,6 +93,7 @@ class Purchase_Orders extends CI_Controller
             'Supply_DueDate' => $supply_dueDate
         ];
         $po_id = $po->insertpo($data);
+        //$po_id = $this->input->post('po_number');
         //print_r($po->insertpo($data));die;
         $data1 = [];
         $itemQty = $this->input->post('item_qty[]');
@@ -111,7 +112,7 @@ class Purchase_Orders extends CI_Controller
                 //'Supply_Status' => $this->input->post('supply_status'),
 
             ];
-            $hospital_type = $this->input->post('item_qty')[$i];
+            $hospital_type = $this->input->post('type')[$i];
             $hospital_names = implode('_', $this->input->post('hospital_name_' . $i));
             $hospital_names = explode("_", $hospital_names);
             $District = $this->input->post('district')[$i];

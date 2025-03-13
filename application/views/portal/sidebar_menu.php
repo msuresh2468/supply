@@ -40,10 +40,25 @@
                             <a class="nav-link" href="<?php echo base_url() ?>portal/installed-items-before-cutoff-date">
                                 Installed Items Before Cutoff Date
                             </a>
+                        </li>                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo base_url() ?>portal/supply-status">
+                                PO Agreement Details
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo base_url() ?>portal/supply-status">
-                                Supply Status
+                                PO BG/DD Details
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo base_url() ?>portal/supply-status">
+                                PO Item Warranty Details
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo base_url() ?>portal/supply-status">
+                                Payment Details
                             </a>
                         </li>
                     </ul>

@@ -39,16 +39,15 @@ $this->load->view('portal/layout/header'); ?>
                                         <th>PO Date</th>
                                         <th>File Number</th>
                                         <th>Item Name</th>
-                                        <th>Supply Date</th>
-                                        <th>Supply Status</th>                                        
-                                        <th>Actions</th>
+                                        <th>Supply Due Date</th>
+                                        <th>Supply Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($supplied as $row) : ?>
                                         <tr>
                                             <td>
-                                                <?php echo $row->PO_Number; ?>
+                                                <a href="<?php echo base_url('portal/view-po-items/' . $row->id); ?>"> <?php echo $row->PO_Number; ?></a>
                                             </td>
                                             <td>
                                                 <?php echo $row->PO_Date; ?>
@@ -63,12 +62,7 @@ $this->load->view('portal/layout/header'); ?>
                                                 <?php echo $row->Supply_DueDate; ?>
                                             </td>
                                             <td>
-                                                <?php echo $row->Supply_Status; ?>
-                                            </td>
-                                            <td>
-                                                <a href="<?php echo base_url('portal/view-purchase-order/' . $row->id); ?>" class="btn btn-info">View</a>
-                                                <a href="<?php echo base_url('portal/edit-purchase-order/' . $row->id); ?>" class="btn btn-warning">Edit</a>
-                                                <!-- <button type="submit" id="<?php echo $row->id ?>" class="btn btn-danger remove-po"> Delete</button> -->
+                                                <?php echo $row->supply_status; ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

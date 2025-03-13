@@ -106,7 +106,15 @@ $this->load->view('portal/layout/header');
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="model" class="form-label flex-1">Hospital Type</label>
                                     <input type="text" class="form-select hospital_name input_style flex-1" 
-                                    value="<?php echo $PO_Item->Hospital_Type;?>">
+                                    value="<?php if($PO_Item->Hospital_Type == '1') echo 'AH';
+                                    else if($PO_Item->Hospital_Type == '2') echo 'PHC';
+                                    else if($PO_Item->Hospital_Type == '3') echo 'CHC';
+                                    else if($PO_Item->Hospital_Type == '4') echo 'DH';
+                                    else if($PO_Item->Hospital_Type == '5') echo 'TH';
+                                    else if($PO_Item->Hospital_Type == '6') echo 'UPHC';
+                                    else if($PO_Item->Hospital_Type == '7') echo 'MCH';
+                                    
+                                    ?>">
                                    
                                 </div>
                             </div>

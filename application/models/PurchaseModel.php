@@ -30,15 +30,37 @@ class PurchaseModel extends CI_Model
     }
     public function supplied(){
         $this->db->select('*');
-        $this->db->from('po_item_details');
-        //$this->db->where('Supply_Status', 'Supplied');
+        $this->db->from('po_associate_hospitals a');
+        $this->db->join('po_item_details b', 'b.po_id=a.item_po_id');
+        $this->db->join('po_details c', 'c.PO_Number=a.item_po_id');
+        $this->db->where('supply_status', 'Supplied');
         $query = $this->db->get();
         return $query->result();
     }
     public function notsupplied(){
         $this->db->select('*');
-        $this->db->from('po_item_details');
-        //$this->db->where('Supply_Status', 'Not Supplied');
+        $this->db->from('po_associate_hospitals a');
+        $this->db->join('po_item_details b', 'b.po_id=a.item_po_id');
+        $this->db->join('po_details c', 'c.PO_Number=a.item_po_id');
+        $this->db->where('supply_status', 'Not Supplied');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function installed(){
+        $this->db->select('*');
+        $this->db->from('po_associate_hospitals a');
+        $this->db->join('po_item_details b', 'b.po_id=a.item_po_id');
+        $this->db->join('po_details c', 'c.PO_Number=a.item_po_id');
+        $this->db->where('Installation_Date !=', '');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function notinstalled(){
+        $this->db->select('*');
+        $this->db->from('po_associate_hospitals a');
+        $this->db->join('po_item_details b', 'b.po_id=a.item_po_id');
+        $this->db->join('po_details c', 'c.PO_Number=a.item_po_id');
+        $this->db->where('Installation_Date', ' ');
         $query = $this->db->get();
         return $query->result();
     }
@@ -53,7 +75,7 @@ class PurchaseModel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('po_details');
-        $this->db->where('id', $id);
+        $this->db->where('PO_Number', $id);
         $query = $this->db->get();
         return $query->row();
     }
@@ -68,10 +90,17 @@ class PurchaseModel extends CI_Model
         // $this->load->database();
         // $query = $this->db->get_where('po_item_details', ['id' => $id]);
         // return $query->row();
+        // $this->db->select('*');           
+        // $this->db->from('po_associate_hospitals a');        
+        // $this->db->join('po_item_details c', 'c.po_id=a.item_po_id');        
+        // $this->db->where('a.id',$id);        
+        // $query = $this->db->get();
+        // return $query->row();
         $this->db->select('*');           
-        $this->db->from('po_associate_hospitals a');        
-        $this->db->join('po_item_details c', 'c.po_id=a.item_po_id');        
-        $this->db->where('a.id',$id);        
+        $this->db->from('po_item_details a');        
+        $this->db->join('po_associate_hospitals c', 'c.item_po_id=a.po_id');        
+        $this->db->where('c.id',$id);        
+        //$query = $this->db->group_by('po_hospital_name'); 
         $query = $this->db->get();
         return $query->row();
     }
@@ -79,7 +108,8 @@ class PurchaseModel extends CI_Model
     {
         $this->load->database();
         $this->db->insert('po_details', $data);
-        return $this->db->insert_id();
+        //return $this->db->insert_id();
+        return $this->input->post('po_number');
     }
     public function updatePO($data, $id)
     {
