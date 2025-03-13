@@ -23,22 +23,22 @@ class PurchaseModel extends CI_Model
     public function PODetails($id)
     {
         $this->db->select('*');
-        $this->db->from('item_order_details');
+        $this->db->from('po_item_details');
         $this->db->where('po_id', $id);
         $query = $this->db->get();
         return $query->result();
     }
     public function supplied(){
         $this->db->select('*');
-        $this->db->from('item_order_details');
-        $this->db->where('Supply_Status', 'Supplied');
+        $this->db->from('po_item_details');
+        //$this->db->where('Supply_Status', 'Supplied');
         $query = $this->db->get();
         return $query->result();
     }
     public function notsupplied(){
         $this->db->select('*');
-        $this->db->from('item_order_details');
-        $this->db->where('Supply_Status', 'Not Supplied');
+        $this->db->from('po_item_details');
+        //$this->db->where('Supply_Status', 'Not Supplied');
         $query = $this->db->get();
         return $query->result();
     }
@@ -65,8 +65,14 @@ class PurchaseModel extends CI_Model
     }
     public function editPOItem($id)
     {
-        $this->load->database();
-        $query = $this->db->get_where('item_order_details', ['id' => $id]);
+        // $this->load->database();
+        // $query = $this->db->get_where('po_item_details', ['id' => $id]);
+        // return $query->row();
+        $this->db->select('*');           
+        $this->db->from('po_associate_hospitals a');        
+        $this->db->join('po_item_details c', 'c.po_id=a.item_po_id');        
+        $this->db->where('a.id',$id);        
+        $query = $this->db->get();
         return $query->row();
     }
     public function insertpo($data)
@@ -83,6 +89,6 @@ class PurchaseModel extends CI_Model
     public function updatePOItem($data, $id)
     {
         $this->load->database();
-        return $this->db->update('item_order_details', $data, ['id' => $id]);
+        return $this->db->update('po_associate_hospitals', $data, ['id' => $id]);
     }
 }

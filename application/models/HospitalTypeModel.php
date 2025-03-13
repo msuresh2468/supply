@@ -23,15 +23,16 @@ class HospitalTypeModel extends CI_Model
         $query = $this->db->get();
         return $query->row();
     }
-    public function viewHospitalType($id)
-    {
-        $this->db->select('*');
-        $this->db->from('item_order_details a');
-        $this->db->join('hospital_type b', 'b.id=a.Hospital_Type');
-        $this->db->where('a.id', $id);
-        $query = $this->db->get();
-        return $query->row();
-    }
+    // public function viewHospitalType($id)
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from('hospital_type a');
+    //     $this->db->join('po_item_details b', 'b.Hospital_Type=a.id');
+    //     $this->db->join('po_associate_hospitals c', 'c.item_po_id=b.po_id');
+    //     $this->db->where('c.id', $id);
+    //     $query = $this->db->get();
+    //     return $query->row();
+    // }
     public function HospitalName($id){
         $this->db->select('*');
         $this->db->from('item_order_details a');
@@ -41,15 +42,12 @@ class HospitalTypeModel extends CI_Model
         return $query->result();
     }
     public function HospitalNames($id){
-        $this->db->select('*');
-        $this->db->from('po_associate_hospitals a');
-        $query = $this->db->where('a.item_po_id', $id);
-        //$this->db->join('po_details b', 'b.id=a.item_po_id');
-        $this->db->join('item_order_details c', 'c.po_id=a.item_po_id');
-       
-        
+        $this->db->select('*');           
+        $this->db->from('po_item_details a');        
+        $this->db->join('po_associate_hospitals c', 'c.item_po_id=a.po_id');        
+        $this->db->where('a.po_id',$id);        
+        $query = $this->db->group_by('po_hospital_name'); 
         $query = $this->db->get();
-        print_r($query->row());die;
         return $query->result();
     }
     

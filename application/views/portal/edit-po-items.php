@@ -27,7 +27,6 @@ $this->load->view('portal/layout/header');
                             <div>
                                 <p class="fw-bold mb-0">PO Details</p>
                             </div>
-                            <input type='hidden' value='1' name='total_count' id="total_count">
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="PONo" class="form-label flex-1">PO No</label>
@@ -106,34 +105,16 @@ $this->load->view('portal/layout/header');
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="model" class="form-label flex-1">Hospital Type</label>
-                                    <input type="text" class="form-select hospital_name input_style flex-1" value="<?php echo $view_hospital_type->type ?>">
-                                    <!-- <select onchange="hospital_typeChange('type')" class="form-select hospital_type input_style flex-1" id="type" name="type[]" data-id='type'>
-                                        <option>Select Hospital Type</option>
-                                        <?php
-                                        foreach ($types as $type) {
-                                        ?>
-                                            <option value="<?php echo $type->id; ?>"><?php echo $type->type; ?></option>
-                                        <?php }
-                                        ?>
-                                    </select> -->
+                                    <input type="text" class="form-select hospital_name input_style flex-1" 
+                                    value="<?php echo $PO_Item->Hospital_Type;?>">
+                                   
                                 </div>
                             </div>
-                            <?php $string = $PO_Item->Hospital_Name;
-                                        $str_arr = explode("_", $string);
-                                        ?>
                             <div class="col-md-5">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="hospital_name" class="form-label flex-1">Hospitals with this PO</label>
-                                    <!-- <input type="text" class="form-select hospital_name input_style flex-1" value=""> -->
-                                    <select class="form-select" name="" id="">
-                                     <?php foreach ($str_arr as $row1): ?>
-                                       
-                                            <option value=""><?php echo $row1; ?></option>
-                                   
-                                        <?php endforeach; ?>
-                                        </select>
-                                   
-                                        <!-- <?php include('names-select.php'); ?> -->
+                                    <input type="text" disabled class="form-select hospital_name input_style flex-1" value="<?php echo $PO_Item->po_hospital_name ?>">
+                                    
                                 </div>
                             </div>
                             <div>
@@ -142,32 +123,32 @@ $this->load->view('portal/layout/header');
                             <div class="col-md-4 mt-lg-3">
                                 <div class="d-flex align-items-end supply_status">
                                     <label for="supply_status" class="form-label flex-1">Supply Status</label>
-                                    <label><input type="radio" name="supply_status" id="supply_status_yes" value="Supplied" <?php if($PO_Item->Supply_Status == 'Supplied') { ?> checked <?php } ?> class="supply_status_yes flex-1 input_style"> Yes</label>
-                                    <label class="ms-3"><input type="radio" name="supply_status" id="supply_status_no" value="Not Supplied" <?php if($PO_Item->Supply_Status == 'Not Supplied') { ?> checked <?php } else { echo 'disabled'; }?> class="supply_status_yes flex-1 input_style"> No</label>
+                                    <label><input type="radio" name="supply_status" id="supply_status_yes" value="Supplied" <?php if($PO_Item->supply_status == 'Supplied') { ?> checked <?php } ?> class="supply_status_yes flex-1 input_style"> Yes</label>
+                                    <label class="ms-3"><input type="radio" name="supply_status" id="supply_status_no" value="Not Supplied" <?php if($PO_Item->supply_status == 'Not Supplied') { ?> checked <?php } else { echo 'disabled'; }?> class="supply_status_yes flex-1 input_style"> No</label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="delivery_date" class="form-label flex-1">Delivery Date</label>
-                                    <input type="date" class="form-control flex-1 input_style" value="<?php echo $PO_Item->Delivery_Date; ?>" id="delivery_date" name="delivery_date" <?php if ($PO_Item->Supply_Status != 'Supplied') { ?> disabled <?php } ?>>
+                                    <input type="date" class="form-control flex-1 input_style" value="<?php echo $PO_Item->Delivery_Date; ?>" id="delivery_date" name="delivery_date" <?php if ($PO_Item->supply_status != 'Supplied') { ?> disabled <?php } ?>>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="installation_date" class="form-label flex-1">Installation Date</label>
-                                    <input type="date" class="form-control flex-1 input_style" value="<?php echo $PO_Item->Installation_Date; ?>" id="installation_date" name="installation_date" <?php if ($PO_Item->Supply_Status != 'Supplied') { ?> disabled <?php } ?>>
+                                    <input type="date" class="form-control flex-1 input_style" value="<?php echo $PO_Item->Installation_Date; ?>" id="installation_date" name="installation_date" <?php if ($PO_Item->supply_status != 'Supplied') { ?> disabled <?php } ?>>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="warranty_years" class="form-label flex-1">Warranty Years</label>
-                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO_Item->Warranty_Years; ?>" id="warranty_years" name="warranty_years" <?php if ($PO_Item->Supply_Status != 'Supplied') { ?> disabled <?php } ?>>
+                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO_Item->Warranty_Years; ?>" id="warranty_years" name="warranty_years" <?php if ($PO_Item->supply_status != 'Supplied') { ?> disabled <?php } ?>>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="warranty_Date" class="form-label flex-1">Warranty Date</label>
-                                    <input type="date" class="form-control flex-1 input_style" value="<?php echo $PO_Item->Warranty_Date; ?>" id="warranty_date" name="warranty_date" <?php if ($PO_Item->Supply_Status != 'Supplied') { ?> disabled <?php } ?>>
+                                    <input type="date" class="form-control flex-1 input_style" value="<?php echo $PO_Item->Warranty_Date; ?>" id="warranty_date" name="warranty_date" <?php if ($PO_Item->supply_status != 'Supplied') { ?> disabled <?php } ?>>
                                 </div>
                             </div>
                             <div class="col-md-4">

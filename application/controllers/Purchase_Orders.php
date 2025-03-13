@@ -36,7 +36,6 @@ class Purchase_Orders extends CI_Controller
             'PO' => $this->PurchaseModel->editPO($id),
             'types' => $type->getTypes(),
             'view_hospital_name' => $type->viewHospitalName($id),
-            'view_hospital_type' => $type->viewHospitalType($id),
 
         );
         $this->load->view('portal/edit-purchase-order', $data);
@@ -51,8 +50,7 @@ class Purchase_Orders extends CI_Controller
             'PO_Item' => $this->PurchaseModel->editPOItem($id),
             'types' => $type->getTypes(),
             'view_hospital_name' => $type->viewHospitalName($id),
-            'view_hospital_type' => $type->viewHospitalType($id),
-            'hospital_name' => $type->HospitalName($id),
+            'hospital_name' => $type->HospitalNames($id),
         );
         $this->load->view('portal/edit-po-items', $data);
     }
@@ -107,21 +105,26 @@ class Purchase_Orders extends CI_Controller
                 'Unit_Rate' => $this->input->post('unit_rate')[$i],
                 'Item_Qty' => $this->input->post('item_qty')[$i],
                 // 'Item_Amount' =>  $this->input->post('item_qty')[$i] * $this->input->post('unit_rate')[$i],
-                'District' => $this->input->post('district')[$i],
-                'Hospital_Type' => $this->input->post('type')[$i],
+                //'District' => $this->input->post('district')[$i],
+                //'Hospital_Type' => $this->input->post('type')[$i],
                 //'Hospital_Name' => implode('_', $this->input->post('hospital_name_' . $i)),
-                'Supply_Status' => $this->input->post('supply_status'),
+                //'Supply_Status' => $this->input->post('supply_status'),
 
             ];
+            $hospital_type = $this->input->post('item_qty')[$i];
             $hospital_names = implode('_', $this->input->post('hospital_name_' . $i));
             $hospital_names = explode("_", $hospital_names);
+            $District = $this->input->post('district')[$i];
+            $supply_status = $this->input->post('supply_status');
             $data3 = [];
             for ($j = 0; $j < count($hospital_names); $j++) {
                 //print_r($this->input->post('hospital_name_'.$i));die;
                 $data4 = [
                     'item_po_id' => $po_id,
-
+                    'Hospital_Type' => $hospital_type,
                     'po_hospital_name' => $hospital_names[$j],
+                    'District' => $District,
+                    'supply_status' => $supply_status
 
                 ];
                 array_push($data3, $data4);
@@ -129,7 +132,7 @@ class Purchase_Orders extends CI_Controller
             $this->db->insert_batch('po_associate_hospitals', $data3);
             array_push($data1, $data2);
         }
-        $this->db->insert_batch('item_order_details', $data1);
+        $this->db->insert_batch('po_item_details', $data1);
 
         //print_r(($hospital_names));die;
 
@@ -207,7 +210,7 @@ class Purchase_Orders extends CI_Controller
             // 'District' => $this->input->post('district'),
             // 'Hospital_Type' => $this->input->post('type'),
             // 'Hospital_Name' => $this->input->post('hospital_name'),
-            'Supply_Status' => $this->input->post('supply_status'),
+            'supply_status' => $this->input->post('supply_status'),
             'Delivery_Date' => $this->input->post('delivery_date'),
             'Warranty_Years' => $this->input->post('warranty_years'),
             'Installation_Date' => $this->input->post('installation_date'),
@@ -225,7 +228,6 @@ class Purchase_Orders extends CI_Controller
             "pagename" => 'add-purchase',
             'view_purchase_order' => $pos->viewPO($id),
             'view_hospital_name' => $hos->viewHospitalName($id),
-            'view_hospital_type' => $hos->viewHospitalType($id),
         ];
 
         $this->load->view('portal/view-purchase-order', $data);
@@ -233,7 +235,6 @@ class Purchase_Orders extends CI_Controller
     public function viewPODetails($id)
     {
         $pos = new PurchaseModel();
-        $hos = new HospitalTypeModel();
         $data = [
             'page_title' => 'Add Purchase Order',
             "pagename" => 'add-purchase',
@@ -251,8 +252,8 @@ class Purchase_Orders extends CI_Controller
         $data = [
             'page_title' => 'Add Purchase Order',
             "pagename" => 'add-purchase',
-            'view_po_items' => $pos->PODetails($id),
-            'hospital_name' => $hos->HospitalName($id),
+            // 'view_po_items' => $pos->PODetails($id),
+            // 'hospital_name' => $hos->HospitalName($id),
             'hospital_names' => $hos->HospitalNames($id),
         ];
         $this->load->view('portal/view-po-items', $data);
