@@ -20,6 +20,63 @@ $this->load->view('portal/layout/header'); ?>
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h4>Installed Items Before Cutoff Date</h4>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <?php
+                        if ($this->session->flashdata('status')) : ?>
+                            <div class="alert alert-success">
+                                <?= $this->session->flashdata('status'); ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php
+                        echo $this->input->get('msg');
+                        ?>
+                        <?php if (count($beforeCutoffinstalled) > 0) { ?>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>PO Number</th>
+                                        <th>PO Date</th>
+                                        <th>File Number</th>
+                                        <th>Item Name</th>
+                                        <th>Supply Due Date</th>
+                                        <th>Installation Date</th>
+                                        <th>Supply Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($beforeCutoffinstalled as $row) : ?>
+                                        <tr>
+                                            <td>
+                                                <a href="<?php echo base_url('portal/view-po-items/' . $row->id); ?>"> <?php echo $row->PO_Number; ?></a>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->PO_Date; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->File_Number; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->Item_Name; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->Supply_DueDate; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->Installation_Date; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->supply_status; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        <?php } else {
+                            echo "<h4 class='text-center text-danger'>Currently No POs Found</h4>";
+                        } ?>
+                    </div>
+                </div>
             </main>
         </div>
     </div>

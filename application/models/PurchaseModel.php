@@ -17,7 +17,7 @@ class PurchaseModel extends CI_Model
         //$this->db->select_sum('Item_Amount');
         $this->db->from('po_details');
         $this->db->group_by('PO_Number');
-        $query = $this->db->get();       
+        $query = $this->db->get();
         return $query->result();
     }
     public function PODetails($id)
@@ -28,7 +28,8 @@ class PurchaseModel extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
-    public function supplied(){
+    public function supplied()
+    {
         $this->db->select('*');
         $this->db->from('po_associate_hospitals a');
         $this->db->join('po_item_details b', 'b.po_id=a.item_po_id');
@@ -37,7 +38,8 @@ class PurchaseModel extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
-    public function notsupplied(){
+    public function notsupplied()
+    {
         $this->db->select('*');
         $this->db->from('po_associate_hospitals a');
         $this->db->join('po_item_details b', 'b.po_id=a.item_po_id');
@@ -46,7 +48,8 @@ class PurchaseModel extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
-    public function installed(){
+    public function installed()
+    {
         $this->db->select('*');
         $this->db->from('po_associate_hospitals a');
         $this->db->join('po_item_details b', 'b.po_id=a.item_po_id');
@@ -55,12 +58,39 @@ class PurchaseModel extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
-    public function notinstalled(){
+    public function notinstalled()
+    {
         $this->db->select('*');
         $this->db->from('po_associate_hospitals a');
         $this->db->join('po_item_details b', 'b.po_id=a.item_po_id');
         $this->db->join('po_details c', 'c.PO_Number=a.item_po_id');
         $this->db->where('Installation_Date', ' ');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function afterCutoffinstalled()
+    {
+        $this->db->select('p.Installation_Date, po.PO_Number, po.id,po.PO_Date,po.File_Number,pi.Item_Name, po.Supply_DueDate, p.supply_status');
+        $this->db->from('po_associate_hospitals p');
+        $this->db->join('po_details po', 'p.item_po_id = po.PO_Number');
+        $this->db->join('po_item_details pi', 'pi.po_id = p.item_po_id');
+        $this->db->where('Installation_Date !=', '');
+        $this->db->group_start();
+        $this->db->where('Installation_Date >', 'Supply_DueDate', FALSE);
+        $this->db->group_end();
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function beforeCutoffinstalled()
+    {
+        $this->db->select('p.Installation_Date, po.PO_Number, po.id,po.PO_Date,po.File_Number,pi.Item_Name, po.Supply_DueDate, p.supply_status');
+        $this->db->from('po_associate_hospitals p');
+        $this->db->join('po_details po', 'p.item_po_id = po.PO_Number');
+        $this->db->join('po_item_details pi', 'pi.po_id = p.item_po_id');
+        $this->db->where('Installation_Date !=', '');
+        $this->db->group_start();
+        $this->db->where('Installation_Date <', 'Supply_DueDate', FALSE);
+        $this->db->group_end();
         $query = $this->db->get();
         return $query->result();
     }
@@ -96,10 +126,10 @@ class PurchaseModel extends CI_Model
         // $this->db->where('a.id',$id);        
         // $query = $this->db->get();
         // return $query->row();
-        $this->db->select('*');           
-        $this->db->from('po_item_details a');        
-        $this->db->join('po_associate_hospitals c', 'c.item_po_id=a.po_id');        
-        $this->db->where('c.id',$id);        
+        $this->db->select('*');
+        $this->db->from('po_item_details a');
+        $this->db->join('po_associate_hospitals c', 'c.item_po_id=a.po_id');
+        $this->db->where('c.id', $id);
         //$query = $this->db->group_by('po_hospital_name'); 
         $query = $this->db->get();
         return $query->row();

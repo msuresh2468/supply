@@ -58,7 +58,7 @@ $this->load->view('portal/layout/header'); ?>
                             <div class="col-md-6">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="firm_name" class="form-label flex-1">Gross Amount</label>
-                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO->Gross_Amount; ?>" id="firm_name" name="firm_name">
+                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO->Gross_Amount; ?>" id="gross_amt" name="gross_amt">
                                 </div>
                             </div>
                             <div class="col-md-6">

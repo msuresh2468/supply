@@ -19,7 +19,7 @@ class Dashboard extends CI_Controller {
 		$data = [
             'page_title' => 'Dashboard',
             "pagename" => 'index',
-            'total' => $pos->totalAmount()
+            'total' => $pos->totalAmount(),
             // 'outstanding' => $pos->Outstanding()
         ];
         $this->load->view('portal/index', $data);
@@ -76,36 +76,62 @@ class Dashboard extends CI_Controller {
 	}
     public function afterCutoff()
 	{
+        $pos = new PurchaseModel();
 		$data = [
             'page_title' => 'Installed Items After Cutoff Date',
             "pagename" => 'installafter',
+            'afterCutoffinstalled' => $pos->afterCutoffinstalled() 
         ];
         $this->load->view('portal/installed-items-after-cutoff-date', $data);
 	}
     public function beforeCutoff()
 	{
+        $pos = new PurchaseModel();
 		$data = [
             'page_title' => 'Installed Items Before Cutoff Date',
-            "pagename" => 'installbefore'
+            "pagename" => 'installbefore',
+            'beforeCutoffinstalled' => $pos->beforeCutoffinstalled() 
         ];
         $this->load->view('portal/installed-items-before-cutoff-date', $data);
 	}
-    public function status()
+    public function paymentDetails()
 	{
         $pos = new PurchaseModel();
 		$data = [
-            'page_title' => 'Supply Status',
+            'page_title' => 'PO Payment Details',
             "pagename" => 'status',
             'status' => $pos-> status()
         ];
-        $this->load->view('portal/supply-status', $data);
+        $this->load->view('portal/payment-details', $data);
 	}
-    public function addPO()
+    public function agreements()
 	{
+        $pos = new PurchaseModel();
 		$data = [
-            'page_title' => 'Add Purchase Order',
-            "pagename" => 'add-purchase'
+            'page_title' => 'PO Agreements',
+            "pagename" => 'status',
+            'status' => $pos-> status()
         ];
-        $this->load->view('portal/add-purchase-order', $data);
+        $this->load->view('portal/po-agreements', $data);
+	}
+    public function dd()
+	{
+        $pos = new PurchaseModel();
+		$data = [
+            'page_title' => 'PO DD',
+            "pagename" => 'status',
+            'status' => $pos-> status()
+        ];
+        $this->load->view('portal/po-dds-list', $data);
+	}
+    public function warranty()
+	{
+        $pos = new PurchaseModel();
+		$data = [
+            'page_title' => 'Item Warranty',
+            "pagename" => 'status',
+            'status' => $pos-> status()
+        ];
+        $this->load->view('portal/po-item-warranty', $data);
 	}
 }

@@ -31,7 +31,15 @@ $this->load->view('portal/layout/header');
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="year" class="form-label flex-1">PO Year</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="year" name="year">
+                                    <!-- <input type="text" class="form-control flex-1 input_style" id="year" name="year"> -->
+                                    <?php $selected_value = 2025;
+                                    $earliest_year = 2000;
+
+                                    print '<select class="form-select input_style flex-1" id="year" name="year">';
+                                    foreach (range(date('Y'), $earliest_year) as $x) {
+                                        print '<option value="' . $x . '"' . ($x === $selected_value ? ' selected="selected"' : '') . '>' . $x . '</option>';
+                                    }
+                                    print '</select>'; ?>
                                 </div>
                             </div>
                             <div class="col-md-3">

@@ -3,6 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
 <script>
+
     var counter = 0;
     $("#rowAdd").click(function() {
         counter++;
@@ -134,26 +135,18 @@
 
 <script>
     $(document).ready(function() {
-        
-
+        var gross_amt = $('#gross_amt').val();
+        console.log(gross_amt);
+        $('#bills_to_be_submit').click(function(){
+            $value = $(this).val();
+            $received = gross_amt * $value/100;
+            console.log($received);
+            $('#received_amt').val($received);
+        })
 
         $(function() {
             $('#datepicker').datepicker();
         });
-        // $current_date = new DateTime(date('Y-m-d'));
-        // $deadline = new DateTime($fetch['deadline']);
-
-        // $datediffer = $current_date - > diff($deadline);
-        // $days = $datediffer - > format('%R%a');
-
-        // echo $days;
-        // if ($days > 5) {
-        //     echo "<font color=yellow>warning deadline close</font>";
-        //     echo $fetch['deadline'];
-        // }
-        //     $(function () {
-        //     $("select").select2();
-        // });
         $('.dd_field input:radio').click(function() {
             $("#dd_number").prop("disabled", true);
             $("#dd_date").prop("disabled", true);

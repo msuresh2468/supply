@@ -42,22 +42,22 @@
                             </a>
                         </li>                        
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo base_url() ?>portal/supply-status">
+                            <a class="nav-link" href="<?php echo base_url() ?>portal/po-agreements">
                                 PO Agreement Details
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo base_url() ?>portal/supply-status">
+                            <a class="nav-link" href="<?php echo base_url() ?>portal/po-dds-list">
                                 PO BG/DD Details
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo base_url() ?>portal/supply-status">
+                            <a class="nav-link" href="<?php echo base_url() ?>portal/po-item-warranty">
                                 PO Item Warranty Details
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo base_url() ?>portal/supply-status">
+                            <a class="nav-link" href="<?php echo base_url() ?>portal/payment-details">
                                 Payment Details
                             </a>
                         </li>
