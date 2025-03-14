@@ -113,7 +113,7 @@ $this->load->view('portal/layout/header');
                                     else if($PO_Item->Hospital_Type == '5') echo 'TH';
                                     else if($PO_Item->Hospital_Type == '6') echo 'UPHC';
                                     else if($PO_Item->Hospital_Type == '7') echo 'MCH';
-                                    
+                                    else if($PO_Item->Hospital_Type == '8') echo 'Others';                                    
                                     ?>">
                                    
                                 </div>
