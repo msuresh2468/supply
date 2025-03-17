@@ -46,20 +46,20 @@ $this->load->view('portal/layout/header');
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="PONo" class="form-label flex-1">PO No</label>
 
-                                    <input type="text" class="form-control flex-1 input_style" id="po_number" name="po_number">
+                                    <input type="text" class="form-control flex-1 input_style" id="po_number" name="po_number" required>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="FileNo" class="form-label flex-1">File No</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="file_number" name="file_number">
+                                    <input type="text" class="form-control flex-1 input_style" id="file_number" name="file_number" required>
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="PODate" class="form-label flex-1">PO Date</label>
-                                    <input type="date" class="form-control flex-1 input_style" id="po_date datepicker" name="po_date">
+                                    <input type="date" class="form-control flex-1 input_style" id="po_date datepicker" name="po_date" required>
                                 </div>
                             </div>
                             <div>
@@ -68,13 +68,13 @@ $this->load->view('portal/layout/header');
                             <div class="col-md-6">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="gross_amount" class="form-label flex-1">Gross Amount</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="gross_amount" name="gross_amount">
+                                    <input type="text" class="form-control flex-1 input_style" id="gross_amount" name="gross_amount" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="firm_name" class="form-label flex-1">Firm Name</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="firm_name" name="firm_name">
+                                    <input type="text" class="form-control flex-1 input_style" id="firm_name" name="firm_name" required>
                                 </div>
                             </div>
                             <div>
@@ -83,25 +83,25 @@ $this->load->view('portal/layout/header');
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="item_name" class="form-label flex-1">Item Name</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="item_name" name="item_name[]">
+                                    <input type="text" class="form-control flex-1 input_style" id="item_name" name="item_name[]" required>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="model" class="form-label flex-1">Make & Model</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="model" name="model[]">
+                                    <input type="text" class="form-control flex-1 input_style" id="model" name="model[]" required>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="item_qty" class="form-label flex-1">Item Quantity</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="item_qty" name="item_qty[]">
+                                    <input type="text" class="form-control flex-1 input_style" id="item_qty" name="item_qty[]" required>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="unit_rate" class="form-label flex-1">Unit Rate</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="unit_rate" name="unit_rate[]">
+                                    <input type="text" class="form-control flex-1 input_style" id="unit_rate" name="unit_rate[]" required>
                                 </div>
                             </div>
                             <div>
@@ -137,7 +137,7 @@ $this->load->view('portal/layout/header');
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="district" class="form-label flex-1">Select District</label>
-                                    <select class="form-select input_style flex-1 selectpicker" id="district" name="district[]" multiple>
+                                    <select class="form-select input_style flex-1" id="district" name="district[]" required>
                                         <option>Select District</option>
                                         <option value="Srikakulam">Srikakulam</option>
                                         <option value="Parvathipuram Manyam">Parvathipuram Manyam</option>
@@ -174,13 +174,13 @@ $this->load->view('portal/layout/header');
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="delivery_period" class="form-label flex-1">Delivery Period</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="delivery_period" name="delivery_period">
+                                    <input type="text" class="form-control flex-1 input_style" id="delivery_period" name="delivery_period" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="scheme" class="form-label flex-1">Scheme</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="scheme" name="scheme">
+                                    <input type="text" class="form-control flex-1 input_style" id="scheme" name="scheme" required>
                                 </div>
                             </div>
                             <div class="col-md-4 mt-lg-3">

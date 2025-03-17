@@ -35,6 +35,7 @@ $this->load->view('portal/layout/header'); ?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
+                                        <th>PO Year</th>
                                         <th>PO Number</th>
                                         <th>PO Date</th>
                                         <th>File Number</th>
@@ -47,10 +48,13 @@ $this->load->view('portal/layout/header'); ?>
                                     <?php foreach ($installed as $row) : ?>
                                         <tr>
                                             <td>
+                                                <?php echo $row->PO_Year; ?>
+                                            </td>
+                                            <td>
                                                 <a href="<?php echo base_url('portal/view-po-items/' . $row->PO_Number); ?>"> <?php echo $row->PO_Number; ?></a>
                                             </td>
                                             <td>
-                                                <?php echo $row->PO_Date; ?>
+                                                <?php echo date('d-m-Y',strtotime($row->PO_Date)); ?>
                                             </td>
                                             <td>
                                                 <?php echo $row->File_Number; ?>

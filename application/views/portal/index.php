@@ -49,15 +49,16 @@ $this->load->view('portal/layout/header'); ?>
                                     <i class="bi bi-shop h2"></i>
                                     <h6 class="my-0">Total Outstanding</h6>
                                     <p class="h2">
-                                        <!-- <?php foreach ($total as $row) : ?>
-                                            <?php if($row->Gross_Amount - $row->Payment_Received == 0){echo '';}else{ echo $row->Item_Amount - $row->Payment_Received;}  ?>
-                                        <?php endforeach; ?> -->
+                                        <?php foreach ($total as $row) : ?>
+                                            <?php if($row->Gross_Amount - $row->Payment_Received == 0){echo '';}else{ echo $row->Gross_Amount - $row->Payment_Received;}  ?>
+                                        <?php endforeach; ?>
                                     </p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-danger bg-gradient">
                                     <i class="bi bi-shop h2"></i>
+                                    <p><?php $count; ?></p>
                                     <h6 class="my-0">Purchase Orders</h6>
                                     <a href="<?php echo base_url() ?>portal/purchase-orders" class="stretched-link"></a>
                                 </div>

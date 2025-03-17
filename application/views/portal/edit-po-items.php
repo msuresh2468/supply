@@ -31,37 +31,37 @@ $this->load->view('portal/layout/header');
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="PONo" class="form-label flex-1">PO No</label>
                                     
-                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO_Item->po_id; ?>" id="po_number" name="po_number">
+                                    <input type="text" class="form-control flex-1 input_style" disabled value="<?php echo $PO_Item->po_id; ?>" id="po_number" name="po_number">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="item_name" class="form-label flex-1">Item Name</label>
-                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO_Item->Item_Name ; ?>" id="item_name" name="item_name">
+                                    <input type="text" class="form-control flex-1 input_style" disabled value="<?php echo $PO_Item->Item_Name ; ?>" id="item_name" name="item_name">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="model" class="form-label flex-1">Make & Model</label>
-                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO_Item->Item_Model ; ?>" id="model" name="model">
+                                    <input type="text" class="form-control flex-1 input_style" disabled value="<?php echo $PO_Item->Item_Model ; ?>" id="model" name="model">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="item_qty" class="form-label flex-1">Item Quantity</label>
-                                    <input type="number" class="form-control flex-1 input_style" value="<?php echo $PO_Item->Item_Qty ; ?>" id="item_qty" name="item_qty[]">
+                                    <input type="number" class="form-control flex-1 input_style" disabled value="<?php echo $PO_Item->Item_Qty ; ?>" id="item_qty" name="item_qty[]">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="unit_rate" class="form-label flex-1">Unit Rate</label>
-                                    <input type="number" class="form-control flex-1 input_style" value="<?php echo $PO_Item->Unit_Rate ; ?>" id="unit_rate" name="unit_rate">
+                                    <input type="number" class="form-control flex-1 input_style" disabled value="<?php echo $PO_Item->Unit_Rate ; ?>" id="unit_rate" name="unit_rate">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="unit_rate" class="form-label flex-1">Total Amount</label>
-                                    <input type="number" class="form-control flex-1 input_style" value="<?php echo $PO_Item->Unit_Rate *  $PO_Item->Item_Qty; ?>" id="unit_rate" name="unit_rate">
+                                    <input type="number" class="form-control flex-1 input_style" disabled value="<?php echo $PO_Item->Unit_Rate *  $PO_Item->Item_Qty; ?>" id="unit_rate" name="unit_rate">
                                 </div>
                             </div>
                             <div>
@@ -70,7 +70,7 @@ $this->load->view('portal/layout/header');
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="model" class="form-label flex-1">Select District</label>
-                                    <select class="form-select input_style flex-1" id="district" name="district">
+                                    <select class="form-select input_style flex-1" id="district" name="district" disabled>
                                         <option>Select District</option>
                                         <option value="Srikakulam" <?php if($PO_Item->District == 'Srikakulam') { ?> selected <?php } ?> >Srikakulam</option>
                                         <option value="Parvathipuram-Manyam" <?php if($PO_Item->District == 'Parvathipuram Manyam') { ?> selected <?php } ?> >Parvathipuram Manyam</option>
@@ -105,7 +105,7 @@ $this->load->view('portal/layout/header');
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="model" class="form-label flex-1">Hospital Type</label>
-                                    <input type="text" class="form-select hospital_name input_style flex-1" 
+                                    <input type="text" disabled class="form-select hospital_name input_style flex-1" 
                                     value="<?php if($PO_Item->Hospital_Type == '1') echo 'AH';
                                     else if($PO_Item->Hospital_Type == '2') echo 'PHC';
                                     else if($PO_Item->Hospital_Type == '3') echo 'CHC';
@@ -120,7 +120,7 @@ $this->load->view('portal/layout/header');
                             </div>
                             <div class="col-md-5">
                                 <div class="mb-3 d-flex align-items-end">
-                                    <label for="hospital_name" class="form-label flex-1">Hospitals with this PO</label>
+                                    <label for="hospital_name" class="form-label flex-1">Hospital Name</label>
                                     <input type="text" disabled class="form-select hospital_name input_style flex-1" value="<?php echo $PO_Item->po_hospital_name ?>">
                                     
                                 </div>

@@ -10,6 +10,11 @@ class PurchaseModel extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    public function countPO()
+    {
+        $count = $this->db->query('SELECT * FROM po_details');
+        return $count = $count->num_rows();
+    }
 
     public function allPOs()
     {
@@ -34,6 +39,7 @@ class PurchaseModel extends CI_Model
         $this->db->from('po_associate_hospitals a');
         $this->db->join('po_item_details b', 'b.po_id=a.item_po_id');
         $this->db->join('po_details c', 'c.PO_Number=a.item_po_id');
+        $this->db->group_by('PO_Number');
         $this->db->where('supply_status', 'Supplied');
         $query = $this->db->get();
         return $query->result();
@@ -44,6 +50,7 @@ class PurchaseModel extends CI_Model
         $this->db->from('po_associate_hospitals a');
         $this->db->join('po_item_details b', 'b.po_id=a.item_po_id');
         $this->db->join('po_details c', 'c.PO_Number=a.item_po_id');
+        $this->db->group_by('PO_Number');
         $this->db->where('supply_status', 'Not Supplied');
         $query = $this->db->get();
         return $query->result();
@@ -54,6 +61,7 @@ class PurchaseModel extends CI_Model
         $this->db->from('po_associate_hospitals a');
         $this->db->join('po_item_details b', 'b.po_id=a.item_po_id');
         $this->db->join('po_details c', 'c.PO_Number=a.item_po_id');
+        $this->db->group_by('PO_Number');
         $this->db->where('Installation_Date !=', '');
         $query = $this->db->get();
         return $query->result();
@@ -64,13 +72,14 @@ class PurchaseModel extends CI_Model
         $this->db->from('po_associate_hospitals a');
         $this->db->join('po_item_details b', 'b.po_id=a.item_po_id');
         $this->db->join('po_details c', 'c.PO_Number=a.item_po_id');
+        $this->db->group_by('PO_Number');
         $this->db->where('Installation_Date', ' ');
         $query = $this->db->get();
         return $query->result();
     }
     public function afterCutoffinstalled()
     {
-        $this->db->select('p.Installation_Date, po.PO_Number, po.id,po.PO_Date,po.File_Number,pi.Item_Name, po.Supply_DueDate, p.supply_status');
+        $this->db->select('p.Installation_Date, po.PO_Year, po.PO_Number, po.id,po.PO_Date,po.File_Number,pi.Item_Name, po.Supply_DueDate, p.supply_status');
         $this->db->from('po_associate_hospitals p');
         $this->db->join('po_details po', 'p.item_po_id = po.PO_Number');
         $this->db->join('po_item_details pi', 'pi.po_id = p.item_po_id');
@@ -83,7 +92,7 @@ class PurchaseModel extends CI_Model
     }
     public function beforeCutoffinstalled()
     {
-        $this->db->select('p.Installation_Date, po.PO_Number, po.id,po.PO_Date,po.File_Number,pi.Item_Name, po.Supply_DueDate, p.supply_status');
+        $this->db->select('p.Installation_Date, po.PO_Year, po.PO_Number, po.id,po.PO_Date,po.File_Number,pi.Item_Name, po.Supply_DueDate, p.supply_status');
         $this->db->from('po_associate_hospitals p');
         $this->db->join('po_details po', 'p.item_po_id = po.PO_Number');
         $this->db->join('po_item_details pi', 'pi.po_id = p.item_po_id');
@@ -98,6 +107,31 @@ class PurchaseModel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('po_details');
+        $this->db->where('Is_Agreement', 'Yes');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function paymentDetails()
+    {
+        $this->db->select('*');
+        $this->db->from('po_details');
+        $this->db->group_by('PO_Number');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function agreements()
+    {
+        $this->db->select('*');
+        $this->db->from('po_details');
+        $this->db->where('Is_Agreement', 'Yes');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function dd()
+    {
+        $this->db->select('*');
+        $this->db->from('po_details');
+        $this->db->where('Is_DD', 'Yes');
         $query = $this->db->get();
         return $query->result();
     }

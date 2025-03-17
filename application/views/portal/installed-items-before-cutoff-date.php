@@ -35,6 +35,7 @@ $this->load->view('portal/layout/header'); ?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
+                                        <th>PO Year</th>
                                         <th>PO Number</th>
                                         <th>PO Date</th>
                                         <th>File Number</th>
@@ -48,10 +49,13 @@ $this->load->view('portal/layout/header'); ?>
                                     <?php foreach ($beforeCutoffinstalled as $row) : ?>
                                         <tr>
                                             <td>
+                                                <?php echo $row->PO_Year; ?>
+                                            </td>
+                                            <td>
                                                 <a href="<?php echo base_url('portal/view-po-items/' . $row->id); ?>"> <?php echo $row->PO_Number; ?></a>
                                             </td>
                                             <td>
-                                                <?php echo $row->PO_Date; ?>
+                                                <?php echo date('d-m-Y', strtotime($row->PO_Date)); ?>
                                             </td>
                                             <td>
                                                 <?php echo $row->File_Number; ?>
@@ -60,10 +64,10 @@ $this->load->view('portal/layout/header'); ?>
                                                 <?php echo $row->Item_Name; ?>
                                             </td>
                                             <td>
-                                                <?php echo $row->Supply_DueDate; ?>
+                                                <?php echo date('d-m-Y', strtotime($row->Supply_DueDate)); ?>
                                             </td>
                                             <td>
-                                                <?php echo $row->Installation_Date; ?>
+                                                <?php echo date('d-m-Y', strtotime($row->Installation_Date)); ?>
                                             </td>
                                             <td>
                                                 <?php echo $row->supply_status; ?>

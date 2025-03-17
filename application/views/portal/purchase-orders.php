@@ -64,7 +64,7 @@ $this->load->view('portal/layout/header'); ?>
                                                 <?php echo $row->Gross_Amount; ?>
                                             </td>
                                             <td>
-                                                <?php echo $row->Supply_DueDate; ?>
+                                                <?php echo date('d-m-Y',strtotime($row->Supply_DueDate)); ?>
                                             </td>
                                             <td>
                                                 <a href="<?php echo base_url('portal/view-po/' . $row->PO_Number); ?>" class="btn btn-info">PO Details</a>

@@ -21,6 +21,7 @@ class Dashboard extends CI_Controller {
             "pagename" => 'index',
             'total' => $pos->totalAmount(),
             // 'outstanding' => $pos->Outstanding()
+            'count' => $pos->countPO()
         ];
         $this->load->view('portal/index', $data);
 	}
@@ -100,7 +101,7 @@ class Dashboard extends CI_Controller {
 		$data = [
             'page_title' => 'PO Payment Details',
             "pagename" => 'status',
-            'status' => $pos-> status()
+            'payment_details' => $pos-> paymentDetails()
         ];
         $this->load->view('portal/payment-details', $data);
 	}
@@ -110,7 +111,7 @@ class Dashboard extends CI_Controller {
 		$data = [
             'page_title' => 'PO Agreements',
             "pagename" => 'status',
-            'status' => $pos-> status()
+            'agreements' => $pos-> agreements()
         ];
         $this->load->view('portal/po-agreements', $data);
 	}
@@ -120,7 +121,7 @@ class Dashboard extends CI_Controller {
 		$data = [
             'page_title' => 'PO DD',
             "pagename" => 'status',
-            'status' => $pos-> status()
+            'dd' => $pos-> dd()
         ];
         $this->load->view('portal/po-dds-list', $data);
 	}

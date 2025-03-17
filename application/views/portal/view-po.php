@@ -163,7 +163,7 @@ $this->load->view('portal/layout/header'); ?>
                             <div class="col-md-6">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="received_amt" class="form-label flex-1">Payment Received Amount</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="received_amt" name="received_amt">
+                                    <input type="text" class="form-control flex-1 input_style" id="received_amt" name="received_amt" value="<?php echo $PO->Payment_Received; ?>">
                                 </div>
                             </div>
 
