@@ -36,10 +36,13 @@ $this->load->view('portal/layout/header'); ?>
                                 <thead>
                                     <tr>
                                         <th>PO Year</th>
-                                        <th>PO Number</th>
+                                        <th>PO No</th>
                                         <th>PO Date</th>
                                         <th>File Number</th>
                                         <th>Item Name</th>
+                                        <th>Item Quantity</th>
+                                        <th>Unit Rate</th>
+                                        <th>Hospital Name</th>
                                         <th>Supply Due Date</th>
                                         <th>Supply Status</th>
                                     </tr>
@@ -61,6 +64,15 @@ $this->load->view('portal/layout/header'); ?>
                                             </td>
                                             <td>
                                                 <?php echo $row->Item_Name; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->Item_Qty; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->Unit_Rate; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->po_hospital_name; ?>
                                             </td>
                                             <td>
                                                 <?php echo date('d-m-Y',strtotime($row->Supply_DueDate)); ?>

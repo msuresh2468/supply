@@ -141,14 +141,14 @@ $this->load->view('portal/layout/header'); ?>
                                     <input type="date" class="form-control flex-1 input_style" id="agreement_date" value="<?php echo $PO->Agreement_Date; ?>" name="agreement_date" <?php if ($PO->Is_Agreement != 'Yes') { ?> disabled <?php } ?>>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-12">
                                 <div class="mt-3 d-flex align-items-end bills_field">
                                     <label for="is_bills_submit" class="form-label flex-1">Is Bills Submitted?</label>
                                     <label><input type="radio" name="is_bills_submit" id="is_bills_submit_yes" value="Yes" <?php if ($PO->Is_BillsSubmit == 'Yes') { ?> checked <?php } ?> class="is_bills_submit_yes flex-1 input_style"> Yes</label>
                                     <label class="ms-3"><input type="radio" name="is_bills_submit" id="is_bills_submit_no" value="No" <?php if ($PO->Is_BillsSubmit == 'No') { ?> checked <?php } else {echo 'disabled';}?> class="flex-1 input_style"> No</label>
                                 </div>
                             </div>
-                            <div class="col-md-9">
+                            <!-- <div class="col-md-9">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="bills_to_be_submit" class="form-label flex-1" >Bills to be Submitted</label>
                                     <select class="form-select" id="bills_to_be_submit" name="bills_to_be_submit" <?php if ($PO->Is_BillsSubmit != 'Yes') { ?> disabled <?php } ?>>
@@ -157,15 +157,180 @@ $this->load->view('portal/layout/header'); ?>
                                         <option value="90" <?php if($PO->Bills_Percentage == '90') { ?> selected <?php } ?>>90%</option>
                                         <option value="100" <?php if($PO->Bills_Percentage == '100') { ?> selected <?php } ?>>100%</option>
                                     </select>
-                                    <!-- <input type="text" class="form-control flex-1 input_style" id="bills_to_be_submit" name="bills_to_be_submit" disabled> -->
+                                    <input type="text" class="form-control flex-1 input_style" id="bills_to_be_submit" name="bills_to_be_submit" disabled>
+                                </div>
+                            </div> -->
+                            <div class="col-md-3">
+                                <div class="mt-3 d-flex align-items-end bills_field_60">
+                                    <label for="is_bills_submit" class="form-label flex-1">60%</label>
+                                    <label><input type="radio" name="is_bills_submit" id="bill_60" value="Yes" class="is_bills_60_yes flex-1 input_style" disabled> Yes</label>
+                                    <label class="ms-3"><input type="radio" name="is_bills_submit" id="is_bills_submit_no" value="No" class="is_bills_60_yes flex-1 input_style" disabled> No</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Bills Submitted Amount</label>
+                                    <input type="text" class="form-control flex-1 input_style" id="bill_60_amt" name="bill_60_received_amt" disabled value="<?php echo $PO->Payment_Received; ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Bills Submitted Date</label>
+                                    <input type="date" class="form-control flex-1 input_style" id="bill_60_date" name="bill_60_received_date" disabled value="<?php echo $PO->Payment_Received; ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mt-3 d-flex align-items-end bills_field_30">
+                                    <label for="is_bills_submit" class="form-label flex-1">30%</label>
+                                    <label><input type="radio" name="is_bills_submit" id="bill_30" value="Yes" class="is_bills_30_yes flex-1 input_style" disabled> Yes</label>
+                                    <label class="ms-3"><input type="radio" name="is_bills_submit" id="is_bills_submit_no" value="No" class="is_bills_30_yes flex-1 input_style" disabled> No</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Bills Submitted Amount</label>
+                                    <input type="text" class="form-control flex-1 input_style" id="bill_30_amt" name="bill_30_received_amt" value="<?php echo $PO->Payment_Received; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Bills Submitted Date</label>
+                                    <input type="date" class="form-control flex-1 input_style" id="bill_30_date" name="bill_30_received_date" value="<?php echo $PO->Payment_Received; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mt-3 d-flex align-items-end bills_field_90">
+                                    <label for="is_bills_submit" class="form-label flex-1">90%</label>
+                                    <label><input type="radio" name="is_bills_submit" id="bill_90" value="Yes" class="is_bills_90_yes flex-1 input_style" disabled> Yes</label>
+                                    <label class="ms-3"><input type="radio" name="is_bills_submit" id="is_bills_submit_no" value="No" class="is_bills_90_yes flex-1 input_style" disabled> No</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Bills Submitted Amount</label>
+                                    <input type="text" class="form-control flex-1 input_style" id="bill_90_amt" name="bill_90_received_amt" value="<?php echo $PO->Payment_Received; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Bills Submitted Date</label>
+                                    <input type="date" class="form-control flex-1 input_style" id="bill_90_date" name="bill_90_received_date" value="<?php echo $PO->Payment_Received; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mt-3 d-flex align-items-end bills_field_10">
+                                    <label for="is_bills_submit" class="form-label flex-1">10%</label>
+                                    <label><input type="radio" name="is_bills_submit" id="bill_10" value="Yes" class="is_bills_10_yes flex-1 input_style" disabled> Yes</label>
+                                    <label class="ms-3"><input type="radio" name="is_bills_submit" id="is_bills_submit_no" value="No" class="is_bills_10_yes flex-1 input_style" disabled> No</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Bills Submitted Amount</label>
+                                    <input type="text" class="form-control flex-1 input_style" id="bill_10_amt" name="bill_10_received_amt" value="<?php echo $PO->Payment_Received; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Bills Submitted Date</label>
+                                    <input type="date" class="form-control flex-1 input_style" id="bill_10_date" name="bill_10_received_date" value="<?php echo $PO->Payment_Received; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mt-3 d-flex align-items-end payment_field">
+                                    <label for="is_bills_submit" class="form-label flex-1">Is Payment Received?</label>
+                                    <label><input type="radio" name="is_bills_submit" id="is_payment_submit_yes" value="Yes" class="is_payment_submit_yes flex-1 input_style" disabled> Yes</label>
+                                    <label class="ms-3"><input type="radio" name="is_bills_submit" id="is_payment_submit_no" value="No" class="is_payment_submit_no flex-1 input_style" disabled> No</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mt-3 d-flex align-items-end payment_field_60">
+                                    <label for="is_bills_submit" class="form-label flex-1">60%</label>
+                                    <label><input type="radio" name="is_bills_submit" id="payment_60" value="Yes" class="is_payment_60_yes flex-1 input_style" disabled> Yes</label>
+                                    <label class="ms-3"><input type="radio" name="is_bills_submit" id="is_bills_submit_no" value="No" class="is_payment_60_yes flex-1 input_style" disabled> No</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Payment Received Amount</label>
+                                    <input type="text" class="form-control flex-1 input_style" id="payment_60_amt" name="payment_60_received_amt" disabled value="<?php echo $PO->Payment_Received; ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Payment Received Date</label>
+                                    <input type="date" class="form-control flex-1 input_style" id="payment_60_date" name="payment_60_received_date" disabled value="<?php echo $PO->Payment_Received; ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mt-3 d-flex align-items-end payment_field_30">
+                                    <label for="is_bills_submit" class="form-label flex-1">30%</label>
+                                    <label><input type="radio" name="is_bills_submit" id="payment_30" value="Yes" class="is_payment_30_yes flex-1 input_style" disabled> Yes</label>
+                                    <label class="ms-3"><input type="radio" name="is_bills_submit" id="is_bills_submit_no" value="No" class="is_payment_30_yes flex-1 input_style" disabled> No</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Payment Received Amount</label>
+                                    <input type="text" class="form-control flex-1 input_style" id="payment_30_amt" name="payment_30_received_amt" value="<?php echo $PO->Payment_Received; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Payment Received Date</label>
+                                    <input type="date" class="form-control flex-1 input_style" id="payment_30_date" name="payment_30_received_date" value="<?php echo $PO->Payment_Received; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mt-3 d-flex align-items-end payment_field_90">
+                                    <label for="is_bills_submit" class="form-label flex-1">90%</label>
+                                    <label><input type="radio" name="is_bills_submit" id="payment_90" value="Yes" class="is_payment_90_yes flex-1 input_style" disabled> Yes</label>
+                                    <label class="ms-3"><input type="radio" name="is_bills_submit" id="is_bills_submit_no" value="No" class="is_payment_90_yes flex-1 input_style" disabled> No</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Payment Received Amount</label>
+                                    <input type="text" class="form-control flex-1 input_style" id="payment_90_amt" name="payment_90_received_amt" value="<?php echo $PO->Payment_Received; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Payment Received Date</label>
+                                    <input type="date" class="form-control flex-1 input_style" id="payment_90_date" name="payment_90_received_date" value="<?php echo $PO->Payment_Received; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mt-3 d-flex align-items-end payment_field_10">
+                                    <label for="is_bills_submit" class="form-label flex-1">10%</label>
+                                    <label><input type="radio" name="is_bills_submit" id="payment_10" value="Yes" class="is_payment_10_yes flex-1 input_style" disabled> Yes</label>
+                                    <label class="ms-3"><input type="radio" name="is_bills_submit" id="is_bills_submit_no" value="No" class="is_payment_10_yes flex-1 input_style" disabled> No</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Payment Received Amount</label>
+                                    <input type="text" class="form-control flex-1 input_style" id="payment_10_amt" name="payment_10_received_amt" value="<?php echo $PO->Payment_Received; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Payment Received Date</label>
+                                    <input type="date" class="form-control flex-1 input_style" id="payment_10_date" name="payment_10_received_date" value="<?php echo $PO->Payment_Received; ?>" disabled>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3 d-flex align-items-end">
-                                    <label for="received_amt" class="form-label flex-1">Payment Received Amount</label>
+                                    <label for="received_amt" class="form-label flex-1">Late Delivery Charges Amount</label>
                                     <input type="text" class="form-control flex-1 input_style" id="received_amt" name="received_amt" value="<?php echo $PO->Payment_Received; ?>">
                                 </div>
                             </div>
+                            <!-- <div class="col-md-6">
+                                <div class="mb-3 d-flex align-items-end">
+                                    <label for="received_amt" class="form-label flex-1">Received Date</label>
+                                    <input type="text" class="form-control flex-1 input_style" id="received_amt" name="received_amt" value="<?php echo $PO->Payment_Received; ?>">
+                                </div>
+                            </div> -->
 
 
                             <div class="col-md-6">

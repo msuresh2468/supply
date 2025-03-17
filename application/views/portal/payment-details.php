@@ -41,7 +41,9 @@ $this->load->view('portal/layout/header'); ?>
                                         <th>File Number</th>
                                         <th>Gross Amount</th>
                                         <th>Bills Submitted</th>
+                                        <th>Bills Submitted Amount</th>
                                         <th>Received Amount</th>
+                                        <th>Received Date</th>
                                         <th>Pending Amount</th>
                                     </tr>
                                 </thead>
@@ -73,7 +75,10 @@ $this->load->view('portal/layout/header'); ?>
                                                 <?php echo ($row->Gross_Amount - $row->Payment_Received); ?>
                                             </td>
                                             <td>
-                                                <?php echo date('d-m-Y', strtotime($row->Agreement_Date)); ?>
+                                                <?php echo ($row->Gross_Amount - $row->Payment_Received); ?>
+                                            </td>
+                                            <td>
+                                                <?php echo ($row->Gross_Amount - $row->Payment_Received); ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

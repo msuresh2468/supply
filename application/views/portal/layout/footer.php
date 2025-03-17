@@ -137,12 +137,12 @@
     $(document).ready(function() {
         var gross_amt = $('#gross_amt').val();
         console.log(gross_amt);
-        $('#bills_to_be_submit').click(function(){
-            $value = $(this).val();
-            $received = gross_amt * $value/100;
-            console.log($received);
-            $('#received_amt').val($received);
-        })
+        // $('#bills_to_be_submit').click(function(){
+        //     $value = $(this).val();
+        //     $received = gross_amt * $value/100;
+        //     console.log($received);
+        //     $('#received_amt').val($received);
+        // })
 
         $(function() {
             $('#datepicker').datepicker();
@@ -169,8 +169,104 @@
         });
         $('.bills_field input:radio').click(function() {
             $("#bills_to_be_submit").prop("disabled", true);
+            $("#bill_60").prop("disabled", true);
+            $("#bill_30").prop("disabled", true);
+            $("#bill_90").prop("disabled", true);
+            $("#bill_10").prop("disabled", true);
+            $("#is_payment_submit_yes").prop("disabled", true);
+            $("#is_payment_submit_no").prop("disabled", true);
+            // $("#payment_60").prop("disabled", true);
+            // $("#payment_30").prop("disabled", true);
+            // $("#payment_90").prop("disabled", true);
+            // $("#payment_10").prop("disabled", true);
             if ($(this).hasClass('is_bills_submit_yes')) {
                 $("#bills_to_be_submit").prop("disabled", false);
+                $("#bill_60").prop("disabled", false);
+                $("#bill_30").prop("disabled", false);
+                $("#bill_90").prop("disabled", false);
+                $("#bill_10").prop("disabled", false);
+                $("#is_payment_submit_yes").prop("disabled", false);
+                $("#is_payment_submit_no").prop("disabled", false);
+                // $("#payment_60").prop("disabled", false);
+                // $("#payment_30").prop("disabled", false);
+                // $("#payment_90").prop("disabled", false);
+                // $("#payment_10").prop("disabled", false);
+            }
+        });
+        $('.payment_field input:radio').click(function() {
+            $("#payment_60").prop("disabled", true);
+            $("#payment_30").prop("disabled", true);
+            $("#payment_90").prop("disabled", true);
+            $("#payment_10").prop("disabled", true);
+            if ($(this).hasClass('is_payment_submit_yes')) {
+                $("#payment_60").prop("disabled", false);
+                $("#payment_30").prop("disabled", false);
+                $("#payment_90").prop("disabled", false);
+                $("#payment_10").prop("disabled", false);
+            }
+        });
+        $('.payment_field_60 input:radio').click(function() {
+            $("#payment_60_amt").prop("disabled", true);
+            $("#payment_60_date").prop("disabled", true);
+            if ($(this).hasClass('is_payment_60_yes')) {
+                $("#payment_60_amt").prop("disabled", false);
+                $("#payment_60_date").prop("disabled", false);
+            }
+        });
+        $('.payment_field_30 input:radio').click(function() {
+            $("#payment_30_amt").prop("disabled", true);
+            $("#payment_30_date").prop("disabled", true);
+            if ($(this).hasClass('is_payment_30_yes')) {
+                $("#payment_30_amt").prop("disabled", false);
+                $("#payment_30_date").prop("disabled", false);
+            }
+        });
+        $('.payment_field_90 input:radio').click(function() {
+            $("#payment_90_amt").prop("disabled", true);
+            $("#payment_90_date").prop("disabled", true);
+            if ($(this).hasClass('is_payment_90_yes')) {
+                $("#payment_90_amt").prop("disabled", false);
+                $("#payment_90_date").prop("disabled", false);
+            }
+        });
+        $('.payment_field_10 input:radio').click(function() {
+            $("#payment_10_amt").prop("disabled", true);
+            $("#payment_10_date").prop("disabled", true);
+            if ($(this).hasClass('is_payment_10_yes')) {
+                $("#payment_10_amt").prop("disabled", false);
+                $("#payment_10_date").prop("disabled", false);
+            }
+        });
+        $('.bills_field_60 input:radio').click(function() {
+            $("#bill_60_amt").prop("disabled", true);
+            $("#bill_60_date").prop("disabled", true);
+            if ($(this).hasClass('is_bills_60_yes')) {
+                $("#bill_60_amt").prop("disabled", false);
+                $("#bill_60_date").prop("disabled", false);
+            }
+        });
+        $('.bills_field_30 input:radio').click(function() {
+            $("#bill_30_amt").prop("disabled", true);
+            $("#bill_30_date").prop("disabled", true);
+            if ($(this).hasClass('is_bills_30_yes')) {
+                $("#bill_30_amt").prop("disabled", false);
+                $("#bill_30_date").prop("disabled", false);
+            }
+        });
+        $('.bills_field_90 input:radio').click(function() {
+            $("#bill_90_amt").prop("disabled", true);
+            $("#bill_90_date").prop("disabled", true);
+            if ($(this).hasClass('is_bills_90_yes')) {
+                $("#bill_90_amt").prop("disabled", false);
+                $("#bill_90_date").prop("disabled", false);
+            }
+        });
+        $('.bills_field_10 input:radio').click(function() {
+            $("#bill_10_amt").prop("disabled", true);
+            $("#bill_10_date").prop("disabled", true);
+            if ($(this).hasClass('is_bills_10_yes')) {
+                $("#bill_10_amt").prop("disabled", false);
+                $("#bill_10_date").prop("disabled", false);
             }
         });
         $('.supply_status input:radio').click(function() {

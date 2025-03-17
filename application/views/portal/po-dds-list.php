@@ -39,6 +39,7 @@ $this->load->view('portal/layout/header'); ?>
                                         <th>PO Number</th>
                                         <th>PO Date</th>
                                         <th>File Number</th>
+                                        <th>Is DD/BG?</th>
                                         <th>DD/BG Number</th>
                                         <th>DD/BG Date</th>
                                         <th>DD/BG Amount</th>
@@ -61,16 +62,19 @@ $this->load->view('portal/layout/header'); ?>
                                                 <?php echo $row->File_Number; ?>
                                             </td>
                                             <td>
+                                                <?php echo $row->Is_DD; ?>
+                                            </td>
+                                            <td>
                                                 <?php echo $row->DD_Number; ?>
                                             </td>
                                             <td>
-                                                <?php echo date('d-m-Y', strtotime($row->DD_Date)); ?>
+                                                <?php echo $row->DD_Date; ?>
                                             </td>
                                             <td>
                                                 <?php echo $row->DD_Amount; ?>
                                             </td>
                                             <td>
-                                                <?php echo date('d-m-Y', strtotime($row->DD_Validity)); ?>
+                                                <?php echo $row->DD_Validity; ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

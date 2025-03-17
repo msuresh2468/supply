@@ -38,9 +38,11 @@ $this->load->view('portal/layout/header'); ?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
+                                        <th>PO Year</th>
                                         <th>PO Number</th>
                                         <th>Item Name</th>
-                                        <th>Item Model</th>
+                                        <th>Item Quantity</th>
+                                        <th>Make/Model</th>
                                         <th>Hospital Name</th>
                                         <th>District</th>
                                         <th>Supply Status</th>
@@ -51,10 +53,16 @@ $this->load->view('portal/layout/header'); ?>
                                     <?php foreach ($hospital_names as $row) : ?>
                                             <tr>
                                                 <td>
+                                                    <?php echo $row->PO_Year; ?>
+                                                </td>
+                                                <td>
                                                     <?php echo $row->po_id; ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $row->Item_Name; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row->Item_Qty; ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $row->Item_Model; ?>

@@ -39,6 +39,7 @@ $this->load->view('portal/layout/header'); ?>
                                         <th>PO Number</th>
                                         <th>PO Date</th>
                                         <th>File Number</th>
+                                        <th>Is Agreement?</th>
                                         <th>Agreement Number</th>
                                         <th>Agreement Date</th>
                                     </tr>
@@ -59,10 +60,13 @@ $this->load->view('portal/layout/header'); ?>
                                                 <?php echo $row->File_Number; ?>
                                             </td>
                                             <td>
+                                                <?php echo $row->Is_Agreement; ?>
+                                            </td>
+                                            <td>
                                                 <?php echo $row->Agreement_No; ?>
                                             </td>
                                             <td>
-                                                <?php echo date('d-m-Y', strtotime($row->Agreement_Date)); ?>
+                                                <?php echo $row->Agreement_Date; ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

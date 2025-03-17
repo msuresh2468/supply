@@ -123,7 +123,8 @@ class PurchaseModel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('po_details');
-        $this->db->where('Is_Agreement', 'Yes');
+        // $this->db->where('Is_Agreement', 'Yes');
+        // $this->db->where('Is_Agreement', 'No');
         $query = $this->db->get();
         return $query->result();
     }
@@ -131,7 +132,7 @@ class PurchaseModel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('po_details');
-        $this->db->where('Is_DD', 'Yes');
+        // $this->db->where('Is_DD', 'Yes');
         $query = $this->db->get();
         return $query->result();
     }
