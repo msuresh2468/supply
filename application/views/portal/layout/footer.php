@@ -3,7 +3,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
 <script>
-
     var counter = 0;
     $("#rowAdd").click(function() {
         counter++;
@@ -137,6 +136,24 @@
     $(document).ready(function() {
         var gross_amt = $('#gross_amt').val();
         console.log(gross_amt);
+        var bill_60 = $('#bill_60_amt').val();
+        var bill_30 = $('#bill_30_amt').val();
+        var bill_90 = $('#bill_90_amt').val();
+        var bill_10 = $('#bill_10_amt').val();
+        var bills_amt = parseInt(bill_10) + parseInt(bill_30) + parseInt(bill_60);
+        // if (parseInt(gross_amt) < parseInt(bills_amt)) {
+        //     alert('Bills Amount is Higher than the Gross Amount');
+        // }
+        // $('#BtnChange').click(function() {
+        //     if (parseInt(gross_amt) < parseInt(bills_amt)) {
+        //         alert('Bills Amount is Higher than the Gross Amount');
+        //         $('#BtnChange').prop('disabled', true);
+        //     }
+        //     else{
+        //         $('#BtnChange').prop('disabled', false);
+        //     }
+        // })
+        console.log(bills_amt);
         // $('#bills_to_be_submit').click(function(){
         //     $value = $(this).val();
         //     $received = gross_amt * $value/100;

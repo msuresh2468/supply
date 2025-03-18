@@ -77,6 +77,12 @@ class Purchase_Orders extends CI_Controller
         $delivery_period = $delivery_period . ' days';
         $supply_dueDate = date('Y-m-d', strtotime($PO_Date . $delivery_period));
         $delivery_period1 = $this->input->post('delivery_period');
+        // $gross_amt = $this->input->post('gross_amount');
+        // $quantity = $this->input->post('item_qty');
+        // $hospitals = count($this->input->post('hospital_name'));
+        // $unit = $this->input->post('unit_rate');
+        // print_r($hospitals);
+        // die;
         $data = [
             'PO_Number'   => $this->input->post('po_number'),
             'File_Number'     => $this->input->post('file_number'),
@@ -92,7 +98,10 @@ class Purchase_Orders extends CI_Controller
         //$po_id = $this->input->post('po_number');
         //print_r($po->insertpo($data));die;
         $data1 = [];
+
         $itemQty = $this->input->post('item_qty[]');
+        
+
         for ($i = 0; $i < count($itemQty); $i++) {
             $data2 = [
                 'po_id' => $po_id,
@@ -124,6 +133,8 @@ class Purchase_Orders extends CI_Controller
                 ];
                 array_push($data3, $data4);
             }
+
+
             $this->db->insert_batch('po_associate_hospitals', $data3);
             array_push($data1, $data2);
         }
@@ -133,40 +144,87 @@ class Purchase_Orders extends CI_Controller
     }
     public function updatePO($id)
     {
+
         $pos = new PurchaseModel();
         $PO_Date = $this->input->post('po_date');
         $delivery_period = $this->input->post('delivery_period');
         $delivery_period = $delivery_period . ' days';
         $supply_dueDate = date('Y-m-d', strtotime($PO_Date . $delivery_period));
         $delivery_period1 = $this->input->post('delivery_period');
-        $data = [];
-        $data = [
-            'PO_Number'   => $this->input->post('po_number'),
-            'File_Number'     => $this->input->post('file_number'),
-            'PO_Date'     => $this->input->post('po_date'),
-            'PO_Year' => $this->input->post('year'),
-            'Gross_Amount' => $this->input->post('gross_amt'),
-            'Firm_Name' => $this->input->post('firm_name'),
-            'Delivery_Period' => $delivery_period1,
-            'Scheme' => $this->input->post('scheme'),
-            'Supply_DueDate' => $supply_dueDate,
-            'Is_DD' => $this->input->post('is_dd'),
-            'DD_Number' => $this->input->post('dd_number'),
-            'DD_Date' => $this->input->post('dd_date'),
-            'DD_Amount' => $this->input->post('dd_amt'),
-            'DD_Validity' => $this->input->post('dd_validity'),
-            'Is_Agreement' => $this->input->post('is_agreement'),
-            'Agreement_No' => $this->input->post('agreement_no'),
-            'Agreement_Date' => $this->input->post('agreement_date'),
-            'Is_BillsSubmit' => $this->input->post('is_bills_submit'),
-            'Bills_Percentage' => $this->input->post('bills_to_be_submit'),
-            'Payment_Received' => $this->input->post('received_amt'),
-            //'Balance_Amount' => $this->input->post('firm_name'),
-            'Remarks' => $this->input->post('remarks'),
-        ];
-        $pos->updatePO($data, $id);
-        $this->session->set_flashdata('status', 'New PO Added Successfully');
-        redirect(base_url('portal/purchase-orders'));
+        $gross_amt = $this->input->post('gross_amt');
+        $bill_60 = $this->input->post('bill_60_received_amt');
+        $bill_30 = $this->input->post('bill_30_received_amt');
+        $bill_90 = $this->input->post('bill_90_received_amt');
+        $bill_10 = $this->input->post('bill_10_received_amt');
+        $pay_60 = $this->input->post('payment_60_received_amt');
+        $pay_30 = $this->input->post('payment_30_received_amt');
+        $pay_90 = $this->input->post('payment_90_received_amt');
+        $pay_10 = $this->input->post('payment_10_received_amt');
+        $pay_amt = $pay_10 + $pay_90 + $pay_30 + $pay_60;
+        $bills_amt = $bill_60 + $bill_30 + $bill_10 + $bill_90;
+
+        if ($gross_amt < $bills_amt) {
+            $this->session->set_flashdata('status', 'Bills Amount is Higher than the Gross Amount');
+            redirect(base_url('portal/view-po/' . $id));
+        } else if ($gross_amt < $pay_amt) {
+            $this->session->set_flashdata('status', 'Payment Amount is Higher than the Gross Amount');
+            redirect(base_url('portal/view-po/' . $id));
+        } else {
+
+            $data = [];
+            $data = [
+                'PO_Number'   => $this->input->post('po_number'),
+                'File_Number'     => $this->input->post('file_number'),
+                'PO_Date'     => $this->input->post('po_date'),
+                'PO_Year' => $this->input->post('year'),
+                'Gross_Amount' => $this->input->post('gross_amt'),
+                'Firm_Name' => $this->input->post('firm_name'),
+                'Delivery_Period' => $delivery_period1,
+                'Scheme' => $this->input->post('scheme'),
+                'Supply_DueDate' => $supply_dueDate,
+                'Is_DD' => $this->input->post('is_dd'),
+                'DD_Number' => $this->input->post('dd_number'),
+                'DD_Date' => $this->input->post('dd_date'),
+                'DD_Amount' => $this->input->post('dd_amt'),
+                'DD_Validity' => $this->input->post('dd_validity'),
+                'Is_Agreement' => $this->input->post('is_agreement'),
+                'Agreement_No' => $this->input->post('agreement_no'),
+                'Agreement_Date' => $this->input->post('agreement_date'),
+                'Is_BillsSubmit' => $this->input->post('is_bills_submit'),
+                'Bills_Percentage_60' => $this->input->post('bill_60'),
+                'Bills_60_Amount' => $this->input->post('bill_60_received_amt'),
+                'Bills_60_Date' => $this->input->post('bill_60_received_date'),
+                'Bills_Percentage_30' => $this->input->post('bill_30'),
+                'Bills_30_Amount' => $this->input->post('bill_30_received_amt'),
+                'Bills_30_Date' => $this->input->post('bill_30_received_date'),
+                'Bills_Percentage_90' => $this->input->post('bill_90'),
+                'Bills_90_Amount' => $this->input->post('bill_90_received_amt'),
+                'Bills_90_Date' => $this->input->post('bill_90_received_date'),
+                'Bills_Percentage_10' => $this->input->post('bill_10'),
+                'Bills_10_Amount' => $this->input->post('bill_10_received_amt'),
+                'Bills_10_Date' => $this->input->post('bill_10_received_date'),
+                'Is_Payment' => $this->input->post('is_payment'),
+                'Pay_Percentage_60' => $this->input->post('payment_60'),
+                'Pay_60_Amt' => $this->input->post('payment_60_received_amt'),
+                'Pay_60_Date' => $this->input->post('payment_60_received_date'),
+                'Pay_Percentage_30' => $this->input->post('payment_30'),
+                'Pay_30_Amt' => $this->input->post('payment_30_received_amt'),
+                'Pay_30_Date' => $this->input->post('payment_30_received_date'),
+                'Pay_Percentage_90' => $this->input->post('payment_90'),
+                'Pay_90_Amt' => $this->input->post('payment_90_received_amt'),
+                'Pay_90_Date' => $this->input->post('payment_90_received_date'),
+                'Pay_Percentage_10' => $this->input->post('payment_10'),
+                'Pay_10_Amt' => $this->input->post('payment_10_received_amt'),
+                'Pay_10_Date' => $this->input->post('payment_10_received_date'),
+                'LDC_Amount' => $this->input->post('ldc_amount'),
+                'Payment_Received' => $this->input->post('received_amt'),
+                //'Balance_Amount' => $this->input->post('firm_name'),
+                'Remarks' => $this->input->post('remarks'),
+            ];
+            $pos->updatePO($data, $id);
+            $this->session->set_flashdata('status', 'New PO Added Successfully');
+            redirect(base_url('portal/purchase-orders'));
+        }
     }
     public function updatePOItem($id)
     {

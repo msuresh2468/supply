@@ -40,6 +40,8 @@ $this->load->view('portal/layout/header'); ?>
                                         <th>PO Date</th>
                                         <th>File Number</th>
                                         <th>Item Name</th>
+                                        <th>Item Quantity</th>
+                                        <th>Hospital Name</th>
                                         <th>Installation Date</th>
                                         <th>Supply Status</th>
                                     </tr>
@@ -61,6 +63,12 @@ $this->load->view('portal/layout/header'); ?>
                                             </td>
                                             <td>
                                                 <?php echo $row->Item_Name; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->Item_Qty; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row->po_hospital_name; ?>
                                             </td>
                                             <td>
                                                 <?php echo date('d-m-Y',strtotime($row->Installation_Date)); ?>

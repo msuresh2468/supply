@@ -67,6 +67,20 @@ $this->load->view('portal/layout/header'); ?>
                                             </td>
                                             <td>
                                                 <?php echo $row->Bills_Percentage; ?>
+                                                <table>
+                                                    <tr>
+                                                        <td><?php echo $row->Bills_Percentage_60; ?></td>
+                                                        <td><?php echo $row->Bills_60_Amount; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><?php echo $row->Bills_Percentage_30; ?></td>
+                                                        <td><?php echo $row->Bills_30_Amount; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><?php echo $row->Bills_Percentage_10; ?></td>
+                                                        <td><?php echo $row->Bills_10_Amount; ?></td>
+                                                    </tr>
+                                                </table>
                                             </td>
                                             <td>
                                                 <?php echo $row->Payment_Received; ?>
