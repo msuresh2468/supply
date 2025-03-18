@@ -79,10 +79,11 @@ class PurchaseModel extends CI_Model
     }
     public function afterCutoffinstalled()
     {
-        $this->db->select('p.Installation_Date, po.PO_Year, po.PO_Number, po.id,po.PO_Date,po.File_Number,pi.Item_Name, po.Supply_DueDate, p.supply_status');
+        $this->db->select('p.Installation_Date, po.PO_Year, po.PO_Number, po.id,po.PO_Date,po.File_Number,pi.Item_Name,pi.Item_Qty, p.po_hospital_name, po.Supply_DueDate, p.supply_status');
         $this->db->from('po_associate_hospitals p');
         $this->db->join('po_details po', 'p.item_po_id = po.PO_Number');
         $this->db->join('po_item_details pi', 'pi.po_id = p.item_po_id');
+        $this->db->group_by('p.id');
         $this->db->where('Installation_Date !=', '');
         $this->db->group_start();
         $this->db->where('Installation_Date >', 'Supply_DueDate', FALSE);
@@ -92,10 +93,11 @@ class PurchaseModel extends CI_Model
     }
     public function beforeCutoffinstalled()
     {
-        $this->db->select('p.Installation_Date, po.PO_Year, po.PO_Number, po.id,po.PO_Date,po.File_Number,pi.Item_Name, po.Supply_DueDate, p.supply_status');
+        $this->db->select('p.Installation_Date, po.PO_Year, po.PO_Number, po.id,po.PO_Date,po.File_Number,pi.Item_Name, pi.Item_Qty, po.Supply_DueDate, p.po_hospital_name,  p.supply_status');
         $this->db->from('po_associate_hospitals p');
         $this->db->join('po_details po', 'p.item_po_id = po.PO_Number');
         $this->db->join('po_item_details pi', 'pi.po_id = p.item_po_id');
+        $this->db->group_by('p.id');
         $this->db->where('Installation_Date !=', '');
         $this->db->group_start();
         $this->db->where('Installation_Date <', 'Supply_DueDate', FALSE);
@@ -103,6 +105,55 @@ class PurchaseModel extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    public function warranty(){
+        // $this->db->select('p.Warranty_Date, po.PO_Year, po.PO_Number, po.id,po.PO_Date,po.File_Number,pi.Item_Name, pi.Item_Qty, p.po_hospital_name, po.Supply_DueDate, p.supply_status');
+        // $this->db->from('po_associate_hospitals p');
+        // $this->db->join('po_details po', 'p.item_po_id = po.PO_Number');
+        // $this->db->join('po_item_details pi', 'pi.po_id = p.item_po_id');
+        // $this->db->group_by('PO_Number');
+        // $this->db->where('Warranty_Date !=', '');
+        // $this->db->group_start();
+        // $this->db->where('Warranty_Date <', '18-03-2025', TRUE);
+        // $this->db->group_end();
+        // $query = $this->db->get();
+        // return $query->result();
+        $this->db->select('*');
+        $this->db->from('po_associate_hospitals p');
+        $this->db->join('po_item_details pi', 'pi.po_id = p.item_po_id');
+        $this->db->join('po_details po', 'po.PO_Number = p.item_po_id');
+        $this->db->group_by('p.id');
+        $this->db->where('Warranty_Date <', date('Y-m-d'));
+        $query = $this->db->get();
+        //print_r($query->result());die;
+        return $query->result();
+    }
+    public function expired(){
+        // $this->db->select('p.Warranty_Date, po.PO_Year, po.PO_Number, po.id,po.PO_Date,po.File_Number,pi.Item_Name, po.Supply_DueDate, p.supply_status');
+        // $this->db->from('po_associate_hospitals p');
+        // $this->db->join('po_details po', 'p.item_po_id = po.PO_Number');
+        // $this->db->join('po_item_details pi', 'pi.po_id = p.item_po_id');
+        // $this->db->group_by('p.id');
+        // // $this->db->where('Warranty_Date !=', '');
+        // // $this->db->group_start();
+        // $this->db->where('Warranty_Date >', '18-03-2025', FALSE);
+        // // $this->db->group_end();
+        // $query = $this->db->get();
+        // return $query->result();
+        $this->db->select('*');
+        $this->db->from('po_associate_hospitals p');
+        $this->db->join('po_item_details pi', 'pi.po_id = p.item_po_id');
+        $this->db->join('po_details po', 'po.PO_Number = p.item_po_id');
+        $this->db->group_by('p.id');
+        $this->db->where('Warranty_Date >', date('Y-m-d'));
+        $query = $this->db->get();
+        //print_r($query->result());die;
+        return $query->result();
+        
+    }
+    public function ldc(){
+
+    }
+    
     public function status()
     {
         $this->db->select('*');

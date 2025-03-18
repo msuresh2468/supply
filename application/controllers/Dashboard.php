@@ -101,7 +101,7 @@ class Dashboard extends CI_Controller {
 		$data = [
             'page_title' => 'PO Payment Details',
             "pagename" => 'status',
-            'payment_details' => $pos-> paymentDetails()
+            'payment_details' => $pos-> paymentDetails(),
         ];
         $this->load->view('portal/payment-details', $data);
 	}
@@ -131,8 +131,28 @@ class Dashboard extends CI_Controller {
 		$data = [
             'page_title' => 'Item Warranty',
             "pagename" => 'status',
-            'status' => $pos-> status()
+            'warranty' => $pos-> warranty()
         ];
         $this->load->view('portal/po-item-warranty', $data);
+	}
+    public function expired()
+	{
+        $pos = new PurchaseModel();
+		$data = [
+            'page_title' => 'Item Warranty',
+            "pagename" => 'status',
+            'expired' => $pos-> expired()
+        ];
+        $this->load->view('portal/warranty-expired-items', $data);
+	}
+    public function ldc()
+	{
+        $pos = new PurchaseModel();
+		$data = [
+            'page_title' => 'Item Warranty',
+            "pagename" => 'status',
+            'status' => $pos-> ldc()
+        ];
+        $this->load->view('portal/po-ldc-details', $data);
 	}
 }

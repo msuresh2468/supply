@@ -57,12 +57,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo base_url() ?>portal/po-item-warranty">
+                            <a class="nav-link" href="<?php echo base_url() ?>portal/warranty-expired-items">
                                Warranty Expired Items
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo base_url() ?>portal/po-item-warranty">
+                            <a class="nav-link" href="<?php echo base_url() ?>portal/po-ldc-details">
                                LDC Amount Details
                             </a>
                         </li>

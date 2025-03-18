@@ -36,7 +36,7 @@ $this->load->view('portal/layout/header'); ?>
                                 <thead>
                                     <tr>
                                         <th>PO Year</th>
-                                        <th>PO Number</th>
+                                        <th>PO No</th>
                                         <th>PO Date</th>
                                         <th>File Number</th>
                                         <th>Gross Amount</th>
@@ -67,32 +67,104 @@ $this->load->view('portal/layout/header'); ?>
                                             </td>
                                             <td>
                                                 <?php echo $row->Bills_Percentage; ?>
-                                                <table>
-                                                    <tr>
-                                                        <td><?php echo $row->Bills_Percentage_60; ?></td>
-                                                        <td><?php echo $row->Bills_60_Amount; ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?php echo $row->Bills_Percentage_30; ?></td>
-                                                        <td><?php echo $row->Bills_30_Amount; ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><?php echo $row->Bills_Percentage_10; ?></td>
-                                                        <td><?php echo $row->Bills_10_Amount; ?></td>
-                                                    </tr>
+                                                <table class="table table-bordered">
+                                                    <?php if ($row->Bills_Percentage_60 != '') { ?>
+                                                        <tr>
+                                                            <td><?php echo $row->Bills_Percentage_60; ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <?php if ($row->Bills_Percentage_30 != '') { ?>
+                                                        <tr>
+                                                            <td><?php echo $row->Bills_Percentage_30; ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <?php if ($row->Bills_Percentage_90 != '') { ?>
+                                                        <tr>
+                                                            <td><?php echo $row->Bills_Percentage_90; ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <?php if ($row->Bills_Percentage_10 != '') { ?>
+                                                        <tr>
+                                                            <td><?php echo $row->Bills_Percentage_10; ?></td>
+                                                        </tr>
+                                                    <?php } ?>
                                                 </table>
                                             </td>
                                             <td>
-                                                <?php echo $row->Payment_Received; ?>
+                                                <table class="table table-bordered">
+                                                    <?php if ($row->Bills_60_Amount != '') { ?>
+                                                        <tr>
+                                                            <td><?php echo $row->Bills_60_Amount; ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <?php if ($row->Bills_30_Amount != '') { ?>
+                                                        <tr>
+                                                            <td><?php echo $row->Bills_30_Amount; ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <?php if ($row->Bills_90_Amount != '') { ?>
+                                                        <tr>
+                                                            <td><?php echo $row->Bills_90_Amount; ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <?php if ($row->Bills_10_Amount != '') { ?>
+                                                        <tr>
+                                                            <td><?php echo $row->Bills_10_Amount; ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                </table>
+                                            </td>
+                                            
+                                            <td>
+                                                <table class="table table-bordered">
+                                                    <?php if ($row->Pay_60_Amt != '') { ?>
+                                                        <tr>
+                                                            <td id="pay_60"><?php echo $row->Pay_60_Amt; ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <?php if ($row->Pay_30_Amt != '') { ?>
+                                                        <tr>
+                                                            <td id="pay_30"><?php echo $row->Pay_30_Amt; ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <?php if ($row->Pay_90_Amt != '') { ?>
+                                                        <tr>
+                                                            <td id="pay_90"><?php echo $row->Pay_90_Amt; ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <?php if ($row->Pay_10_Amt != '') { ?>
+                                                        <tr>
+                                                            <td id="pay_10"><?php echo $row->Pay_10_Amt; ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                </table>
                                             </td>
                                             <td>
-                                                <?php echo ($row->Gross_Amount - $row->Payment_Received); ?>
+                                                <table class="table table-bordered">
+                                                    <?php if ($row->Pay_60_Date != '') { ?>
+                                                        <tr>
+                                                            <td><?php echo date('d-m-Y', strtotime($row->Pay_60_Date)); ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <?php if ($row->Pay_30_Date != '') { ?>
+                                                        <tr>
+                                                            <td><?php echo date('d-m-Y', strtotime($row->Pay_30_Date)); ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <?php if ($row->Pay_90_Date != '') { ?>
+                                                        <tr>
+                                                            <td><?php date('d-m-Y', strtotime($row->Pay_90_Date)); ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                    <?php if ($row->Pay_10_Date != '') { ?>
+                                                        <tr>
+                                                            <td><?php echo date('d-m-Y', strtotime($row->Pay_10_Date)); ?></td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                </table>
                                             </td>
                                             <td>
-                                                <?php echo ($row->Gross_Amount - $row->Payment_Received); ?>
-                                            </td>
-                                            <td>
-                                                <?php echo ($row->Gross_Amount - $row->Payment_Received); ?>
+                                               
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

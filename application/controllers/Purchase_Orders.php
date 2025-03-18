@@ -77,70 +77,92 @@ class Purchase_Orders extends CI_Controller
         $delivery_period = $delivery_period . ' days';
         $supply_dueDate = date('Y-m-d', strtotime($PO_Date . $delivery_period));
         $delivery_period1 = $this->input->post('delivery_period');
-        // $gross_amt = $this->input->post('gross_amount');
-        // $quantity = $this->input->post('item_qty');
-        // $hospitals = count($this->input->post('hospital_name'));
-        // $unit = $this->input->post('unit_rate');
+        $itemQty = $this->input->post('item_qty[]');
+        $gross_amt = $this->input->post('gross_amount');
+        $hosp_gross = 0;
+        $quantity = $this->input->post('item_qty');
+        //$hospitals = count($this->input->post('hospital_name'));
+        $unit = $this->input->post('unit_rate');
         // print_r($hospitals);
         // die;
-        $data = [
-            'PO_Number'   => $this->input->post('po_number'),
-            'File_Number'     => $this->input->post('file_number'),
-            'PO_Date'     => $this->input->post('po_date'),
-            'PO_Year' => $this->input->post('year'),
-            'Firm_Name' => $this->input->post('firm_name'),
-            'Gross_Amount' => $this->input->post('gross_amount'),
-            'Delivery_Period' => $delivery_period1,
-            'Scheme' => $this->input->post('scheme'),
-            'Supply_DueDate' => $supply_dueDate
-        ];
-        $po_id = $po->insertpo($data);
-        //$po_id = $this->input->post('po_number');
-        //print_r($po->insertpo($data));die;
-        $data1 = [];
-
-        $itemQty = $this->input->post('item_qty[]');
-        
-
-        for ($i = 0; $i < count($itemQty); $i++) {
-            $data2 = [
-                'po_id' => $po_id,
-                'Item_Name' => $this->input->post('item_name')[$i],
-                'Item_Model' => $this->input->post('model')[$i],
-                'Unit_Rate' => $this->input->post('unit_rate')[$i],
-                'Item_Qty' => $this->input->post('item_qty')[$i],
-                // 'Item_Amount' =>  $this->input->post('item_qty')[$i] * $this->input->post('unit_rate')[$i],
-                //'District' => $this->input->post('district')[$i],
-                //'Hospital_Type' => $this->input->post('type')[$i],
-                //'Hospital_Name' => implode('_', $this->input->post('hospital_name_' . $i)),
-                //'Supply_Status' => $this->input->post('supply_status'),
-
-            ];
-            $hospital_type = $this->input->post('type')[$i];
-            $hospital_names = implode('_', $this->input->post('hospital_name_' . $i));
+        for ($a = 0; $a < count($itemQty); $a++) {
+            $unit = $this->input->post('unit_rate')[$a];
+            $qty = $this->input->post('item_qty')[$a];
+            $hospital_names = implode('_', $this->input->post('hospital_name_' . $a));
             $hospital_names = explode("_", $hospital_names);
-            $District = $this->input->post('district')[$i];
-            $supply_status = $this->input->post('supply_status');
-            $data3 = [];
-            for ($j = 0; $j < count($hospital_names); $j++) {
-                $data4 = [
-                    'item_po_id' => $po_id,
-                    'Hospital_Type' => $hospital_type,
-                    'po_hospital_name' => $hospital_names[$j],
-                    'District' => $District,
-                    'supply_status' => $supply_status
-
-                ];
-                array_push($data3, $data4);
-            }
-
-
-            $this->db->insert_batch('po_associate_hospitals', $data3);
-            array_push($data1, $data2);
+            $hosp_gross = $hosp_gross + ($unit * $qty * count($hospital_names));
+            //echo $hosp_gross;
+            //print_r($unit);
+            //print_r($qty);
+            // print_r(count($hospital_names));
+            // die;
         }
-        $this->db->insert_batch('po_item_details', $data1);
-        $this->session->set_flashdata('status', 'New PO Added Successfully');
-        redirect(base_url('portal/purchase-orders'));
+        //print_r($hosp_gross);die;
+        if($gross_amt == $hosp_gross){
+            $data = [
+                'PO_Number'   => $this->input->post('po_number'),
+                'File_Number'     => $this->input->post('file_number'),
+                'PO_Date'     => $this->input->post('po_date'),
+                'PO_Year' => $this->input->post('year'),
+                'Firm_Name' => $this->input->post('firm_name'),
+                'Gross_Amount' => $this->input->post('gross_amount'),
+                'Delivery_Period' => $delivery_period1,
+                'Scheme' => $this->input->post('scheme'),
+                'Supply_DueDate' => $supply_dueDate
+            ];
+            $po_id = $po->insertpo($data);
+            //$po_id = $this->input->post('po_number');
+            //print_r($po->insertpo($data));die;
+            $data1 = [];
+    
+            
+            
+    
+            for ($i = 0; $i < count($itemQty); $i++) {
+                $data2 = [
+                    'po_id' => $po_id,
+                    'Item_Name' => $this->input->post('item_name')[$i],
+                    'Item_Model' => $this->input->post('model')[$i],
+                    'Unit_Rate' => $this->input->post('unit_rate')[$i],
+                    'Item_Qty' => $this->input->post('item_qty')[$i],
+                    // 'Item_Amount' =>  $this->input->post('item_qty')[$i] * $this->input->post('unit_rate')[$i],
+                    //'District' => $this->input->post('district')[$i],
+                    //'Hospital_Type' => $this->input->post('type')[$i],
+                    //'Hospital_Name' => implode('_', $this->input->post('hospital_name_' . $i)),
+                    //'Supply_Status' => $this->input->post('supply_status'),
+    
+                ];
+                $hospital_type = $this->input->post('type')[$i];
+                $hospital_names = implode('_', $this->input->post('hospital_name_' . $i));
+                $hospital_names = explode("_", $hospital_names);
+                $District = $this->input->post('district')[$i];
+                $supply_status = $this->input->post('supply_status');
+                $data3 = [];
+                for ($j = 0; $j < count($hospital_names); $j++) {
+                    $data4 = [
+                        'item_po_id' => $po_id,
+                        'Hospital_Type' => $hospital_type,
+                        'po_hospital_name' => $hospital_names[$j],
+                        'District' => $District,
+                        'supply_status' => $supply_status
+    
+                    ];
+                    array_push($data3, $data4);
+                }
+    
+    
+                $this->db->insert_batch('po_associate_hospitals', $data3);
+                array_push($data1, $data2);
+            }
+            $this->db->insert_batch('po_item_details', $data1);
+            $this->session->set_flashdata('status', 'New PO Added Successfully');
+            redirect(base_url('portal/purchase-orders'));
+        }
+        else{
+            $this->session->set_flashdata('status', 'Items Amount must be equal to the Gross Amount');
+            redirect(base_url('portal/add-purchase-order'));
+        }
+        
     }
     public function updatePO($id)
     {
@@ -243,6 +265,7 @@ class Purchase_Orders extends CI_Controller
             'supply_status' => $this->input->post('supply_status'),
             'Delivery_Date' => $this->input->post('delivery_date'),
             'Warranty_Years' => $this->input->post('warranty_years'),
+            'Warranty_Date' => $this->input->post('warranty_date'),
             'Installation_Date' => $installation_date
         ];
         $pos->updatePOItem($data, $id);

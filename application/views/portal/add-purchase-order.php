@@ -21,6 +21,12 @@ $this->load->view('portal/layout/header');
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <!-- <h4>Add Purchase Order</h4> -->
                 </div>
+                <?php
+                if ($this->session->flashdata('status')) : ?>
+                    <div class="alert alert-danger">
+                        <?= $this->session->flashdata('status'); ?>
+                    </div>
+                <?php endif; ?>
                 <div>
                     <form method="post" action="<?php echo base_url(); ?>portal/addPO" enctype="multipart/form-data" id="form">
                         <div class="row purchase_order_form">
