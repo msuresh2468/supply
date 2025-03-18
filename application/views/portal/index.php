@@ -7,7 +7,7 @@ $this->load->view('portal/layout/header'); ?>
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
-        <ul class="navbar-nav bg px-3">
+        <ul class="navbar-nav bg px-3 d-lg-block d-none">
             <li class="nav-item text-nowrap">
                 <a class="nav-link text-warning fw-bold" href="<?php echo base_url() ?>logout">Logout <i class="fa fa-sign-out"></i></a>
             </li>
