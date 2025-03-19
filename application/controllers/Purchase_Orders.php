@@ -266,6 +266,7 @@ class Purchase_Orders extends CI_Controller
             'Delivery_Date' => $this->input->post('delivery_date'),
             'Warranty_Years' => $this->input->post('warranty_years'),
             'Warranty_Date' => $this->input->post('warranty_date'),
+            'Stock_Entry_Page_Number' => $this->input->post('stock_number'),
             'Installation_Date' => $installation_date
         ];
         $pos->updatePOItem($data, $id);
