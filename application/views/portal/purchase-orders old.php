@@ -78,5 +78,40 @@ $this->load->view('portal/layout/header'); ?>
 </div>
 
 
-
+<?php if ($row->Pay_90_Amt == '') {
+                                                    if($row->Pay_60_Amt == ''){
+                                                        $pay_60 = '0';
+                                                    }
+                                                    else {
+                                                        $pay_60 = $row->Pay_60_Amt;
+                                                    }
+                                                    if($row->Pay_30_Amt == ''){
+                                                        $pay_30 = '0';
+                                                    }
+                                                    else {
+                                                        $pay_30 = $row->Pay_30_Amt;
+                                                    }
+                                                    if($row->Pay_10_Amt == ''){
+                                                        $pay_10 = '0';
+                                                    }
+                                                    else {
+                                                        $pay_10 = $row->Pay_10_Amt;
+                                                    }
+                                                    $pay =  $pay_60 + $pay_30 + $pay_10;
+                                                } ?>
+                                                <?php if ($row->Pay_90_Amt != '') {
+                                                    if($row->Pay_90_Amt == ''){
+                                                        $pay_90 = '0';
+                                                    }
+                                                    else {
+                                                        $pay_90 = $row->Pay_90_Amt;
+                                                    }
+                                                    if($row->Pay_10_Amt == ''){
+                                                        $pay_10 = '0';
+                                                    }
+                                                    else {
+                                                        $pay_10 = $row->Pay_10_Amt;
+                                                    }
+                                                    $pay = $pay_90 + $pay_10;
+                                                } ?>
 <?php $this->load->view('portal/layout/footer'); ?>

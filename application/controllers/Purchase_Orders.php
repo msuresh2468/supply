@@ -252,7 +252,7 @@ class Purchase_Orders extends CI_Controller
     {
         $pos = new PurchaseModel();
         $installation_date = $this->input->post('installation_date');
-        $installation_date = date('Y-m-d', strtotime($installation_date));
+        //$installation_date = date('Y-m-d', strtotime($installation_date));
         $data = [
             // 'Item_Name' => $this->input->post('item_name'),
             // 'Item_Model' => $this->input->post('model'),

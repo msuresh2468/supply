@@ -20,8 +20,11 @@ class Dashboard extends CI_Controller {
             'page_title' => 'Dashboard',
             "pagename" => 'index',
             'total' => $pos->totalAmount(),
-            // 'outstanding' => $pos->Outstanding()
-            'count' => $pos->countPO()
+            'countPO' => $pos->countPOs(),
+            'countSupplied' => $pos->countSupplied(),
+            'countNotSupplied' => $pos->countNotSupplied(),
+            'countInstalled' => $pos->countInstalled(),
+            'countNotInstalled' => $pos->countNotInstalled(),
         ];
         $this->load->view('portal/index', $data);
 	}
@@ -99,7 +102,7 @@ class Dashboard extends CI_Controller {
 	{
         $pos = new PurchaseModel();
 		$data = [
-            'page_title' => 'PO Payment Details',
+            'page_title' => 'Payment Details',
             "pagename" => 'status',
             'payment_details' => $pos-> paymentDetails(),
         ];
@@ -155,4 +158,17 @@ class Dashboard extends CI_Controller {
         ];
         $this->load->view('portal/po-ldc-details', $data);
 	}
+    public function search()
+    {
+        $keyword = $this->input->post('keyword');
+        $data = array();
+        $data['results'] = $this->PurchaseModel->search($keyword);
+        $data = [
+            'page_title' => 'Search',
+            'page_description' => 'Search Page Description',
+            "pagename" => 'search',
+            'results' => $this->PurchaseModel->search($keyword)
+        ];
+        $this->load->view('portal/search-results', $data);
+    }
 }

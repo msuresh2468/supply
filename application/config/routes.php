@@ -83,7 +83,7 @@ $route['portal/view-po/(:any)']['GET'] = 'Purchase_Orders/viewPODetails/$1';
 $route['portal/view-po-items/(:any)']['GET'] = 'Purchase_Orders/viewPOItemDetails/$1';
 $route['portal/edit-po-items/(:any)']['GET'] = 'Purchase_Orders/editPOItemDetails/$1';
 $route['portal/view-purchase-order/(:any)']['GET'] = 'Purchase_Orders/viewPO/$1';
-// $route['Admin/edit-post/(:any)']['GET'] = 'Blog/editPost/$1';
-// $route['Admin/updatePost/(:any)']['POST'] = 'Blog/updatePost/$1';
 $route['portal/addPO']['POST'] = 'Purchase_Orders/addPO';
+$route['search']['POST'] = 'Dashboard/search';
+$route['portal/search-results']['GET'] = 'Dashboard/search';
 
