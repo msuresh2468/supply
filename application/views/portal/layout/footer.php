@@ -133,7 +133,14 @@
 </script>
 
 <script>
+            $("#search").on("keyup", function() {
+  var value = $(this).val().toLowerCase();
+  $("#table tr").filter(function() {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+  });
+});
     $(document).ready(function() {
+
         var gross_amt = $('#gross_amt').val();
         
         var pay_60 = $('#pay_60').html();

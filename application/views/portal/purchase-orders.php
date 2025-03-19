@@ -23,6 +23,7 @@
                         ?>
                         
                         <?php if (count($purchase_orders) > 0) { ?>
+                            <input id="search" type="text" class="form-control"  placeholder="Search for name and email......">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -35,7 +36,7 @@
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="table">
                                     <?php foreach ($purchase_orders as $row) : ?>
                                         <tr>
                                             <td>
