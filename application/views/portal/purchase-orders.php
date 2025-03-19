@@ -9,6 +9,7 @@
                     <h4 class="my-0">All Purchase Orders</h4>
                     <a href="<?php echo base_url() ?>portal/add-purchase-order" class="text-decoration-none bg-primary text-white px-3 py-1">Add New PO</a>
                 </div>
+                
                 <div class="row">
                     <div class="col-md-12">
                         <?php
@@ -20,6 +21,7 @@
                         <?php
                         echo $this->input->get('msg');
                         ?>
+                        
                         <?php if (count($purchase_orders) > 0) { ?>
                             <table class="table table-bordered">
                                 <thead>

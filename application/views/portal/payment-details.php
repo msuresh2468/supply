@@ -28,11 +28,11 @@
                                         <th>PO Date</th>
                                         <th>File Number</th>
                                         <th>Gross Amount</th>
-                                        <th>Bills Submitted</th>
-                                        <th>Bills Submitted Amount</th>
+                                        <th>Bills</th>
+                                        <th>Submitted Amt</th>
                                         <th>Received Amount</th>
                                         <th>Received Date</th>
-                                        <th>Pending Amount</th>
+                                        <th>Due Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -58,22 +58,22 @@
                                                 <table class="table table-bordered">
                                                     <?php if ($row->Bills_Percentage_60 != 'No' && $row->Bills_Percentage_60 == '60') { ?>
                                                         <tr>
-                                                            <td><?php echo $row->Bills_Percentage_60; ?></td>
+                                                            <td><?php echo $row->Bills_Percentage_60; ?>%</td>
                                                         </tr>
                                                     <?php } ?>
                                                     <?php if ($row->Bills_Percentage_30 != 'No' && $row->Bills_Percentage_30 == '30') { ?>
                                                         <tr>
-                                                            <td><?php echo $row->Bills_Percentage_30; ?></td>
+                                                            <td><?php echo $row->Bills_Percentage_30; ?>%</td>
                                                         </tr>
                                                     <?php } ?>
                                                     <?php if ($row->Bills_Percentage_90 != 'No' && $row->Bills_Percentage_90 == '90') { ?>
                                                         <tr>
-                                                            <td><?php echo $row->Bills_Percentage_90; ?></td>
+                                                            <td><?php echo $row->Bills_Percentage_90; ?>%</td>
                                                         </tr>
                                                     <?php } ?>
                                                     <?php if ($row->Bills_Percentage_10 != 'No' && $row->Bills_Percentage_10 == '10') { ?>
                                                         <tr>
-                                                            <td><?php echo $row->Bills_Percentage_10; ?></td>
+                                                            <td><?php echo $row->Bills_Percentage_10; ?>%</td>
                                                         </tr>
                                                     <?php } ?>
                                                 </table>
@@ -152,44 +152,44 @@
                                                 </table>
                                             </td>
                                             <td class="bg-danger text-white text-center">
-                                                <?php if ($row->Bills_90_Amount == '') {
-                                                    if($row->Bills_60_Amount == ''){
-                                                        $bill_60 = '0';
+                                                <?php if ($row->Pay_90_Amt == '') {
+                                                    if($row->Pay_60_Amt == ''){
+                                                        $pay_60 = '0';
                                                     }
                                                     else {
-                                                        $bill_60 = $row->Bills_60_Amount;
+                                                        $pay_60 = $row->Pay_60_Amt;
                                                     }
-                                                    if($row->Bills_30_Amount == ''){
-                                                        $bill_30 = '0';
-                                                    }
-                                                    else {
-                                                        $bill_30 = $row->Bills_30_Amount;
-                                                    }
-                                                    if($row->Bills_10_Amount == ''){
-                                                        $bill_10 = '0';
+                                                    if($row->Pay_30_Amt == ''){
+                                                        $pay_30 = '0';
                                                     }
                                                     else {
-                                                        $bill_10 = $row->Bills_10_Amount;
+                                                        $pay_30 = $row->Pay_30_Amt;
                                                     }
-                                                    $bills =  $bill_60 + $bill_30 + $bill_10;
+                                                    if($row->Pay_10_Amt == ''){
+                                                        $pay_10 = '0';
+                                                    }
+                                                    else {
+                                                        $pay_10 = $row->Pay_10_Amt;
+                                                    }
+                                                    $pay =  $pay_60 + $pay_30 + $pay_10;
                                                 } ?>
-                                                <?php if ($row->Bills_90_Amount != '') {
-                                                    if($row->Bills_90_Amount == ''){
-                                                        $bill_90 = '0';
+                                                <?php if ($row->Pay_90_Amt != '') {
+                                                    if($row->Pay_90_Amt == ''){
+                                                        $pay_90 = '0';
                                                     }
                                                     else {
-                                                        $bill_90 = $row->Bills_90_Amount;
+                                                        $pay_90 = $row->Pay_90_Amt;
                                                     }
-                                                    if($row->Bills_10_Amount == ''){
-                                                        $bill_10 = '0';
+                                                    if($row->Pay_10_Amt == ''){
+                                                        $pay_10 = '0';
                                                     }
                                                     else {
-                                                        $bill_10 = $row->Bills_10_Amount;
+                                                        $pay_10 = $row->Pay_10_Amt;
                                                     }
-                                                    $bills = $bill_90 + $bill_10;
+                                                    $pay = $pay_90 + $pay_10;
                                                 } ?>
                                                 
-                                                <?php echo $row->Gross_Amount - $bills; ?>
+                                                <?php echo $row->Gross_Amount - $pay; ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

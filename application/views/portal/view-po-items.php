@@ -30,6 +30,7 @@
                                         <th>PO Number</th>
                                         <th>Item Name</th>
                                         <th>Item Quantity</th>
+                                        <th>Unit Rate</th>
                                         <th>Make/Model</th>
                                         <th>Hospital Name</th>
                                         <th>District</th>
@@ -51,6 +52,9 @@
                                                 </td>
                                                 <td>
                                                     <?php echo $row->Item_Qty; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row->Unit_Rate; ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $row->Item_Model; ?>

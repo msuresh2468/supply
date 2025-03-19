@@ -79,6 +79,7 @@ class Purchase_Orders extends CI_Controller
         $delivery_period1 = $this->input->post('delivery_period');
         $itemQty = $this->input->post('item_qty[]');
         $gross_amt = $this->input->post('gross_amount');
+        $gross_amt = round($gross_amt);
         $hosp_gross = 0;
         $quantity = $this->input->post('item_qty');
         //$hospitals = count($this->input->post('hospital_name'));
@@ -87,17 +88,22 @@ class Purchase_Orders extends CI_Controller
         // die;
         for ($a = 0; $a < count($itemQty); $a++) {
             $unit = $this->input->post('unit_rate')[$a];
+            //$unit = round($unit);
+            //print_r($unit);die;
             $qty = $this->input->post('item_qty')[$a];
             $hospital_names = implode('_', $this->input->post('hospital_name_' . $a));
             $hospital_names = explode("_", $hospital_names);
-            $hosp_gross = $hosp_gross + ($unit * $qty * count($hospital_names));
+            $hosp_gross = round($hosp_gross + ($unit * $qty * count($hospital_names)));
+            //print_r($hosp_gross);die;
             //echo $hosp_gross;
             //print_r($unit);
             //print_r($qty);
             // print_r(count($hospital_names));
             // die;
         }
-        //print_r($hosp_gross);die;
+        // print_r($gross_amt);
+        // print_r($hosp_gross);
+        // die;
         if($gross_amt == $hosp_gross){
             $data = [
                 'PO_Number'   => $this->input->post('po_number'),

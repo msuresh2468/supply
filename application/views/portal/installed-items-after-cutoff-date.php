@@ -63,7 +63,7 @@
                                                 <?php echo date('d-m-Y', strtotime($row->Supply_DueDate)); ?>
                                             </td>
                                             <td>
-                                                <?php echo date('d-m-Y', strtotime($row->Installation_Date)); ?>
+                                                <?php echo $row->Installation_Date; ?>
                                             </td>
                                             <td>
                                                 <?php echo $row->supply_status; ?>
