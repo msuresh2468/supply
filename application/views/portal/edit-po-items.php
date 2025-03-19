@@ -151,7 +151,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="stock_number" class="form-label flex-1">Stock Entry Page Number</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="stock_number" name="stock_number">
+                                    <input type="text" class="form-control flex-1 input_style" value="<?php echo $PO_Item->Stock_Entry_Page_Number; ?> id="stock_number" name="stock_number">
                                 </div>
                             </div>
 
