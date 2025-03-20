@@ -49,7 +49,7 @@ class Purchase_Orders extends CI_Controller
             "pagename" => 'projects',
             'PO_Item' => $this->PurchaseModel->editPOItem($id),
             'types' => $type->getTypes(),
-            'view_hospital_name' => $type->viewHospitalName($id),
+            //'view_hospital_name' => $type->viewHospitalName($id),
             'hospital_name' => $type->HospitalNames($id),
         );
         $this->load->view('portal/edit-po-items', $data);
