@@ -9,7 +9,12 @@ class PurchaseModel extends CI_Model
         $this->db->select_sum('Pay_30_Amt');
         $this->db->select_sum('Pay_10_Amt');
         $this->db->select_sum('Pay_90_Amt');
-        $this->db->select_sum('LDC_Amount');
+        $this->db->select_sum('LDC_Amount1');
+        $this->db->select_sum('LDC_Amount2');
+        $this->db->select_sum('LDC_Amount3');
+        $this->db->select_sum('Deductions_1');
+        $this->db->select_sum('Deductions_2');
+        $this->db->select_sum('Deductions_3');
         $this->db->select_sum('Bills_60_Amount');
         $this->db->select_sum('Bills_30_Amount');
         $this->db->select_sum('Bills_90_Amount');
@@ -161,7 +166,7 @@ class PurchaseModel extends CI_Model
         $this->db->from('po_associate_hospitals p');
         $this->db->join('po_item_details pi', 'pi.po_id = p.item_id');
         $this->db->join('po_details po', 'po.PO_Number = pi.po_id');
-        $this->db->group_by('p.id');
+        $this->db->where('Warranty_Date !=', '');
         $this->db->where('Warranty_Date <', date('Y-m-d'));
         $query = $this->db->get();
         return $query->result();

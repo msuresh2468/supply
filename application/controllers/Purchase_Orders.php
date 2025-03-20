@@ -70,6 +70,7 @@ class Purchase_Orders extends CI_Controller
     }
     public function addPO()
     {
+        
         $po = new PurchaseModel();
         $PO_Date = $this->input->post('po_date');
         $PO_Date = date('Y-m-d', strtotime($PO_Date));
@@ -85,11 +86,14 @@ class Purchase_Orders extends CI_Controller
         for ($a = 0; $a < count($itemQty); $a++) {
             $unit = $this->input->post('unit_rate')[$a];
             $qty = $this->input->post('item_qty')[$a];
-            $hospital_names = implode('_', $this->input->post('hospital_name_' . $a));
-            $hospital_names = explode("_", $hospital_names);
-            $hosp_gross = round($hosp_gross + ($unit * $qty * count($hospital_names)));
+            //print_r($this->input->post('hospital_name_' . $a));
+            if ($this->input->post('hospital_name_' . $a) != NULL) {
+                $hospital_names = implode('_', $this->input->post('hospital_name_' . $a));
+                $hospital_names = explode("_", $hospital_names);
+                $hosp_gross = round($hosp_gross + ($unit * $qty * count($hospital_names)));
+            }
         }
-        if($gross_amt == $hosp_gross){
+        if ($gross_amt == $hosp_gross) {
             $data = [
                 'PO_Number'   => $this->input->post('po_number'),
                 'File_Number'     => $this->input->post('file_number'),
@@ -106,45 +110,48 @@ class Purchase_Orders extends CI_Controller
             //print_r($po->insertpo($data));die;
             //$data1 = [];
             for ($i = 0; $i < count($itemQty); $i++) {
-                $data2 = [
-                    'po_id' => $po_id,
-                    'Item_Name' => $this->input->post('item_name')[$i],
-                    'Item_Model' => $this->input->post('model')[$i],
-                    'Unit_Rate' => $this->input->post('unit_rate')[$i],
-                    'Item_Qty' => $this->input->post('item_qty')[$i],    
-                ];
-                $item_id = $po->insertpoitem($data2);
-                $hospital_type = $this->input->post('type')[$i];
-                $hospital_names = implode('_', $this->input->post('hospital_name_' . $i));
-                $hospital_names = explode("_", $hospital_names);
-                $District = $this->input->post('district')[$i];
-                $supply_status = $this->input->post('supply_status');
-                $data3 = [];
-                for ($j = 0; $j < count($hospital_names); $j++) {
-                    $data4 = [
-                        'item_id' => $item_id,
-                        'Hospital_Type' => $hospital_type,
-                        'po_hospital_name' => $hospital_names[$j],
-                        'District' => $District,
-                        'supply_status' => $supply_status
-    
+                if ($this->input->post('hospital_name_' . $i) != NULL) {
+                    $data2 = [
+                        'po_id' => $po_id,
+                        'Item_Name' => $this->input->post('item_name')[$i],
+                        'Item_Model' => $this->input->post('model')[$i],
+                        'Unit_Rate' => $this->input->post('unit_rate')[$i],
+                        'Item_Qty' => $this->input->post('item_qty')[$i],
                     ];
-                    array_push($data3, $data4);
+                    $item_id = $po->insertpoitem($data2);
+                    $hospital_type = $this->input->post('type')[$i];
+                    $hospital_names = implode('_', $this->input->post('hospital_name_' . $i));
+                    $hospital_names = explode("_", $hospital_names);
+                    $District = $this->input->post('district')[$i];
+                    $supply_status = $this->input->post('supply_status');
+                    $data3 = [];
+                    for ($j = 0; $j < count($hospital_names); $j++) {
+                        $data4 = [
+                            'item_id' => $item_id,
+                            'Hospital_Type' => $hospital_type,
+                            'po_hospital_name' => $hospital_names[$j],
+                            'District' => $District,
+                            'supply_status' => $supply_status
+
+                        ];
+                        array_push($data3, $data4);
+                    }
+
+
+                    $this->db->insert_batch('po_associate_hospitals', $data3);
+                    //array_push($data1, $data2);
                 }
-    
-    
-                $this->db->insert_batch('po_associate_hospitals', $data3);
-                //array_push($data1, $data2);
             }
             //$this->db->insert_batch('po_item_details', $data1);
             $this->session->set_flashdata('status', 'New PO Added Successfully');
             redirect(base_url('portal/purchase-orders'));
-        }
-        else{
+        } else {
             $this->session->set_flashdata('status', 'Items Amount must be equal to the Gross Amount');
+           // $this->session->set_flashdata('old_input', $this->input->post());
+           // print_r($this->input->post());die;
             redirect(base_url('portal/add-purchase-order'));
+            
         }
-        
     }
     public function updatePO($id)
     {
@@ -220,7 +227,12 @@ class Purchase_Orders extends CI_Controller
                 'Pay_Percentage_10' => $this->input->post('payment_10'),
                 'Pay_10_Amt' => $this->input->post('payment_10_received_amt'),
                 'Pay_10_Date' => $this->input->post('payment_10_received_date'),
-                'LDC_Amount' => $this->input->post('ldc_amount'),
+                'LDC_Amount1' => $this->input->post('ldc_amount_1'),
+                'LDC_Amount2' => $this->input->post('ldc_amount_2'),
+                'LDC_Amount3' => $this->input->post('ldc_amount_3'),
+                'Deductions_1' => $this->input->post('deductions_1'),
+                'Deductions_2' => $this->input->post('deductions_3'),
+                'Deductions_3' => $this->input->post('deductions_3'),
                 'Payment_Received' => $this->input->post('received_amt'),
                 //'Balance_Amount' => $this->input->post('firm_name'),
                 'Remarks' => $this->input->post('remarks'),

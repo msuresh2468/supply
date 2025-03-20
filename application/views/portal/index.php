@@ -13,7 +13,7 @@
                         <div class="row mb-5 text-center">
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-danger bg-primary">
-                                    <i class="bi bi-shop h2"></i>
+                                    <i class="bi bi-currency-rupee h2"></i>
                                     <h6 class="my-0">Total Amount</h6>
                                     <p class="h2"><?php foreach ($total as $row) : ?>
                                             <?php echo $row->Gross_Amount; ?>
@@ -22,24 +22,33 @@
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
                                 <div class="card py-5 counter border-0 shadow rounded text-bg-danger bg-success">
-                                    <i class="bi bi-shop h2"></i>
+                                    <i class="bi bi-currency-rupee h2"></i>
                                     <h6 class="my-0">Received Amount</h6>
                                     <p class="h2"><?php foreach ($total as $row) : ?>
-                                            <?php echo $row->Payment_Received; ?>
+                                        <?php echo $row->Pay_60_Amt + $row->Pay_30_Amt + $row->Pay_10_Amt + $row->Pay_90_Amt; ?>
                                         <?php endforeach; ?></p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
-                                <div class="card py-5 counter border-0 shadow rounded text-bg-danger bg-warning">
-                                    <i class="bi bi-shop h2"></i>
+                                <div class="card py-5 counter border-0 shadow rounded text-bg-danger bg-danger">
+                                    <i class="bi bi-currency-rupee h2"></i>
                                     <h6 class="my-0">Total Outstanding</h6>
                                     <p class="h2">
                                         <?php foreach ($total as $row) : ?>
-                                            <?php if ($row->Gross_Amount - $row->Payment_Received == 0) {
-                                                echo '';
-                                            } else {
-                                                echo $row->Gross_Amount - $row->Payment_Received;
-                                            }  ?>
+                                            <?php $pay = $row->Pay_60_Amt + $row->Pay_30_Amt + $row->Pay_10_Amt + $row->Pay_90_Amt;
+                                        $deductions = $row->LDC_Amount1 + $row->LDC_Amount2 + $row->LDC_Amount3 + $row->Deductions_1 + $row->Deductions_2 + $row->Deductions_3; ?>
+                                        <?php echo $row->Gross_Amount - ($pay + $deductions); ?>
+                                        <?php endforeach; ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-sm-6 col-lg-3 mb-3">
+                                <div class="card py-5 counter border-0 shadow rounded text-bg-danger bg-black">
+                                    <i class="bi bi-currency-rupee h2"></i>
+                                    <h6 class="my-0">Total Deductions</h6>
+                                    <p class="h2">
+                                        <?php foreach ($total as $row) : ?>
+                                            <?php echo $row->LDC_Amount1 + $row->LDC_Amount2 + $row->LDC_Amount3 + $row->Deductions_1 + $row->Deductions_2 + $row->Deductions_3; ?>
                                         <?php endforeach; ?>
                                     </p>
                                 </div>

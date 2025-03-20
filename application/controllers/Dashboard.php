@@ -156,7 +156,9 @@ class Dashboard extends CI_Controller {
 		$data = [
             'page_title' => 'Item Warranty',
             "pagename" => 'status',
-            'status' => $pos-> ldc()
+            'payment_details' => $pos-> paymentDetails(),
+            'countPO' => $pos->countPOs(),
+            'total' => $pos->totalAmount(),
         ];
         $this->load->view('portal/po-ldc-details', $data);
 	}

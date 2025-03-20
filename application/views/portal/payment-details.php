@@ -6,47 +6,53 @@
             <?php $this->load->view('portal/layout/sidebar_menu'); ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h4>Payment Details</h4>
+                    <!-- <h4>Payment Details</h4> -->
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-6">
-                                <p>
-                                    Total Number of POs : <?php echo count($countPO); ?>
+                                <p class="bg-primary p-2 text-white">
+                                    Total Number of POs : <span class="float-end h5"><?php echo count($countPO); ?></span>
                                 </p>
-                                <p>
+                                <p class="bg-warning p-2">
                                     Total Gross Amount:
-                                    <?php foreach ($total as $row) : ?>
+                                    <span class="float-end h5"><?php foreach ($total as $row) : ?>
                                         <?php echo $row->Gross_Amount; ?>
                                     <?php endforeach; ?>
+                                    </span>
                                 </p>
-                                <p>
+                                <p class="bg-black p-2 text-white">
                                     Total Bills Submitted Amount:
-                                    <?php foreach ($total as $row) : ?>
+                                    <span class="float-end h5"><?php foreach ($total as $row) : ?>
                                         <?php echo $row->Bills_60_Amount + $row->Bills_30_Amount + $row->Bills_90_Amount + $row->Bills_10_Amount; ?>
                                     <?php endforeach; ?>
+                                    </span>
                                 </p>
                             </div>
                             <div class="col-md-6">
-                                <p>
+                                <p class="bg-success p-2 text-white">
                                     Total Received Amount:
-                                    <?php foreach ($total as $row) : ?>
+                                    <span class="float-end h5"> <?php foreach ($total as $row) : ?>
                                         <?php echo $row->Pay_60_Amt + $row->Pay_30_Amt + $row->Pay_10_Amt + $row->Pay_90_Amt; ?>
                                     <?php endforeach; ?>
+                                    </span>
                                 </p>
-                                <p>
-                                    Total LDC Charges:
-                                    <?php foreach ($total as $row) : ?>
-                                        <?php echo $row->LDC_Amount; ?>
+                                <p class="bg-secondary p-2 text-white">
+                                    Total LDC Charges and Deductions:
+                                    <span class="float-end h5"><?php foreach ($total as $row) : ?>
+                                        <?php echo $row->LDC_Amount1 + $row->LDC_Amount2 + $row->LDC_Amount3 + $row->Deductions_1 + $row->Deductions_2 + $row->Deductions_3; ?>
                                     <?php endforeach; ?>
+                                    </span>
                                 </p>
-                                <p>
+                                <p class="bg-danger p-2 text-white">
                                     Total Pending Amount:
-                                    <?php foreach ($total as $row) : ?>
-                                        <?php $pay = $row->Pay_60_Amt + $row->Pay_30_Amt + $row->Pay_10_Amt + $row->Pay_90_Amt; ?>
-                                        <?php echo $row->Gross_Amount - $pay; ?>
+                                    <span class="float-end h5"><?php foreach ($total as $row) : ?>
+                                        <?php $pay = $row->Pay_60_Amt + $row->Pay_30_Amt + $row->Pay_10_Amt + $row->Pay_90_Amt;
+                                        $deductions = $row->LDC_Amount1 + $row->LDC_Amount2 + $row->LDC_Amount3 + $row->Deductions_1 + $row->Deductions_2 + $row->Deductions_3; ?>
+                                        <?php echo $row->Gross_Amount - ($pay + $deductions); ?>
                                     <?php endforeach; ?>
+                                    </span>
                                 </p>
                             </div>
                         </div>
@@ -64,16 +70,16 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>PO Year</th>
-                                        <th>PO No</th>
-                                        <th>PO Date</th>
-                                        <th>File Number</th>
-                                        <th>Gross Amount</th>
-                                        <th>Bills</th>
-                                        <th>Submitted Amt</th>
-                                        <th>Received Amount</th>
-                                        <th>Received Date</th>
-                                        <th>Due Amount</th>
+                                        <th>PO <br> Year</th>
+                                        <th>PO <br> No</th>
+                                        <th>PO <br> Date</th>
+                                        <th>File <br> Number</th>
+                                        <th>Gross <br> Amount</th>
+                                        <th>Bills <br> In(%)</th>
+                                        <th>Submitted <br> Amt</th>
+                                        <th>Received <br> Amount</th>
+                                        <th>Received <br> Date</th>
+                                        <th>Due <br> Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody id="filter_search">
@@ -197,12 +203,12 @@
                                                     if ($row->Pay_60_Amt == '') {
                                                         $pay_60 = '0';
                                                     } else {
-                                                        $pay_60 = $row->Pay_60_Amt;
+                                                        $pay_60 = $row->Pay_60_Amt + $row->Deductions_1 + $row->LDC_Amount1;
                                                     }
                                                     if ($row->Pay_30_Amt == '') {
                                                         $pay_30 = '0';
                                                     } else {
-                                                        $pay_30 = $row->Pay_30_Amt;
+                                                        $pay_30 = $row->Pay_30_Amt + $row->Deductions_2 + $row->LDC_Amount2;
                                                     }
                                                     if ($row->Pay_10_Amt == '') {
                                                         $pay_10 = '0';
@@ -215,7 +221,7 @@
                                                     if ($row->Pay_90_Amt == '') {
                                                         $pay_90 = '0';
                                                     } else {
-                                                        $pay_90 = $row->Pay_90_Amt;
+                                                        $pay_90 = $row->Pay_90_Amt + $row->Deductions_3 + $row->LDC_Amount3;
                                                     }
                                                     if ($row->Pay_10_Amt == '') {
                                                         $pay_10 = '0';
@@ -225,7 +231,7 @@
                                                     $pay = $pay_90 + $pay_10;
                                                 } ?>
 
-                                                <?php echo $row->Gross_Amount - $pay; ?>
+                                                <?php echo $row->Gross_Amount - $pay ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

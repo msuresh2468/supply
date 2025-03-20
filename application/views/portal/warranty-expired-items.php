@@ -36,7 +36,7 @@
                                 <tbody id="filter_search">
                                     <?php foreach ($expired as $row) : ?>
                                         <tr>
-                                            <?php if ($row->Warranty_Date != '') { ?>
+                                           
                                                 <td>
                                                     <?php echo $row->PO_Year; ?>
                                                 </td>
@@ -56,11 +56,11 @@
                                                     <?php echo $row->po_hospital_name ?>
                                                 </td>
                                                 <td>
-                                                    <?php if ($row->Warranty_Date != ' ') {
-                                                        echo date('d-m-Y', strtotime($row->Warranty_Date));
-                                                    } ?>
+                                                    <?php 
+                                                        echo $row->Warranty_Date;
+                                                    ?>
                                                 </td>
-                                            <?php } ?>
+                                        
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

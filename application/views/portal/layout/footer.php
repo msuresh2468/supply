@@ -237,25 +237,37 @@
         $('.payment_field_60 input:radio').click(function() {
             $("#payment_60_amt").prop("disabled", true);
             $("#payment_60_date").prop("disabled", true);
+            $("#ldc_amount_1").prop("disabled", true);
+            $("#deductions_1").prop("disabled", true);
             if ($(this).hasClass('is_payment_60_yes')) {
                 $("#payment_60_amt").prop("disabled", false);
                 $("#payment_60_date").prop("disabled", false);
+                $("#ldc_amount_1").prop("disabled", false);
+                $("#deductions_1").prop("disabled", false);
             }
         });
         $('.payment_field_30 input:radio').click(function() {
             $("#payment_30_amt").prop("disabled", true);
             $("#payment_30_date").prop("disabled", true);
+            $("#ldc_amount_2").prop("disabled", true);
+            $("#deductions_2").prop("disabled", true);
             if ($(this).hasClass('is_payment_30_yes')) {
                 $("#payment_30_amt").prop("disabled", false);
                 $("#payment_30_date").prop("disabled", false);
+                $("#ldc_amount_2").prop("disabled", false);
+                $("#deductions_2").prop("disabled", false);
             }
         });
         $('.payment_field_90 input:radio').click(function() {
             $("#payment_90_amt").prop("disabled", true);
             $("#payment_90_date").prop("disabled", true);
+            $("#ldc_amount_3").prop("disabled", true);
+            $("#deductions_3").prop("disabled", true);
             if ($(this).hasClass('is_payment_90_yes')) {
                 $("#payment_90_amt").prop("disabled", false);
                 $("#payment_90_date").prop("disabled", false);
+                $("#ldc_amount_3").prop("disabled", false);
+                $("#deductions_3").prop("disabled", false);
             }
         });
         $('.payment_field_10 input:radio').click(function() {
