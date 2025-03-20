@@ -20,6 +20,7 @@
                         echo $this->input->get('msg');
                         ?>
                         <?php if (count($afterCutoffinstalled) > 0) { ?>
+                            <?php $this->load->view('portal/layout/filter-search'); ?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -35,7 +36,7 @@
                                         <th>Supply Status</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="filter_search">
                                     <?php foreach ($afterCutoffinstalled as $row) : ?>
                                         <tr>
                                             <td>

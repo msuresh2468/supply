@@ -191,7 +191,7 @@
                             <span class="bi bi-plus-square-dotted">
                             </span> Add another Item Details
                         </button>
-                        <input type="submit" name="POSubmit" class="btn btn-success" value="SUBMIT">
+                        <input type="submit" name="POSubmit" class="btn btn-success" id="add_po" value="SUBMIT">
                     </form>
                 </div>
 

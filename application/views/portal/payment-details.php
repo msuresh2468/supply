@@ -10,6 +10,46 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>
+                                    Total Number of POs : <?php echo count($countPO); ?>
+                                </p>
+                                <p>
+                                    Total Gross Amount:
+                                    <?php foreach ($total as $row) : ?>
+                                        <?php echo $row->Gross_Amount; ?>
+                                    <?php endforeach; ?>
+                                </p>
+                                <p>
+                                    Total Bills Submitted Amount:
+                                    <?php foreach ($total as $row) : ?>
+                                        <?php echo $row->Bills_60_Amount + $row->Bills_30_Amount + $row->Bills_90_Amount + $row->Bills_10_Amount; ?>
+                                    <?php endforeach; ?>
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>
+                                    Total Received Amount:
+                                    <?php foreach ($total as $row) : ?>
+                                        <?php echo $row->Pay_60_Amt + $row->Pay_30_Amt + $row->Pay_10_Amt + $row->Pay_90_Amt; ?>
+                                    <?php endforeach; ?>
+                                </p>
+                                <p>
+                                    Total LDC Charges:
+                                    <?php foreach ($total as $row) : ?>
+                                        <?php echo $row->LDC_Amount; ?>
+                                    <?php endforeach; ?>
+                                </p>
+                                <p>
+                                    Total Pending Amount:
+                                    <?php foreach ($total as $row) : ?>
+                                        <?php $pay = $row->Pay_60_Amt + $row->Pay_30_Amt + $row->Pay_10_Amt + $row->Pay_90_Amt; ?>
+                                        <?php echo $row->Gross_Amount - $pay; ?>
+                                    <?php endforeach; ?>
+                                </p>
+                            </div>
+                        </div>
                         <?php
                         if ($this->session->flashdata('status')) : ?>
                             <div class="alert alert-success">
@@ -20,6 +60,7 @@
                         echo $this->input->get('msg');
                         ?>
                         <?php if (count($payment_details) > 0) { ?>
+                            <?php $this->load->view('portal/layout/filter-search'); ?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -35,7 +76,7 @@
                                         <th>Due Amount</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="filter_search">
                                     <?php foreach ($payment_details as $row) : ?>
                                         <tr>
                                             <td>
@@ -153,42 +194,37 @@
                                             </td>
                                             <td class="bg-danger text-white text-center">
                                                 <?php if ($row->Pay_90_Amt == '') {
-                                                    if($row->Pay_60_Amt == ''){
+                                                    if ($row->Pay_60_Amt == '') {
                                                         $pay_60 = '0';
-                                                    }
-                                                    else {
+                                                    } else {
                                                         $pay_60 = $row->Pay_60_Amt;
                                                     }
-                                                    if($row->Pay_30_Amt == ''){
+                                                    if ($row->Pay_30_Amt == '') {
                                                         $pay_30 = '0';
-                                                    }
-                                                    else {
+                                                    } else {
                                                         $pay_30 = $row->Pay_30_Amt;
                                                     }
-                                                    if($row->Pay_10_Amt == ''){
+                                                    if ($row->Pay_10_Amt == '') {
                                                         $pay_10 = '0';
-                                                    }
-                                                    else {
+                                                    } else {
                                                         $pay_10 = $row->Pay_10_Amt;
                                                     }
                                                     $pay =  $pay_60 + $pay_30 + $pay_10;
                                                 } ?>
                                                 <?php if ($row->Pay_90_Amt != '') {
-                                                    if($row->Pay_90_Amt == ''){
+                                                    if ($row->Pay_90_Amt == '') {
                                                         $pay_90 = '0';
-                                                    }
-                                                    else {
+                                                    } else {
                                                         $pay_90 = $row->Pay_90_Amt;
                                                     }
-                                                    if($row->Pay_10_Amt == ''){
+                                                    if ($row->Pay_10_Amt == '') {
                                                         $pay_10 = '0';
-                                                    }
-                                                    else {
+                                                    } else {
                                                         $pay_10 = $row->Pay_10_Amt;
                                                     }
                                                     $pay = $pay_90 + $pay_10;
                                                 } ?>
-                                                
+
                                                 <?php echo $row->Gross_Amount - $pay; ?>
                                             </td>
                                         </tr>

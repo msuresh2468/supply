@@ -23,7 +23,7 @@
                         ?>
                         
                         <?php if (count($purchase_orders) > 0) { ?>
-                            <input id="search" type="text" class="form-control"  placeholder="Search for name and email......">
+                            <?php $this->load->view('portal/layout/filter-search'); ?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -36,7 +36,7 @@
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody id="table">
+                                <tbody id="filter_search">
                                     <?php foreach ($purchase_orders as $row) : ?>
                                         <tr>
                                             <td>

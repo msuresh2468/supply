@@ -105,6 +105,26 @@
         $(this).parents("#row").remove();
     })
 </script>
+<!-- <script>
+    $(document).ready(function() {
+        $('#form').on('submit', function(event) {
+            event.preventDefault();
+            debugger;
+            $.ajax({
+                url: "<?php echo base_url('Purchase_Orders/addPO') ?>",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "json",
+                beforeSend: function() {
+                    $('#contact').attr('disabled', 'disabled');
+                },
+                success: function(data) {
+                    alert("I got a view");
+                }
+            });
+        });
+    });
+</script> -->
 <script>
     function hospital_typeChange(type) {
         //alert($('#'+type).val());
@@ -133,42 +153,25 @@
 </script>
 
 <script>
-            $("#search").on("keyup", function() {
-  var value = $(this).val().toLowerCase();
-  $("#table tr").filter(function() {
-    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-  });
-});
+    $("#search").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#table tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+        $("#filter_search tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
     $(document).ready(function() {
 
         var gross_amt = $('#gross_amt').val();
-        
+
         var pay_60 = $('#pay_60').html();
         var pay_30 = $('#pay_30').html();
         var pay_90 = $('#pay_90').html();
         var pay_10 = $('#pay_10').html();
         var pay_amt = parseInt(pay_60) + parseInt(pay_30) + parseInt(pay_10);
         $('#pending_amt').append(pay_amt);
-        //var bills_amt = parseInt(bill_10) + parseInt(bill_30) + parseInt(bill_60);
-        // if (parseInt(gross_amt) < parseInt(bills_amt)) {
-        //     alert('Bills Amount is Higher than the Gross Amount');
-        // }
-        // $('#BtnChange').click(function() {
-        //     if (parseInt(gross_amt) < parseInt(bills_amt)) {
-        //         alert('Bills Amount is Higher than the Gross Amount');
-        //         $('#BtnChange').prop('disabled', true);
-        //     }
-        //     else{
-        //         $('#BtnChange').prop('disabled', false);
-        //     }
-        // })
-       // console.log(bills_amt);
-        // $('#bills_to_be_submit').click(function(){
-        //     $value = $(this).val();
-        //     $received = gross_amt * $value/100;
-        //     console.log($received);
-        //     $('#received_amt').val($received);
-        // })
 
         $(function() {
             $('#datepicker').datepicker();
@@ -310,7 +313,7 @@
     })
 </script>
 <script>
-   
+
 </script>
 </body>
 

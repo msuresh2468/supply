@@ -23,6 +23,7 @@
 
 
                         <?php if (count($hospital_names) > 0) { ?>
+                            <?php $this->load->view('portal/layout/filter-search'); ?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -38,14 +39,14 @@
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="filter_search">
                                     <?php foreach ($hospital_names as $row) : ?>
                                             <tr>
                                                 <td>
                                                     <?php echo $row->PO_Year; ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row->po_id; ?>
+                                                    <?php echo $row->PO_Number; ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $row->Item_Name; ?>

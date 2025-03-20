@@ -20,6 +20,7 @@
                         echo $this->input->get('msg');
                         ?>
                         <?php if (count($beforeCutoffinstalled) > 0) { ?>
+                            <?php $this->load->view('portal/layout/filter-search'); ?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -34,7 +35,7 @@
                                         <th>Installation Date</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="filter_search">
                                     <?php foreach ($beforeCutoffinstalled as $row) : ?>
                                         <tr>
                                             <td>

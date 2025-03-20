@@ -81,29 +81,14 @@ class Purchase_Orders extends CI_Controller
         $gross_amt = $this->input->post('gross_amount');
         $gross_amt = round($gross_amt);
         $hosp_gross = 0;
-        $quantity = $this->input->post('item_qty');
-        //$hospitals = count($this->input->post('hospital_name'));
         $unit = $this->input->post('unit_rate');
-        // print_r($hospitals);
-        // die;
         for ($a = 0; $a < count($itemQty); $a++) {
             $unit = $this->input->post('unit_rate')[$a];
-            //$unit = round($unit);
-            //print_r($unit);die;
             $qty = $this->input->post('item_qty')[$a];
             $hospital_names = implode('_', $this->input->post('hospital_name_' . $a));
             $hospital_names = explode("_", $hospital_names);
             $hosp_gross = round($hosp_gross + ($unit * $qty * count($hospital_names)));
-            //print_r($hosp_gross);die;
-            //echo $hosp_gross;
-            //print_r($unit);
-            //print_r($qty);
-            // print_r(count($hospital_names));
-            // die;
         }
-        // print_r($gross_amt);
-        // print_r($hosp_gross);
-        // die;
         if($gross_amt == $hosp_gross){
             $data = [
                 'PO_Number'   => $this->input->post('po_number'),
@@ -119,25 +104,16 @@ class Purchase_Orders extends CI_Controller
             $po_id = $po->insertpo($data);
             //$po_id = $this->input->post('po_number');
             //print_r($po->insertpo($data));die;
-            $data1 = [];
-    
-            
-            
-    
+            //$data1 = [];
             for ($i = 0; $i < count($itemQty); $i++) {
                 $data2 = [
                     'po_id' => $po_id,
                     'Item_Name' => $this->input->post('item_name')[$i],
                     'Item_Model' => $this->input->post('model')[$i],
                     'Unit_Rate' => $this->input->post('unit_rate')[$i],
-                    'Item_Qty' => $this->input->post('item_qty')[$i],
-                    // 'Item_Amount' =>  $this->input->post('item_qty')[$i] * $this->input->post('unit_rate')[$i],
-                    //'District' => $this->input->post('district')[$i],
-                    //'Hospital_Type' => $this->input->post('type')[$i],
-                    //'Hospital_Name' => implode('_', $this->input->post('hospital_name_' . $i)),
-                    //'Supply_Status' => $this->input->post('supply_status'),
-    
+                    'Item_Qty' => $this->input->post('item_qty')[$i],    
                 ];
+                $item_id = $po->insertpoitem($data2);
                 $hospital_type = $this->input->post('type')[$i];
                 $hospital_names = implode('_', $this->input->post('hospital_name_' . $i));
                 $hospital_names = explode("_", $hospital_names);
@@ -146,7 +122,7 @@ class Purchase_Orders extends CI_Controller
                 $data3 = [];
                 for ($j = 0; $j < count($hospital_names); $j++) {
                     $data4 = [
-                        'item_po_id' => $po_id,
+                        'item_id' => $item_id,
                         'Hospital_Type' => $hospital_type,
                         'po_hospital_name' => $hospital_names[$j],
                         'District' => $District,
@@ -158,9 +134,9 @@ class Purchase_Orders extends CI_Controller
     
     
                 $this->db->insert_batch('po_associate_hospitals', $data3);
-                array_push($data1, $data2);
+                //array_push($data1, $data2);
             }
-            $this->db->insert_batch('po_item_details', $data1);
+            //$this->db->insert_batch('po_item_details', $data1);
             $this->session->set_flashdata('status', 'New PO Added Successfully');
             redirect(base_url('portal/purchase-orders'));
         }

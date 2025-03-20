@@ -105,6 +105,8 @@ class Dashboard extends CI_Controller {
             'page_title' => 'Payment Details',
             "pagename" => 'status',
             'payment_details' => $pos-> paymentDetails(),
+            'countPO' => $pos->countPOs(),
+            'total' => $pos->totalAmount(),
         ];
         $this->load->view('portal/payment-details', $data);
 	}

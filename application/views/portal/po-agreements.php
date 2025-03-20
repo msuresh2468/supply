@@ -20,6 +20,7 @@
                         echo $this->input->get('msg');
                         ?>
                         <?php if (count($agreements) > 0) { ?>
+                            <?php $this->load->view('portal/layout/filter-search'); ?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -32,7 +33,7 @@
                                         <th>Agreement Date</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="filter_search">
                                     <?php foreach ($agreements as $row) : ?>
                                         <tr>
                                             <td>

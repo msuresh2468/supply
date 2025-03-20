@@ -20,6 +20,7 @@
                         echo $this->input->get('msg');
                         ?>
                         <?php if (count($warranty) > 0) { ?>
+                            <?php $this->load->view('portal/layout/filter-search'); ?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -32,7 +33,7 @@
                                         <th>Warranty Date</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="filter_search">
                                     <?php foreach ($warranty as $row) : ?>
                                         <tr>
                                         <?php if ($row->Warranty_Date != '') { ?>
@@ -54,8 +55,7 @@
                                             <td>
                                                 <?php echo $row->po_hospital_name ?>
                                             </td>
-                                            <td>
-                                                
+                                            <td>                                                
                                                 <?php if($row->Warranty_Date != ' '){
                                                     echo date('d-m-Y', strtotime($row->Warranty_Date));
                                                 } ?>
