@@ -18,7 +18,7 @@
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="PONo" class="form-label flex-1">PO No</label>
 
-                                    <input type="text" class="form-control flex-1 input_style" disabled value="<?php echo $PO_Item->po_id; ?>" id="po_number" name="po_number">
+                                    <input type="text" class="form-control flex-1 input_style" disabled value="<?php echo $PO_Item->PO_Number; ?>" id="po_number" name="po_number">
                                 </div>
                             </div>
                             <div class="col-md-3">

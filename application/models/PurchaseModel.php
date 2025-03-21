@@ -233,13 +233,22 @@ class PurchaseModel extends CI_Model
         // $this->db->where('a.id',$id);        
         // $query = $this->db->get();
         // return $query->row();
-        $this->db->select('*');
-        $this->db->from('po_associate_hospitals pah');
-        $this->db->join('po_item_details pid', 'pah.item_id=pid.id');
-        $this->db->where('pah.item_id', $id);
+        $this->db->select('pid.Item_Name, pah.Hospital_Type, pid.Item_Qty, pid.Unit_Rate, pid.Item_Model, pah.po_hospital_name, pah.District, pah.id, pah.supply_status, pd.PO_Year, pd.PO_Number, pah.Delivery_Date, pah.Installation_Date, pah.Warranty_Years, pah.Warranty_Date, pah.Stock_Entry_Page_Number');           
+        $this->db->from('po_associate_hospitals pah');   
+        $this->db->join('po_item_details pid', 'pid.id=pah.item_id');      
+        $this->db->join('po_details pd', 'pd.PO_Number=pid.po_id');        
+              
+        $this->db->where('pah.id',$id);        
         //$query = $this->db->group_by('po_hospital_name'); 
         $query = $this->db->get();
         return $query->row();
+        // $this->db->select('*');
+        // $this->db->from('po_associate_hospitals pah');
+        // $this->db->join('po_item_details pid', 'pah.item_id=pid.id');
+        // $this->db->where('pah.item_id', $id);
+        // //$query = $this->db->group_by('po_hospital_name'); 
+        // $query = $this->db->get();
+        // return $query->row();
     }
     public function insertpo($data)
     {

@@ -42,7 +42,7 @@ class HospitalTypeModel extends CI_Model
         return $query->result();
     }
     public function HospitalNames($id){
-        $this->db->select('pid.Item_Name, pid.Item_Qty, pid.Unit_Rate, pid.Item_Model, pah.po_hospital_name, pah.District, pid.id, pah.supply_status, pd.PO_Year, pd.PO_Number,');           
+        $this->db->select('pid.Item_Name, pid.Item_Qty, pid.Unit_Rate, pid.Item_Model, pah.po_hospital_name, pah.District, pah.id, pah.supply_status, pd.PO_Year, pd.PO_Number,');           
         $this->db->from('po_item_details pid');   
         $this->db->join('po_details pd', 'pd.PO_Number=pid.po_id');      
         $this->db->join('po_associate_hospitals pah', 'pah.item_id=pid.id');        
