@@ -349,12 +349,6 @@ body .portal_section .sidebar {
   background-color: whitesmoke;
   color: white;
 }
-@media (max-width: 767.98px) {
-  /* line 201, ../sass/screen.scss */
-  body .portal_section .sidebar {
-    top: 5rem;
-  }
-}
 /* line 206, ../sass/screen.scss */
 body .portal_section .sidebar-sticky {
   position: relative;

@@ -70,7 +70,6 @@ class Purchase_Orders extends CI_Controller
     }
     public function addPO()
     {
-        
         $po = new PurchaseModel();
         $PO_Date = $this->input->post('po_date');
         $PO_Date = date('Y-m-d', strtotime($PO_Date));
@@ -146,12 +145,29 @@ class Purchase_Orders extends CI_Controller
             $this->session->set_flashdata('status', 'New PO Added Successfully');
             redirect(base_url('portal/purchase-orders'));
         } else {
-            $this->session->set_flashdata('status', 'Items Amount must be equal to the Gross Amount');
+            
+            
+            echo json_encode($this->session->set_flashdata('status', 'Items Amount must be equal to the Gross Amount'));
            // $this->session->set_flashdata('old_input', $this->input->post());
            // print_r($this->input->post());die;
             redirect(base_url('portal/add-purchase-order'));
             
         }
+    }
+    public function calc(){
+        print_r($this->input->post());
+        if($this->input->post('type')==1)
+		{
+			$gross_amount=$this->input->post('gross_amount');
+			$unit_rate=$this->input->post('unit_rate');
+			$item_qty=$this->input->post('item_qty');
+			$hospital_count=$this->input->post('hospital_count');
+			
+			echo json_encode(array(
+				"status"=>'200'
+			));
+            echo json_encode($this->session->set_flashdata('status', 'Items Amount must be equal to the Gross Amount'));
+		} 
     }
     public function updatePO($id)
     {

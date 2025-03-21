@@ -28,13 +28,13 @@
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="item_qty" class="form-label flex-1">Item Quantity</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="item_qty" name="item_qty[]">
+                                    <input type="text" class="form-control flex-1 input_style" id="item_qty_` + i + `" name="item_qty[]">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="unit_rate" class="form-label flex-1">Unit Rate</label>
-                                    <input type="text" class="form-control flex-1 input_style" id="unit_rate" name="unit_rate[]">
+                                    <input type="text" class="form-control flex-1 input_style" id="unit_rate_` + i + `" name="unit_rate[]">
                                 </div>
                             </div>
                             <div>
@@ -58,7 +58,7 @@
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="hospital_name" class="form-label flex-1">Select Hospital Name</label>
                                     <div id='HospitalBox-` + i + `' class="flex-1">
-                                        <select class="form-select input_style" id="hospital_name[]" name="hospital_name_` + i + `[]" aria-label="Default select example multiple">
+                                        <select class="form-select input_style" id="hospital_name_` + i + `[]" name="hospital_name_` + i + `[]" aria-label="Default select example multiple">
                                             <option value=''>Select Hospital Name</option>
                                         </select>
                                     </div>
@@ -105,26 +105,50 @@
         $(this).parents("#row").remove();
     })
 </script>
-<!-- <script>
+<script>
     $(document).ready(function() {
-        $('#form').on('submit', function(event) {
-            event.preventDefault();
-            debugger;
+        $('#add_po').on('click', function(event) {
+            var gross_amount = $('#gross_amount').val();
+            var item_qty = $('#item_qty').val();
+            var unit_rate = $('#unit_rate').val();
+            var hospital_count = $('#hospital_name').val();
+            var AllIDs = [];
+            $(".input_style").each(function() {
+                ids = AllIDs.push($(this).attr("id"));
+            });
+            //console.log(AllIDs);
+            var myJsonString = JSON.stringify(AllIDs);
+            console.log(myJsonString);
+
+            // Join array elements and display in alert
+            //alert(AllIDs.join(", "));
             $.ajax({
-                url: "<?php echo base_url('Purchase_Orders/addPO') ?>",
-                method: "POST",
-                data: $(this).serialize(),
-                dataType: "json",
+                type: "POST",
+                url: "<?php echo base_url('Purchase_Orders/calc') ?>",
+                dataType: "JSON",
+                data: AllIDs,
+                data: {
+                    type: 1,
+                    gross_amount: gross_amount,
+                    unit_rate: unit_rate,
+                    item_qty: item_qty,
+                    hospital_count: hospital_count,
+                    ids: myJsonString
+                },
                 beforeSend: function() {
-                    $('#contact').attr('disabled', 'disabled');
+                    $('#add_po').val('Wait...');
+                    $('#add_po').attr('disabled', 'disabled');
                 },
                 success: function(data) {
-                    alert("I got a view");
+                    var len = data.length;
+                    $('#add_po').val('Add');
+                    $('#add_po').attr('disabled', false);
+
                 }
             });
         });
     });
-</script> -->
+</script>
 <script>
     function hospital_typeChange(type) {
         //alert($('#'+type).val());
@@ -163,7 +187,15 @@
         });
     });
     $(document).ready(function() {
-
+        // var x = $('#amount').text();
+        // console.log(x);
+        // x = x.toString();
+        // var lastThree = x.substring(x.length - 3);
+        // var otherNumbers = x.substring(0, x.length - 3);
+        // if (otherNumbers != '')
+        //     lastThree = ',' + lastThree;
+        // var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+        // $('#amount').append(res);
         var gross_amt = $('#gross_amt').val();
 
         var pay_60 = $('#pay_60').html();
@@ -204,10 +236,6 @@
             $("#bill_10").prop("disabled", true);
             $("#is_payment_submit_yes").prop("disabled", true);
             $("#is_payment_submit_no").prop("disabled", true);
-            // $("#payment_60").prop("disabled", true);
-            // $("#payment_30").prop("disabled", true);
-            // $("#payment_90").prop("disabled", true);
-            // $("#payment_10").prop("disabled", true);
             if ($(this).hasClass('is_bills_submit_yes')) {
                 $("#bills_to_be_submit").prop("disabled", false);
                 $("#bill_60").prop("disabled", false);
@@ -216,10 +244,6 @@
                 $("#bill_10").prop("disabled", false);
                 $("#is_payment_submit_yes").prop("disabled", false);
                 $("#is_payment_submit_no").prop("disabled", false);
-                // $("#payment_60").prop("disabled", false);
-                // $("#payment_30").prop("disabled", false);
-                // $("#payment_90").prop("disabled", false);
-                // $("#payment_10").prop("disabled", false);
             }
         });
         $('.payment_field input:radio').click(function() {
