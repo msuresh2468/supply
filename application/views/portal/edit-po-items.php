@@ -54,7 +54,7 @@
                             <div>
                                 <p class="fw-bold mb-0">Hospital Details</p>
                             </div>
-                            <div class="col-md-3">
+                            <!-- <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="model" class="form-label flex-1">Select District</label>
                                     <select class="form-select input_style flex-1" id="district" name="district" disabled>
@@ -87,7 +87,7 @@
                                         <option value="Chittoor" <?php if ($PO_Item->District == 'Chittoor') { ?> selected <?php } ?>>Chittoor</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="col-md-4">
                                 <div class="mb-3 d-flex align-items-end">

@@ -63,40 +63,6 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>  
-                            <div class="col-md-3">
-                                <div class="mb-3 d-flex align-items-end">
-                                    <label for="model" class="form-label flex-1">Select District</label>
-                                    <select class="form-select input_style flex-1" id="district" name="district[]">
-                                        <option>Select District</option>
-                                        <option value="Srikakulam">Srikakulam</option>
-                                        <option value="Parvathipuram Manyam">Parvathipuram Manyam</option>
-                                        <option value="Vizianagaram">Vizianagaram</option>
-                                        <option value="Visakhapatnam">Visakhapatnam</option>   
-                                        <option value="Alluri Sitharama Raju">Alluri Sitharama Raju</option>
-                                        <option value="Anakapalli">Anakapalli</option>
-                                        <option value="Kakinada">Kakinada</option>
-                                        <option value="East Godavari">East Godavari</option>
-                                        <option value="Dr. B. R. Ambedkar Konaseema">Dr. B. R. Ambedkar Konaseema</option>  
-                                        <option value="Eluru">Eluru</option>
-                                        <option value="West Godavari">West Godavari</option>
-                                        <option value="NTR">NTR</option>
-                                        <option value="Krishna">Krishna</option>
-                                        <option value="Palnadu">Palnadu</option>
-                                        <option value="Guntur">Guntur</option>
-                                        <option value="Bapatla">Bapatla</option>
-                                        <option value="Sri Potti Sriramulu Nellore">Sri Potti Sriramulu Nellore</option>
-                                        <option value="Prakasam">Prakasam</option>
-                                        <option value="Kurnool">Kurnool</option>   
-                                        <option value="Nandyal">Nandyal</option>
-                                        <option value="Anantapuramu">Anantapuramu</option>
-                                        <option value="Sri Sathya Sai">Sri Sathya Sai</option>
-                                        <option value="YSR">YSR</option>
-                                        <option value="Annamayya">Annamayya</option>    
-                                        <option value="Tirupati">Tirupati</option>
-                                        <option value="Chittoor">Chittoor</option>                            
-                                    </select>
-                                </div>
                             </div>`;
 
         $('#addinput').append(newFirmAdd);
@@ -107,43 +73,38 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#add_po').on('click', function(event) {
-            var gross_amount = $('#gross_amount').val();
-            var item_qty = $('#item_qty').val();
-            var unit_rate = $('#unit_rate').val();
-            var hospital_count = $('#hospital_name').val();
-            var AllIDs = [];
-            $(".input_style").each(function() {
-                ids = AllIDs.push($(this).attr("id"));
-            });
-            //console.log(AllIDs);
-            var myJsonString = JSON.stringify(AllIDs);
-            console.log(myJsonString);
-
-            // Join array elements and display in alert
-            //alert(AllIDs.join(", "));
+        $('#add_form').submit(function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            var formData = $(this).serialize();
+            //console.log(formData);
             $.ajax({
                 type: "POST",
                 url: "<?php echo base_url('Purchase_Orders/calc') ?>",
-                dataType: "JSON",
-                data: AllIDs,
-                data: {
-                    type: 1,
-                    gross_amount: gross_amount,
-                    unit_rate: unit_rate,
-                    item_qty: item_qty,
-                    hospital_count: hospital_count,
-                    ids: myJsonString
-                },
+                //dataType: "JSON",
+                data: formData,
                 beforeSend: function() {
                     $('#add_po').val('Wait...');
                     $('#add_po').attr('disabled', 'disabled');
                 },
-                success: function(data) {
-                    var len = data.length;
-                    $('#add_po').val('Add');
+                // success: function(data) {
+                //     var len = data.length;
+                //     $('#add_po').val('Add');
+                //     $('#add_po').attr('disabled', false);
+                //     //$('#form').trigger('reset');
+                //     $('#response').html('PO Added Successfully....')
+                // },
+                success: function(response) {
+                    console.log('received this response: ' + response);
+                    console.log(response.message);
+                    $('#add_po').val('Submit');
                     $('#add_po').attr('disabled', false);
-
+                    $('#response').html(response);
+                },
+                error: function(response, xhr, status, error) {
+                    // Handle errors
+                    console.log('error')
+                    $('#response').html('Items Amount must be equal to Gross Amount')
+                    // $('#response').html('An error occurred: ' + error);
                 }
             });
         });

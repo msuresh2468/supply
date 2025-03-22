@@ -34,7 +34,6 @@
                                         <th>Unit Rate</th>
                                         <th>Make/Model</th>
                                         <th>Hospital Name</th>
-                                        <th>District</th>
                                         <th>Supply Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -63,10 +62,6 @@
 
                                                 <td>
                                                     <?php echo $row->po_hospital_name; ?>
-                                                </td>
-
-                                                <td>
-                                                    <?php echo $row->District; ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $row->supply_status; ?>

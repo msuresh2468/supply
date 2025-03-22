@@ -70,6 +70,7 @@ class Purchase_Orders extends CI_Controller
     }
     public function addPO()
     {
+        print_r($this->input->post());die;
         $po = new PurchaseModel();
         $PO_Date = $this->input->post('po_date');
         $PO_Date = date('Y-m-d', strtotime($PO_Date));
@@ -104,14 +105,14 @@ class Purchase_Orders extends CI_Controller
                 'Scheme' => $this->input->post('scheme'),
                 'Supply_DueDate' => $supply_dueDate
             ];
-            $po_id = $po->insertpo($data);
+            $id = $po->insertpo($data);
             //$po_id = $this->input->post('po_number');
             //print_r($po->insertpo($data));die;
             //$data1 = [];
             for ($i = 0; $i < count($itemQty); $i++) {
                 if ($this->input->post('hospital_name_' . $i) != NULL) {
                     $data2 = [
-                        'po_id' => $po_id,
+                        'po_id' => $id,
                         'Item_Name' => $this->input->post('item_name')[$i],
                         'Item_Model' => $this->input->post('model')[$i],
                         'Unit_Rate' => $this->input->post('unit_rate')[$i],
@@ -129,7 +130,7 @@ class Purchase_Orders extends CI_Controller
                             'item_id' => $item_id,
                             'Hospital_Type' => $hospital_type,
                             'po_hospital_name' => $hospital_names[$j],
-                            'District' => $District,
+                            // 'District' => $District,
                             'supply_status' => $supply_status
 
                         ];
@@ -155,19 +156,95 @@ class Purchase_Orders extends CI_Controller
         }
     }
     public function calc(){
-        print_r($this->input->post());
-        if($this->input->post('type')==1)
-		{
-			$gross_amount=$this->input->post('gross_amount');
-			$unit_rate=$this->input->post('unit_rate');
-			$item_qty=$this->input->post('item_qty');
-			$hospital_count=$this->input->post('hospital_count');
-			
-			echo json_encode(array(
-				"status"=>'200'
-			));
-            echo json_encode($this->session->set_flashdata('status', 'Items Amount must be equal to the Gross Amount'));
-		} 
+        if ($this->input->is_ajax_request()) {
+        //print_r($this->input->post());die;
+        $po = new PurchaseModel();
+        $PO_Date = $this->input->post('po_date');
+        $PO_Date = date('Y-m-d', strtotime($PO_Date));
+        $delivery_period = $this->input->post('delivery_period');
+        $delivery_period = $delivery_period . ' days';
+        $supply_dueDate = date('Y-m-d', strtotime($PO_Date . $delivery_period));
+        $delivery_period1 = $this->input->post('delivery_period');
+        $itemQty = $this->input->post('item_qty[]');
+        $gross_amt = $this->input->post('gross_amount');
+        $gross_amt = round($gross_amt);
+        $hosp_gross = 0;
+        $unit = $this->input->post('unit_rate');
+        for ($a = 0; $a < count($itemQty); $a++) {
+            $unit = $this->input->post('unit_rate')[$a];
+            $qty = $this->input->post('item_qty')[$a];
+            //print_r($this->input->post('hospital_name_' . $a));
+            if ($this->input->post('hospital_name_' . $a) != NULL) {
+                $hospital_names = implode('_', $this->input->post('hospital_name_' . $a));
+                $hospital_names = explode("_", $hospital_names);
+                $hosp_gross = $hosp_gross + ($unit * $qty * count($hospital_names));
+            }
+        }
+        $hosp_gross = round(($hosp_gross));
+        if ($gross_amt == $hosp_gross) {
+            $data = [
+                'PO_Number'   => $this->input->post('po_number'),
+                'File_Number'     => $this->input->post('file_number'),
+                'PO_Date'     => $this->input->post('po_date'),
+                'PO_Year' => $this->input->post('year'),
+                'Firm_Name' => $this->input->post('firm_name'),
+                'Gross_Amount' => $this->input->post('gross_amount'),
+                'Delivery_Period' => $delivery_period1,
+                'Scheme' => $this->input->post('scheme'),
+                'Supply_DueDate' => $supply_dueDate,
+            ];
+            $id = $po->insertpo($data);
+            //$po_id = $this->input->post('po_number');
+            //print_r($po->insertpo($data));die;
+            //$data1 = [];
+            for ($i = 0; $i < count($itemQty); $i++) {
+                if ($this->input->post('hospital_name_' . $i) != NULL) {
+                    $data2 = [
+                        'po_id' => $id,
+                        'Item_Name' => $this->input->post('item_name')[$i],
+                        'Item_Model' => $this->input->post('model')[$i],
+                        'Unit_Rate' => $this->input->post('unit_rate')[$i],
+                        'Item_Qty' => $this->input->post('item_qty')[$i],
+                    ];
+                    $item_id = $po->insertpoitem($data2);
+                    $hospital_type = $this->input->post('type')[$i];
+                    $hospital_names = implode('_', $this->input->post('hospital_name_' . $i));
+                    $hospital_names = explode("_", $hospital_names);
+                    // $District = $this->input->post('district')[$i];
+                    $supply_status = $this->input->post('supply_status');
+                    $data3 = [];
+                    for ($j = 0; $j < count($hospital_names); $j++) {
+                        $data4 = [
+                            'item_id' => $item_id,
+                            'Hospital_Type' => $hospital_type,
+                            'po_hospital_name' => $hospital_names[$j],
+                            // 'District' => $District,
+                            'supply_status' => $supply_status
+
+                        ];
+                        array_push($data3, $data4);
+                    }
+
+
+                    $this->db->insert_batch('po_associate_hospitals', $data3);
+                    //array_push($data1, $data2);
+                }
+            }
+            //$this->db->insert_batch('po_item_details', $data1);
+            //$this->session->set_flashdata('status', 'New PO Added Successfully');
+            $response = 'New PO Added Successfully';
+            echo json_encode($response);
+           //redirect(base_url('portal/purchase-orders'));
+        } else {
+            
+            $error = 'Items Amount must be equal to the Gross Amount';
+            echo json_encode($error);
+           // $this->session->set_flashdata('old_input', $this->input->post());
+           // print_r($this->input->post());die;
+            //redirect(base_url('portal/add-purchase-order'));
+            
+        }
+    }
     }
     public function updatePO($id)
     {
@@ -254,7 +331,7 @@ class Purchase_Orders extends CI_Controller
                 'Remarks' => $this->input->post('remarks'),
             ];
             $pos->updatePO($data, $id);
-            $this->session->set_flashdata('status', 'New PO Added Successfully');
+            $this->session->set_flashdata('status', 'PO Updated Successfully');
             redirect(base_url('portal/purchase-orders'));
         }
     }
@@ -280,7 +357,7 @@ class Purchase_Orders extends CI_Controller
             'Installation_Date' => $installation_date
         ];
         $pos->updatePOItem($data, $id);
-        $this->session->set_flashdata('status', 'New PO Added Successfully');
+        $this->session->set_flashdata('status', 'Supply Status Submitted Successfully');
         redirect(base_url('portal/purchase-orders'));
     }
     public function viewPO($id)

@@ -15,8 +15,9 @@
                     </div>
                 <?php endif; ?>
                 <div>
-                    <form method="post" action="<?php echo base_url(); ?>portal/addPO" enctype="multipart/form-data" id="form">
+                    <form method="post" action="<?php echo base_url(); ?>portal/addPO" enctype="multipart/form-data" id="add_form">
                         <div class="row purchase_order_form">
+                            <h2 id="response"></h2>
                             <div>
                                 <p class="fw-bold mb-0">PO Details</p>
                             </div>
@@ -127,7 +128,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <!-- <div class="col-md-3">
                                 <div class="mb-3 d-flex align-items-end">
                                     <label for="district" class="form-label flex-1">Select District</label>
                                     <select class="form-select input_style flex-1" id="district" name="district[]" required>
@@ -160,7 +161,7 @@
                                         <option value="Chittoor">Chittoor</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
                             <div>
                                 <p class="fw-bold mb-0">Delivery & Scheme Details</p>
                             </div>
@@ -183,6 +184,12 @@
                                     <label class="ms-3"><input type="radio" name="supply_status" id="supply_status_no" value="Not Supplied" class="flex-1 input_style" checked> No</label>
                                 </div>
                             </div>
+                            <!-- <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="scheme" class="form-label flex-1 fw-bold mb-2">Upload PO</label>
+                                    <input type="file" class="form-control flex-1" id="po_attachment" name="po_attachment" required>
+                                </div>
+                            </div> -->
 
                         </div>
 

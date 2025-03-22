@@ -6,7 +6,8 @@
             <?php $this->load->view('portal/layout/sidebar_menu'); ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h4>Warranty Expired Items</h4>
+                    <h4>Details of Equipment Warranty Completed</h4>
+                    <a href="<?php echo base_url() ?>portal/purchase-orders" class="text-decoration-none bg-primary text-white px-3 py-1">Back</a>
                 </div>
                 <div class="row">
                     <div class="col-md-12">

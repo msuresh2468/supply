@@ -6,23 +6,24 @@
             <?php $this->load->view('portal/layout/sidebar_menu'); ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <!-- <h4>Payment Details</h4> -->
+                    <h4>Payment Details</h4>
+                    <a href="<?php echo base_url() ?>portal/purchase-orders" class="text-decoration-none bg-primary text-white px-3 py-1">Back</a>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="row">
+                        <div class="row mx-0 bg-payment pt-3 mb-3">
                             <div class="col-md-6">
-                                <p class="bg-primary p-2 text-white">
+                                <p class=" p-2">
                                     Total Number of POs : <span class="float-end h5"><?php echo count($countPO); ?></span>
                                 </p>
-                                <p class="bg-warning p-2">
+                                <p class=" p-2">
                                     Total Gross Amount:
                                     <span class="float-end h5"><?php foreach ($total as $row) : ?>
                                         <?php echo $row->Gross_Amount; ?>
                                     <?php endforeach; ?>
                                     </span>
                                 </p>
-                                <p class="bg-black p-2 text-white">
+                                <p class=" p-2">
                                     Total Bills Submitted Amount:
                                     <span class="float-end h5"><?php foreach ($total as $row) : ?>
                                         <?php echo $row->Bills_60_Amount + $row->Bills_30_Amount + $row->Bills_90_Amount + $row->Bills_10_Amount; ?>
@@ -31,21 +32,21 @@
                                 </p>
                             </div>
                             <div class="col-md-6">
-                                <p class="bg-success p-2 text-white">
+                                <p class=" p-2">
                                     Total Received Amount:
                                     <span class="float-end h5"> <?php foreach ($total as $row) : ?>
                                         <?php echo $row->Pay_60_Amt + $row->Pay_30_Amt + $row->Pay_10_Amt + $row->Pay_90_Amt; ?>
                                     <?php endforeach; ?>
                                     </span>
                                 </p>
-                                <p class="bg-secondary p-2 text-white">
-                                    Total LDC Charges and Deductions:
+                                <p class=" p-2">
+                                    Total LD Charges and Deductions:
                                     <span class="float-end h5"><?php foreach ($total as $row) : ?>
                                         <?php echo $row->LDC_Amount1 + $row->LDC_Amount2 + $row->LDC_Amount3 + $row->Deductions_1 + $row->Deductions_2 + $row->Deductions_3; ?>
                                     <?php endforeach; ?>
                                     </span>
                                 </p>
-                                <p class="bg-danger p-2 text-white">
+                                <p class=" p-2">
                                     Total Pending Amount:
                                     <span class="float-end h5"><?php foreach ($total as $row) : ?>
                                         <?php $pay = $row->Pay_60_Amt + $row->Pay_30_Amt + $row->Pay_10_Amt + $row->Pay_90_Amt;
@@ -198,7 +199,7 @@
                                                     <?php } ?>
                                                 </table>
                                             </td>
-                                            <td class="bg-danger text-white text-center">
+                                            <td class="bg-danger1 text-white text-center">
                                                 <?php if ($row->Pay_90_Amt == '') {
                                                     if ($row->Pay_60_Amt == '') {
                                                         $pay_60 = '0';

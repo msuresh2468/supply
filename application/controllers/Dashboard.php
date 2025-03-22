@@ -103,7 +103,7 @@ class Dashboard extends CI_Controller {
         $pos = new PurchaseModel();
 		$data = [
             'page_title' => 'Payment Details',
-            "pagename" => 'status',
+            "pagename" => 'payment',
             'payment_details' => $pos-> paymentDetails(),
             'countPO' => $pos->countPOs(),
             'total' => $pos->totalAmount(),
@@ -115,7 +115,7 @@ class Dashboard extends CI_Controller {
         $pos = new PurchaseModel();
 		$data = [
             'page_title' => 'PO Agreements',
-            "pagename" => 'status',
+            "pagename" => 'agreements',
             'agreements' => $pos-> agreements()
         ];
         $this->load->view('portal/po-agreements', $data);
@@ -125,7 +125,7 @@ class Dashboard extends CI_Controller {
         $pos = new PurchaseModel();
 		$data = [
             'page_title' => 'PO DD',
-            "pagename" => 'status',
+            "pagename" => 'dd',
             'dd' => $pos-> dd()
         ];
         $this->load->view('portal/po-dds-list', $data);
@@ -135,7 +135,7 @@ class Dashboard extends CI_Controller {
         $pos = new PurchaseModel();
 		$data = [
             'page_title' => 'Item Warranty',
-            "pagename" => 'status',
+            "pagename" => 'underwarranty',
             'warranty' => $pos-> warranty()
         ];
         $this->load->view('portal/po-item-warranty', $data);
@@ -145,7 +145,7 @@ class Dashboard extends CI_Controller {
         $pos = new PurchaseModel();
 		$data = [
             'page_title' => 'Item Warranty',
-            "pagename" => 'status',
+            "pagename" => 'completedwarranty',
             'expired' => $pos-> expired()
         ];
         $this->load->view('portal/warranty-expired-items', $data);
@@ -155,7 +155,7 @@ class Dashboard extends CI_Controller {
         $pos = new PurchaseModel();
 		$data = [
             'page_title' => 'Item Warranty',
-            "pagename" => 'status',
+            "pagename" => 'ldc',
             'payment_details' => $pos-> paymentDetails(),
             'countPO' => $pos->countPOs(),
             'total' => $pos->totalAmount(),

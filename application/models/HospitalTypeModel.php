@@ -44,7 +44,7 @@ class HospitalTypeModel extends CI_Model
     public function HospitalNames($id){
         $this->db->select('pid.Item_Name, pid.Item_Qty, pid.Unit_Rate, pid.Item_Model, pah.po_hospital_name, pah.District, pah.id, pah.supply_status, pd.PO_Year, pd.PO_Number,');           
         $this->db->from('po_item_details pid');   
-        $this->db->join('po_details pd', 'pd.PO_Number=pid.po_id');      
+        $this->db->join('po_details pd', 'pd.id=pid.po_id');      
         $this->db->join('po_associate_hospitals pah', 'pah.item_id=pid.id');        
               
         $this->db->where('pid.po_id',$id);        
