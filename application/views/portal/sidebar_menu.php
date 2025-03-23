@@ -71,6 +71,11 @@
                     Payment Details
                 </a>
             </li>
+            <li class="nav-item <?php echo $pagename == 'tender' ? 'active' : ' '; ?>">
+                <a class="nav-link" href="<?php echo base_url() ?>portal/tender-information">
+                    Tender Details
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

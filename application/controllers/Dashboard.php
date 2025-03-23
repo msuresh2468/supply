@@ -12,6 +12,7 @@ class Dashboard extends CI_Controller {
         $this->load->model('Authentication');
         $this->load->model('UserModel');
         $this->load->model('PurchaseModel');
+        $this->load->model('ProcumentModel');
     }
 	public function index()
 	{
@@ -174,5 +175,14 @@ class Dashboard extends CI_Controller {
             'results' => $this->PurchaseModel->search($keyword)
         ];
         $this->load->view('portal/search-results', $data);
+    }
+    public function procurement(){
+        $tenders = new ProcumentModel();
+		$data = [
+            'page_title' => 'Procurement Details',
+            "pagename" => 'tender',
+            'procurement' => $tenders->allprocurements()
+        ];
+        $this->load->view('portal/procurement-details', $data);
     }
 }

@@ -6,12 +6,10 @@
             <?php $this->load->view('portal/layout/sidebar_menu'); ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h4 class="my-0">Purchase Order Details</h4>
-                    <a href="<?php echo base_url() ?>portal/add-purchase-order" class="text-decoration-none bg-primary text-white px-3 py-1">Add New PO</a>
+                    <h4 class="my-0">Procurement of Items Details</h4>
+                    <a href="<?php echo base_url() ?>portal/procurement/add-procurement-item" class="text-decoration-none bg-primary text-white px-3 py-1">Add New Item</a>
                 </div>
-                
                 <div class="row">
-                <h2 id="response"></h2>
                     <div class="col-md-12">
                         <?php
                         if ($this->session->flashdata('status')) : ?>
@@ -22,54 +20,61 @@
                         <?php
                         echo $this->input->get('msg');
                         ?>
-                        
-                        <?php if (count($purchase_orders) > 0) { ?>
+
+                        <?php if (count($procurement) > 0) { ?>
                             <?php $this->load->view('portal/layout/filter-search'); ?>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>PO Year</th>
-                                        <th>PO Number</th>
-                                        <th>PO Date</th>
-                                        <th>File Number</th>
-                                        <th>Gross Amount</th>
-                                        <th>Supply Due Date</th>
-                                        <th>Actions</th>
+                                        <th>Year</th>
+                                        <th>Item Name</th>
+                                        <th>Make/Model</th>
+                                        <th>Price Offered by the Firm</th>
+                                        <th>Tender No & Date</th>
+                                        <th>Quoted in PO Price</th>
+                                        <th>Profit Amount</th>
+                                        <th>Profit Percentage</th>
                                     </tr>
                                 </thead>
                                 <tbody id="filter_search">
-                                    <?php foreach ($purchase_orders as $row) : ?>
+                                    <?php foreach ($procurement as $row) : ?>
                                         <tr>
                                             <td>
-                                                <?php echo $row->PO_Year; ?>
+                                                <?php echo $row->Year; ?>
                                             </td>
                                             <td>
-                                                <?php echo $row->PO_Number; ?>
+                                                <?php echo $row->Item_Name; ?>
                                             </td>
                                             <td>
-                                                <?php echo date('d-m-Y', strtotime($row->PO_Date)); ?>
+                                                <?php echo $row->Item_Model; ?>
                                             </td>
                                             <td>
-                                                <?php echo $row->File_Number; ?>
+                                                <?php echo $row->Offer_Price; ?>
                                             </td>
                                             <td>
-                                                <?php echo $row->Gross_Amount; ?>
+                                                <?php echo $row->Tender_No; ?>
                                             </td>
                                             <td>
-                                                <?php echo date('d-m-Y', strtotime($row->Supply_DueDate)); ?>
+                                                <?php echo $row->Quote_Price; ?>
                                             </td>
                                             <td>
-                                                <a href="<?php echo base_url('portal/view-po/' . $row->id); ?>" class="btn btn-info">PO Details</a>
-                                                <a href="<?php echo base_url('portal/view-po-items/' . $row->id); ?>" class="btn btn-info">Item Details</a>
-                                                <!-- <a href="<?php echo base_url('portal/edit-purchase-order/' . $row->id); ?>" class="btn btn-warning">Edit</a> -->
-                                                <!-- <button type="submit" id="<?php echo $row->id ?>" class="btn btn-danger remove-po"> Delete</button> -->
+                                                <?php echo $row->Quote_Price - $row->Offer_Price; ?>
+                                            </td>
+                                            <td>
+                                                <?php 
+                                                $quote = $row->Quote_Price;
+                                                $offer = $row->Offer_Price;
+                                                $profit = $row->Quote_Price - $row->Offer_Price;
+                                                $profit = $profit/$offer;
+                                                echo $profit * 100;
+                                                ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
                         <?php } else {
-                            echo "<h4 class='text-center text-danger'>Currently No POs Found</h4>";
+                            echo "<h4 class='text-center text-danger'>Currently No Items Found</h4>";
                         } ?>
                     </div>
                 </div>

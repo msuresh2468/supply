@@ -86,4 +86,6 @@ $route['portal/view-purchase-order/(:any)']['GET'] = 'Purchase_Orders/viewPO/$1'
 $route['portal/addPO']['POST'] = 'Purchase_Orders/addPO';
 $route['search']['POST'] = 'Dashboard/search';
 $route['portal/search-results']['GET'] = 'Dashboard/search';
-
+$route['portal/procurement-details']['GET'] = 'Dashboard/procurement';
+$route['portal/procurement/add-procurement-item']['GET'] = 'Procurement/createProcurement';
+$route['portal/procurement/addProcurement']['POST'] = 'Procurement/addProcurement';

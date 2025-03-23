@@ -17,7 +17,8 @@
                 <div>
                     <form method="post" action="<?php echo base_url(); ?>portal/addPO" enctype="multipart/form-data" id="add_form">
                         <div class="row purchase_order_form">
-                            <h2 id="response"></h2>
+                            <p id="response" class="bg-success mb-2 text-white"></p>
+                            <p id="error" class="bg-danger mb-2 text-white"></p>
                             <div>
                                 <p class="fw-bold mb-0">PO Details</p>
                             </div>

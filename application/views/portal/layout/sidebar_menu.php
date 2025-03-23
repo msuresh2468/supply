@@ -71,9 +71,15 @@
                     Payment Details
                 </a>
             </li>
+            <li class="nav-item <?php echo $pagename == 'tender' ? 'active' : ' '; ?>">
+                <a class="nav-link" href="<?php echo base_url() ?>portal/procurement-details">
+                    Procurement Details
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link text-black" href="<?php echo base_url() ?>logout">Logout <i class="fa fa-sign-out"></i></a>
             </li>
+
         </ul>
     </div>
 </nav>

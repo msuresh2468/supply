@@ -94,11 +94,21 @@
                 //     $('#response').html('PO Added Successfully....')
                 // },
                 success: function(response) {
-                    console.log('received this response: ' + response);
-                    console.log(response.message);
                     $('#add_po').val('Submit');
                     $('#add_po').attr('disabled', false);
-                    $('#response').html(response);
+                    console.log(response);
+                    if(response == '"New PO Added Successfully"'){
+                        $('#error').css('display','none');
+                        $('#response').append('<span class="py-2">New PO Added Successfully</span>');
+                        $('#add_form').trigger('reset');
+                        //window.location.href = '<?php echo base_url('portal/purchase-orders') ?>';
+                       
+                    }
+                    else{
+                        $('#error').append('Items Amount must be equal to the Gross Amount');
+                        //$('#response').html(response);
+                    }
+                   
                 },
                 error: function(response, xhr, status, error) {
                     // Handle errors
