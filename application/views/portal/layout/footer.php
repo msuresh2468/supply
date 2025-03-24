@@ -74,14 +74,21 @@
 <script>
     $(document).ready(function() {
         $('#add_form').submit(function(event) {
-            event.preventDefault(); // Prevent the default form submission
-            var formData = $(this).serialize();
+            event.preventDefault(); 
+            //var formData = $(this).serialize();
+            // let formData = new FormData();
+            // formData.append('po_attachment', document.getElementById('po_attachment').files[0]);
+            // formData = $(this).serialize();
+            var formData = new FormData(this);
             //console.log(formData);
             $.ajax({
                 type: "POST",
                 url: "<?php echo base_url('Purchase_Orders/calc') ?>",
                 //dataType: "JSON",
                 data: formData,
+                contentType: false,
+                cache: false,
+                processData: false,
                 beforeSend: function() {
                     $('#add_po').val('Wait...');
                     $('#add_po').attr('disabled', 'disabled');
@@ -97,18 +104,18 @@
                     $('#add_po').val('Submit');
                     $('#add_po').attr('disabled', false);
                     console.log(response);
-                    if(response == '"New PO Added Successfully"'){
-                        $('#error').css('display','none');
+                    if (response == '"New PO Added Successfully"') {
+                        $('#error').css('display', 'none');
                         $('#response').append('<span class="py-2">New PO Added Successfully</span>');
                         $('#add_form').trigger('reset');
                         //window.location.href = '<?php echo base_url('portal/purchase-orders') ?>';
-                       
-                    }
-                    else{
-                        $('#error').append('Items Amount must be equal to the Gross Amount');
+
+                    } else {
+                        //$('#error').css('display','none');
+                        $('#error').text('Items Amount must be equal to the Gross Amount');
                         //$('#response').html(response);
                     }
-                   
+
                 },
                 error: function(response, xhr, status, error) {
                     // Handle errors

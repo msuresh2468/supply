@@ -185,12 +185,12 @@
                                     <label class="ms-3"><input type="radio" name="supply_status" id="supply_status_no" value="Not Supplied" class="flex-1 input_style" checked> No</label>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-12">
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="scheme" class="form-label flex-1 fw-bold mb-2">Upload PO</label>
                                     <input type="file" class="form-control flex-1" id="po_attachment" name="po_attachment" required>
                                 </div>
-                            </div> -->
+                            </div>
 
                         </div>
 
